@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Growth ForgeX - IT Services</title>
+    <meta name="description" content="Growth ForgeX is your creative buddy for building scalable products. Specializing in backend systems, APIs, and cloud-based web applications.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="loader.js"></script>
+    <script>!function(){var e=console.error;console.error=function(){if(arguments[0]&&typeof arguments[0]==='string'&&arguments[0].includes('Missing property'))return;e.apply(console,arguments)};}();</script>
+    <script type="module" src="https://unpkg.com/@splinetool/viewer/build/spline-viewer.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="perf.css">
+</head>
+<body>
+    
+    <div class="background-glow"></div>
+
+    <main class="hero-container">
+        
+        <!-- Lightning decoration images -->
+        <img src="lightning.png" alt="3D Red Lightning Left" class="lightning-left" loading="lazy" decoding="async">
+        <img src="lightning.png" alt="3D Red Lightning Right" class="lightning-right" loading="lazy" decoding="async">
+
+        <header>
+            <div class="logo">Growth ForgeX</div>
+            
+            <input type="checkbox" id="nav-toggle" class="nav-toggle">
+            <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle navigation"><span></span></label>
+            <nav class="nav-pill">
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="portfolio.html" class="nav-link">Portfolio</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="hire.html" class="nav-link">Career</a>
+            </nav>
+
+            <a href="#" onclick="forceDownloadPDF(event)" download="GrowthForgeX Brochure.pdf" class="header-btn" style="text-decoration: none;">
+                <div class="btn-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                </div>
+                Download<br>Brochure
+            </a>
+        </header>
+
+        <section class="main-content">
+            <!-- Discount ticker -->
+            <div class="discount-ticker">
+                <span class="discount-tag">LIMITED OFFER</span>
+                <div class="discount-ticker-track-wrap">
+                    <div class="discount-ticker-track">
+                        <!-- copy A -->
+                        <span class="discount-ticker-seg">🎉 Get <strong>20% OFF</strong> on your first order &nbsp;&nbsp;•&nbsp;&nbsp; <a href="contact.html" class="discount-cta">Claim Now →</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <!-- copy B — identical, makes the loop seamless -->
+                        <span class="discount-ticker-seg">🎉 Get <strong>20% OFF</strong> on your first order &nbsp;&nbsp;•&nbsp;&nbsp; <a href="contact.html" class="discount-cta">Claim Now →</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="subtitle" style="text-transform: none; letter-spacing: normal; font-size: 18px; font-weight: 400; color: rgba(255,255,255,0.9); margin-bottom: 5px;">Hey, We are your <span class="highlight" style="font-weight: 600;">Creative Buddies!!</span></h2>
+            <h1 class="title" style="text-transform: none; font-family: 'Outfit', sans-serif; font-size: clamp(40px, 5vw, 64px); line-height: 1.2; margin: 0 0 30px 0; font-weight: 700;">
+                <span class="text-white">Web Developer Turning Ideas into Scalable Products</span>
+            </h1>
+            <p class="description" style="max-width: 600px; color: rgba(255,255,255,0.7); line-height: 1.6; font-size: 18px; margin-bottom: 40px;">
+                GrowthForgeX is focused on building the engines behind tomorrow's growth. Through robust backend development, cloud infrastructure, and scalable systems, we help businesses launch faster, operate smarter, and grow with confidence.
+            </p>
+            
+            <div class="cta-group">
+                <button class="order-btn">Order Now</button>
+                <button class="envelope-btn" aria-label="Contact us">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 7.00005L10.2 11.65C11.2667 12.45 12.7333 12.45 13.8 11.65L20 7" stroke-linecap="round" stroke-linejoin="round"/>
+                        <rect x="3" y="5" width="18" height="14" rx="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="divider"></div>
+        </section>
+
+        <!-- Spline 3D Scene + Freely Floating Tech Icons -->
+        <div class="hero-character-wrapper" id="hero-3d-wrapper" style="overflow:visible;">
+
+            <!-- Spline Robot fills the whole area -->
+            <spline-viewer
+                url="https://prod.spline.design/ZqtdkgZTSpb2PDCs/scene.splinecode"
+                style="width:100%; height:100%; background:transparent;"
+            ></spline-viewer>
+
+            <!-- Figma — at robot head level, right side -->
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg"
+                 alt="Figma" loading="lazy" decoding="async"
+                 class="fi-icon" style="top:10%; left:62%; animation-duration:4.2s; animation-delay:0s;">
+
+            <!-- React — just below head, further right -->
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"
+                 alt="React" loading="lazy" decoding="async"
+                 class="fi-icon" style="top:25%; left:72%; animation-duration:5.1s; animation-delay:0.9s;">
+
+            <!-- NodeJS — mid body level -->
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg"
+                 alt="NodeJS" loading="lazy" decoding="async"
+                 class="fi-icon" style="top:42%; left:65%; animation-duration:4.7s; animation-delay:1.6s;">
+
+            <!-- HTML5 — lower body -->
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"
+                 alt="HTML5" loading="lazy" decoding="async"
+                 class="fi-icon" style="top:58%; left:76%; animation-duration:3.9s; animation-delay:0.5s;">
+        </div>
+
+        <style>
+            /* Freely scattered floating icons — strong red theme */
+            .fi-icon {
+                position: absolute;
+                width: 52px;
+                height: 52px;
+                border-radius: 0;
+                padding: 0;
+                background: none;
+                border: none;
+                animation: freeFloat 4s ease-in-out infinite;
+                filter: drop-shadow(0 0 10px rgba(255, 30, 30, 0.4));
+                transition: transform 0.3s ease, filter 0.3s ease;
+                cursor: default;
+                z-index: 5;
+            }
+            .fi-icon:hover {
+                transform: scale(1.22) translateY(-8px) !important;
+                filter: drop-shadow(0 0 18px rgba(255, 20, 20, 0.65));
+            }
+            @keyframes freeFloat {
+                0%   { transform: translateY(0px)   rotate(-4deg); }
+                33%  { transform: translateY(-16px) rotate(2deg);  }
+                66%  { transform: translateY(-8px)  rotate(-2deg); }
+                100% { transform: translateY(0px)   rotate(-4deg); }
+            }
+        </style>
+
+
+        <section class="bottom-cards-section">
+            <a href="index.html" class="card"><div class="card-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3L21 9.5V20a1 1 0 0 1-1 1H15v-6H9v6H4a1 1 0 0 1-1-1V9.5Z"/></svg></div><span>Home</span></a>
+            <a href="about.html" class="card"><div class="card-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><span>About Us</span></a>
+            <a href="services.html" class="card"><div class="card-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div><span>Our Services</span></a>
+            <a href="portfolio.html" class="card"><div class="card-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div><span>Portfolio</span></a>
+            <a href="contact.html" class="card"><div class="card-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><span>Contact</span></a>
+        </section>
+
+    </main>
+
+    <script src="transition.js" defer></script>
+</body>
+</html>
+

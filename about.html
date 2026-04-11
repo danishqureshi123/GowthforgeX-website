@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Growth ForgeX - About Us</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="loader.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="perf.css">
+    <script>!function(){var e=console.error;console.error=function(){if(arguments[0]&&typeof arguments[0]==='string'&&arguments[0].includes('Missing property'))return;e.apply(console,arguments)};}();</script>
+    <script type="module" src="https://unpkg.com/@splinetool/viewer/build/spline-viewer.js" defer></script>
+</head>
+<body>
+    <div class="background-glow"></div>
+    <main class="hero-container">
+        
+        <img src="lightning.png" alt="3D Red Lightning Left" class="lightning-left" loading="lazy" decoding="async">
+        <img src="lightning.png" alt="3D Red Lightning Right" class="lightning-right" loading="lazy" decoding="async">
+
+        <header>
+            <div class="logo">Growth ForgeX</div>
+            <input type="checkbox" id="nav-toggle" class="nav-toggle">
+            <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle navigation"><span></span></label>
+            <nav class="nav-pill">
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="portfolio.html" class="nav-link">Portfolio</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="hire.html" class="nav-link">Career</a>
+            </nav>
+            <a href="#" onclick="forceDownloadPDF(event)" download="GrowthForgeX Brochure.pdf" class="header-btn" style="text-decoration: none;">
+                <div class="btn-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                </div>
+                Download<br>Brochure
+            </a>
+        </header>
+
+        <section class="main-content" style="max-width: 920px; padding-top: 30px; position: relative; z-index: 10;">
+            <h2 class="subtitle reveal" style="transition-delay:0s"><span class="highlight">Our Vision</span></h2>
+
+            <!-- Animated headline -->
+            <h1 class="about-headline reveal" style="transition-delay:0.07s">Built to Disrupt</h1>
+
+            <p class="description reveal" style="font-size: 17px; line-height: 1.7; max-width: 520px; transition-delay:0.15s">
+                We don't just build products — we create the technology backbone that quietly powers your next breakthrough.
+                Every project we take on becomes a part of us. Your success isn't just a goal — it's our standard.
+            </p>
+
+            <p class="reveal" style="color: rgba(255,255,255,0.40); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; margin-top: 22px; margin-bottom: 14px; transition-delay:0.20s">What We Stand For</p>
+
+            <!-- 2×2 Interactive value cards grid -->
+            <ul class="about-values-list">
+
+                <li class="value-card reveal" data-delay="0.26s" data-type="speed">
+                    <div class="value-card-inner">
+                        <div class="value-bg-glow"></div>
+                        <div class="value-precision-grid"></div>
+                        <div class="value-nodes">
+                            <span class="node-dot"></span><span class="node-dot"></span><span class="node-dot"></span>
+                            <span class="node-line"></span><span class="node-line n2"></span>
+                        </div>
+                        <div class="value-top">
+                            <span class="value-icon">⚡</span>
+                            <span class="value-title">Speed Without Compromise</span>
+                        </div>
+                        <ul class="value-points">
+                            <li>Rapid delivery with uncompromised quality.</li>
+                            <li>Agile process that adapts without slowing down.</li>
+                        </ul>
+                        <p class="value-hover-sub">We move fast — and we do it right.</p>
+                    </div>
+                </li>
+
+                <li class="value-card reveal" data-delay="0.34s" data-type="collab">
+                    <div class="value-card-inner">
+                        <div class="value-bg-glow"></div>
+                        <div class="value-precision-grid"></div>
+                        <div class="value-nodes">
+                            <span class="node-dot"></span><span class="node-dot"></span><span class="node-dot"></span>
+                            <span class="node-line"></span><span class="node-line n2"></span>
+                        </div>
+                        <div class="value-top">
+                            <span class="value-icon">🤝</span>
+                            <span class="value-title">Transparent Collaboration</span>
+                        </div>
+                        <ul class="value-points">
+                            <li>Full visibility at every milestone and decision.</li>
+                            <li>Direct communication — no middlemen, no delays.</li>
+                        </ul>
+                        <p class="value-hover-sub">Clarity at every step.</p>
+                    </div>
+                </li>
+
+                <li class="value-card reveal" data-delay="0.42s" data-type="precision">
+                    <div class="value-card-inner">
+                        <div class="value-bg-glow"></div>
+                        <div class="value-precision-grid"></div>
+                        <div class="value-nodes">
+                            <span class="node-dot"></span><span class="node-dot"></span><span class="node-dot"></span>
+                            <span class="node-line"></span><span class="node-line n2"></span>
+                        </div>
+                        <div class="value-top">
+                            <span class="value-icon">🎯</span>
+                            <span class="value-title">Pixel-Perfect Execution</span>
+                        </div>
+                        <ul class="value-points">
+                            <li>Precision-driven design and flawless development.</li>
+                            <li>Every detail reviewed — nothing ships half-finished.</li>
+                        </ul>
+                        <p class="value-hover-sub">Designed with precision, delivered flawlessly.</p>
+                    </div>
+                </li>
+
+                <li class="value-card reveal" data-delay="0.50s" data-type="partner">
+                    <div class="value-card-inner">
+                        <div class="value-bg-glow"></div>
+                        <div class="value-precision-grid"></div>
+                        <div class="value-nodes">
+                            <span class="node-dot"></span><span class="node-dot"></span><span class="node-dot"></span>
+                            <span class="node-line"></span><span class="node-line n2"></span>
+                        </div>
+                        <div class="value-top">
+                            <span class="value-icon">🔗</span>
+                            <span class="value-title">Long-Term Partnerships</span>
+                        </div>
+                        <ul class="value-points">
+                            <li>Relationships built to scale alongside your business.</li>
+                            <li>Post-launch support and continuous improvement.</li>
+                        </ul>
+                        <p class="value-hover-sub">Built to grow with you.</p>
+                    </div>
+                </li>
+
+            </ul>
+
+            <div class="divider" style="margin-left:0; width:30%;"></div>
+        </section>
+
+        <style>
+        /* ── Animated Headline ── */
+        .about-headline {
+            font-size: 64px;
+            font-weight: 700;
+            line-height: 1.1;
+            color: #FFFFFF;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+            cursor: default;
+            display: inline-block;
+            transition: color 0.35s ease, text-shadow 0.35s ease;
+        }
+        .about-headline:hover {
+            color: #FF0000;
+            text-shadow: 0 0 40px rgba(255,0,0,0.55), 0 0 80px rgba(255,0,0,0.20);
+        }
+
+        /* ── Values Grid — 2×2 ── */
+        .about-values-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-bottom: 14px;
+            width: 100%;
+            max-width: 900px;
+        }
+
+        /* ── Value Card ── */
+        .value-card { position: relative; }
+
+        .value-card-inner {
+            position: relative;
+            padding: 22px 22px 20px;
+            border-radius: 18px;
+            border: 1px solid rgba(255,255,255,0.09);
+            background: rgba(255,255,255,0.03);
+            overflow: hidden;
+            cursor: default;
+            height: 100%;
+            transition: transform 0.30s cubic-bezier(0.16,1,0.3,1),
+                        border-color 0.30s ease,
+                        box-shadow 0.30s ease;
+            transform-style: preserve-3d;
+        }
+
+        .value-card:hover .value-card-inner {
+            transform: translateY(-5px) perspective(600px) rotateX(2deg);
+            border-color: rgba(255,0,0,0.40);
+            box-shadow: 0 12px 40px rgba(255,0,0,0.14), 0 2px 8px rgba(0,0,0,0.5);
+        }
+
+        /* background glow blob */
+        .value-bg-glow {
+            position: absolute;
+            width: 160px; height: 160px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,0,0,0.18) 0%, transparent 70%);
+            top: -40px; right: -40px;
+            opacity: 0;
+            transition: opacity 0.35s ease, transform 0.35s ease;
+            pointer-events: none;
+        }
+        .value-card:hover .value-bg-glow { opacity: 1; transform: scale(1.2); }
+
+        /* precision grid (shows on :precision card hover) */
+        .value-precision-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,0,0,0.06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,0,0,0.06) 1px, transparent 1px);
+            background-size: 18px 18px;
+            opacity: 0;
+            transition: opacity 0.35s ease;
+            pointer-events: none;
+        }
+        .value-card[data-type="precision"]:hover .value-precision-grid { opacity: 1; }
+
+        /* node link animation (shows on :partner card hover) */
+        .value-nodes {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.35s ease;
+        }
+        .value-card[data-type="partner"]:hover .value-nodes { opacity: 1; }
+        .node-dot {
+            position: absolute;
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: #FF0000;
+            animation: nodePulse 1.8s ease-in-out infinite;
+        }
+        .node-dot:nth-child(1) { top: 30%; left: 10%; animation-delay: 0s; }
+        .node-dot:nth-child(2) { top: 55%; left: 35%; animation-delay: 0.4s; }
+        .node-dot:nth-child(3) { top: 25%; left: 60%; animation-delay: 0.8s; }
+        .node-line {
+            position: absolute;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(255,0,0,0.6), transparent);
+            top: 42%; left: 12%;
+            width: 28%;
+            transform: rotate(-10deg);
+            animation: nodeLinePulse 1.8s ease-in-out infinite;
+        }
+        .node-line.n2 {
+            top: 35%; left: 37%;
+            width: 24%;
+            transform: rotate(8deg);
+            animation-delay: 0.5s;
+        }
+        @keyframes nodePulse {
+            0%,100% { transform: scale(1); opacity: 0.8; }
+            50%      { transform: scale(1.8); opacity: 0.4; }
+        }
+        @keyframes nodeLinePulse {
+            0%,100% { opacity: 0.6; } 50% { opacity: 0.2; }
+        }
+
+        /* card content */
+        .value-top {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+            z-index: 2;
+        }
+        .value-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+        .value-card[data-type="speed"]:hover .value-icon   { animation: iconZap 0.5s ease; }
+        .value-card[data-type="collab"]:hover .value-icon  { animation: iconShake 0.5s ease; }
+        .value-card[data-type="precision"]:hover .value-icon { animation: iconZoom 0.4s ease; }
+        .value-card[data-type="partner"]:hover .value-icon { animation: iconPulse 0.8s ease; }
+
+        @keyframes iconZap   { 0%{transform:scale(1) rotate(0)} 40%{transform:scale(1.4) rotate(-15deg)} 100%{transform:scale(1) rotate(0)} }
+        @keyframes iconShake { 0%{transform:translateX(0)} 25%{transform:translateX(-4px)} 75%{transform:translateX(4px)} 100%{transform:translateX(0)} }
+        @keyframes iconZoom  { 0%{transform:scale(1)} 50%{transform:scale(1.45)} 100%{transform:scale(1)} }
+        @keyframes iconPulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.3)} }
+
+        .value-top {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+            z-index: 2;
+            margin-bottom: 14px;
+        }
+
+        .value-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #FFFFFF;
+            letter-spacing: -0.3px;
+            transition: color 0.3s ease;
+            position: relative;
+            z-index: 2;
+            line-height: 1.25;
+        }
+        .value-card:hover .value-title { color: #FF4444; }
+
+        .value-icon {
+            font-size: 22px;
+            flex-shrink: 0;
+            display: inline-block;
+        }
+
+        /* Always-visible bullet points */
+        .value-points {
+            list-style: none;
+            margin-top: 0;
+            padding-left: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+            position: relative;
+            z-index: 2;
+        }
+        .value-points li {
+            font-size: 13.5px;
+            color: rgba(255,255,255,0.55);
+            line-height: 1.55;
+            padding-left: 16px;
+            position: relative;
+        }
+        .value-points li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: #FF0000;
+            opacity: 0.60;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .value-card:hover .value-points li { color: rgba(255,255,255,0.80); }
+        .value-card:hover .value-points li::before { opacity: 1; transform: scale(1.4); }
+
+        /* Hover micro-text at bottom */
+        .value-hover-sub {
+            font-size: 11.5px;
+            color: #FF5555;
+            margin-top: 12px;
+            font-style: italic;
+            letter-spacing: 0.02em;
+            opacity: 0;
+            transform: translateY(5px);
+            transition: opacity 0.25s ease 0.05s, transform 0.25s ease 0.05s;
+            position: relative;
+            z-index: 2;
+        }
+        .value-card:hover .value-hover-sub { opacity: 1; transform: translateY(0); }
+
+        </style>
+
+
+
+        <section class="bottom-cards-section">
+            <a href="index.html" class="card"><div class="card-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3L21 9.5V20a1 1 0 0 1-1 1H15v-6H9v6H4a1 1 0 0 1-1-1V9.5Z"/></svg></div><span>Home</span></a>
+            <a href="about.html" class="card"><div class="card-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><span>About Us</span></a>
+            <a href="services.html" class="card"><div class="card-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div><span>Our Services</span></a>
+            <a href="portfolio.html" class="card"><div class="card-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div><span>Portfolio</span></a>
+            <a href="contact.html" class="card"><div class="card-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><span>Contact</span></a>
+        </section>
+    </main>
+
+    <!-- About – Three.js Globe with particles, rings & DNA helix -->
+    <div class="page-3d-wrapper" id="about-3d-wrapper">
+        <canvas id="about-3d-canvas"></canvas>
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"       class="float-icon about-icon-1" alt="React"      loading="lazy" decoding="async">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"    class="float-icon about-icon-2" alt="Python"     loading="lazy" decoding="async">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" class="float-icon about-icon-3" alt="TypeScript" loading="lazy" decoding="async">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" class="float-icon about-icon-4" alt="AWS" loading="lazy" decoding="async">
+    </div>
+
+    <script src="https://unpkg.com/three@0.158.0/build/three.min.js"></script>
+    <script>
+    (function initAboutScene() {
+        var wrapper = document.getElementById('about-3d-wrapper');
+        if (!wrapper || !window.THREE) return;
+        var T = window.THREE;
+        var isMobile = window.innerWidth <= 768;
+
+        var canvas   = document.getElementById('about-3d-canvas');
+        var renderer = new T.WebGLRenderer({ canvas: canvas, antialias: !isMobile, alpha: true });
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1.5 : 2));
+        renderer.setClearColor(0x000000, 0);
+
+        var scene  = new T.Scene();
+        var camera = new T.PerspectiveCamera(48, 1, 0.1, 100);
+        camera.position.z = 5.5;
+
+        /* ── Root group (receives mouse rotation) ── */
+        var root = new T.Group();
+        scene.add(root);
+
+        /* ─────────────────────────────────────────────────────────────
+           1.  GLOWING CORE  — a softly lit sphere at the center
+        ───────────────────────────────────────────────────────────── */
+        var coreMat = new T.MeshBasicMaterial({ color: 0xFF1111, transparent: true, opacity: 0.18 });
+        root.add(new T.Mesh(new T.SphereGeometry(0.55, 32, 32), coreMat));
+
+        /* inner bright point */
+        var glowMat = new T.MeshBasicMaterial({ color: 0xFF4444, transparent: true, opacity: 0.55 });
+        root.add(new T.Mesh(new T.SphereGeometry(0.28, 24, 24), glowMat));
+
+        /* ─────────────────────────────────────────────────────────────
+           2.  FIBONACCI PARTICLE GLOBE  — 3200 (desktop) / 800 (mobile)
+        ───────────────────────────────────────────────────────────── */
+        var N    = isMobile ? 800 : 3200;
+        var pPos = new Float32Array(N * 3);
+        var pCol = new Float32Array(N * 3);
+        var goldenAngle = Math.PI * (1 + Math.sqrt(5));
+
+        for (var i = 0; i < N; i++) {
+            var phi   = Math.acos(1 - 2 * (i + 0.5) / N);
+            var theta = goldenAngle * i;
+            var jit   = 1.32 + (Math.random() - 0.5) * 0.10;
+            pPos[i*3]   = jit * Math.sin(phi) * Math.cos(theta);
+            pPos[i*3+1] = jit * Math.sin(phi) * Math.sin(theta);
+            pPos[i*3+2] = jit * Math.cos(phi);
+
+            /* latitude-based colour: equator = deep red, poles = bright red */
+            var lat       = Math.abs(pPos[i*3+1]) / jit;
+            pCol[i*3]     = 1.0;
+            pCol[i*3+1]   = lat * 0.18;
+            pCol[i*3+2]   = lat * 0.18;
+        }
+
+        var pGeo = new T.BufferGeometry();
+        pGeo.setAttribute('position', new T.BufferAttribute(pPos, 3));
+        pGeo.setAttribute('color',    new T.BufferAttribute(pCol, 3));
+        var globePoints = new T.Points(pGeo, new T.PointsMaterial({
+            size: 0.035, vertexColors: true, transparent: true, opacity: 0.95, sizeAttenuation: true
+        }));
+        root.add(globePoints);
+
+        /* ─────────────────────────────────────────────────────────────
+           3.  WIREFRAME SHELLS  — icosahedra at two radii
+        ───────────────────────────────────────────────────────────── */
+        root.add(new T.Mesh(new T.IcosahedronGeometry(1.18, 2), new T.MeshBasicMaterial({
+            color: 0xFF0000, wireframe: true, transparent: true, opacity: 0.18
+        })));
+        var outerWire = new T.Mesh(new T.IcosahedronGeometry(1.62, 3), new T.MeshBasicMaterial({
+            color: 0xFF3333, wireframe: true, transparent: true, opacity: 0.07
+        }));
+        root.add(outerWire);
+
+        /* ─────────────────────────────────────────────────────────────
+           4.  ORBITAL RINGS  — 4 rings at varying tilts & speeds
+        ───────────────────────────────────────────────────────────── */
+        var ringDefs = [
+            { r: 1.90, rx:  Math.PI/2.2, rz:  0.10, col: 0xFF0000, op: 0.80, spd:  0.009 },
+            { r: 2.15, rx:  Math.PI/4.0, rz:  0.85, col: 0xFF2222, op: 0.55, spd: -0.006 },
+            { r: 2.42, rx: -Math.PI/5.5, rz: -1.10, col: 0xFF4444, op: 0.38, spd:  0.005 },
+            { r: 2.72, rx:  Math.PI/9.0, rz:  0.40, col: 0xFF6666, op: 0.22, spd: -0.003 }
+        ];
+        var rings = [];
+        ringDefs.forEach(function(d) {
+            var geo  = new T.TorusGeometry(d.r, 0.007, 16, 140);
+            var ring = new T.Mesh(geo, new T.MeshBasicMaterial({ color: d.col, transparent: true, opacity: d.op }));
+            ring.rotation.x = d.rx;
+            ring.rotation.z = d.rz;
+            ring.userData.spd = d.spd;
+
+            /* 3 bright tracer dots on each ring */
+            for (var k = 0; k < 3; k++) {
+                var dot = new T.Mesh(
+                    new T.SphereGeometry(0.055, 8, 8),
+                    new T.MeshBasicMaterial({ color: d.col, transparent: true, opacity: 0.95 })
+                );
+                dot.userData.angle = (k / 3) * Math.PI * 2;
+                dot.userData.ring  = ring;
+                dot.userData.r     = d.r;
+                ring.add(dot);
+                dot.position.set(d.r, 0, 0);
+            }
+            rings.push(ring);
+            root.add(ring);
+        });
+
+        /* ─────────────────────────────────────────────────────────────
+           5.  DNA DOUBLE HELIX  — two intertwined strands
+        ───────────────────────────────────────────────────────────── */
+        var helixGroup = new T.Group();
+        var HELIX_N    = isMobile ? 80 : 280;
+        var HELIX_R    = 2.05;
+        var HELIX_H    = 5.0;
+
+        function makeStrand(offset) {
+            var pos = new Float32Array(HELIX_N * 3);
+            for (var j = 0; j < HELIX_N; j++) {
+                var tt = (j / HELIX_N) * Math.PI * 8 + offset;
+                pos[j*3]   = HELIX_R * Math.cos(tt);
+                pos[j*3+1] = (j / HELIX_N - 0.5) * HELIX_H;
+                pos[j*3+2] = HELIX_R * Math.sin(tt);
+            }
+            var g = new T.BufferGeometry();
+            g.setAttribute('position', new T.BufferAttribute(pos, 3));
+            return new T.Points(g, new T.PointsMaterial({
+                color: offset === 0 ? 0xFF0000 : 0xFF4444,
+                size: 0.052, transparent: true, opacity: 0.85, sizeAttenuation: true
+            }));
+        }
+        helixGroup.add(makeStrand(0));
+        helixGroup.add(makeStrand(Math.PI)); /* offset by half-turn */
+
+        /* rungs between the strands */
+        var rungsMat = new T.LineBasicMaterial({ color: 0xFF2222, transparent: true, opacity: 0.20 });
+        for (var r = 0; r < 28; r++) {
+            var frac = r / 28;
+            var ang1 = frac * Math.PI * 8;
+            var ang2 = ang1 + Math.PI;
+            var yy   = (frac - 0.5) * HELIX_H;
+            var pts  = [
+                new T.Vector3(HELIX_R * Math.cos(ang1), yy, HELIX_R * Math.sin(ang1)),
+                new T.Vector3(HELIX_R * Math.cos(ang2), yy, HELIX_R * Math.sin(ang2))
+            ];
+            helixGroup.add(new T.Line(new T.BufferGeometry().setFromPoints(pts), rungsMat));
+        }
+        root.add(helixGroup);
+
+        /* ─────────────────────────────────────────────────────────────
+           6.  AMBIENT DUST CLOUD  — 400 (desktop) / 100 (mobile)
+        ───────────────────────────────────────────────────────────── */
+        var dustN = isMobile ? 100 : 400;
+        var dPos  = new Float32Array(dustN * 3);
+        for (var d = 0; d < dustN; d++) {
+            var dt = Math.random() * Math.PI * 2;
+            var dp = Math.random() * Math.PI;
+            var dr = 3.0 + Math.random() * 1.4;
+            dPos[d*3]   = dr * Math.sin(dp) * Math.cos(dt);
+            dPos[d*3+1] = dr * Math.sin(dp) * Math.sin(dt);
+            dPos[d*3+2] = dr * Math.cos(dp);
+        }
+        var dGeo = new T.BufferGeometry();
+        dGeo.setAttribute('position', new T.BufferAttribute(dPos, 3));
+        root.add(new T.Points(dGeo, new T.PointsMaterial({
+            color: 0xFF2222, size: 0.018, transparent: true, opacity: 0.30, sizeAttenuation: true
+        })));
+
+        /* ─────────────────────────────────────────────────────────────
+           Mouse parallax
+        ───────────────────────────────────────────────────────────── */
+        var mx = 0, my = 0, tx = 0, ty = 0;
+        document.addEventListener('mousemove', function(e) {
+            mx = (e.clientX / window.innerWidth  - 0.5) * 2;
+            my = -(e.clientY / window.innerHeight - 0.5) * 2;
+        });
+
+        /* ─────────────────────────────────────────────────────────────
+           Resize
+        ───────────────────────────────────────────────────────────── */
+        function onResize() {
+            var w = wrapper.offsetWidth  || 950;
+            var h = wrapper.offsetHeight || 750;
+            renderer.setSize(w, h);
+            camera.aspect = w / h;
+            camera.updateProjectionMatrix();
+        }
+        window.addEventListener('resize', onResize);
+        onResize();
+
+        /* ─────────────────────────────────────────────────────────────
+           Animation loop
+        ───────────────────────────────────────────────────────────── */
+        var time = 0;
+        (function animate() {
+            requestAnimationFrame(animate);
+            time += 0.007;
+
+            /* smooth mouse follow */
+            tx += (mx - tx) * 0.05;
+            ty += (my - ty) * 0.05;
+
+            root.rotation.y = time * 0.18 + tx * 0.30;
+            root.rotation.x = time * 0.06 + ty * 0.15;
+
+            outerWire.rotation.y = -time * 0.14;
+            outerWire.rotation.x =  time * 0.08;
+
+            helixGroup.rotation.y = time * 0.40;
+
+            /* spin rings + animate tracer dots along ring circumference */
+            rings.forEach(function(ring) {
+                ring.rotation.y += ring.userData.spd;
+                ring.children.forEach(function(dot) {
+                    dot.userData.angle += ring.userData.spd * 2.8;
+                    dot.position.x = dot.userData.r * Math.cos(dot.userData.angle);
+                    dot.position.z = dot.userData.r * Math.sin(dot.userData.angle);
+                });
+            });
+
+            /* breathe the core */
+            var breathe = 1 + Math.sin(time * 1.8) * 0.08;
+            coreMat.opacity = 0.13 + Math.sin(time * 1.8) * 0.06;
+            glowMat.opacity = 0.45 + Math.sin(time * 2.4) * 0.12;
+
+            renderer.render(scene, camera);
+        })();
+    })();
+    </script>
+
+    <script>
+    /* Apply transition-delay from data-delay attribute on value cards */
+    document.querySelectorAll('.value-card[data-delay]').forEach(function(el) {
+        el.style.transitionDelay = el.getAttribute('data-delay');
+    });
+    </script>
+
+    <script src="transition.js" defer></script>
+    <script src="effects.js" defer></script>
+</body>
+</html>
+

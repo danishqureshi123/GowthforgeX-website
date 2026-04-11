@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Growth ForgeX - Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="loader.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="perf.css">
+</head>
+<body>
+    <div class="background-glow"></div>
+    <main class="hero-container">
+        
+        <img src="lightning.png" alt="3D Red Lightning Left" class="lightning-left" loading="lazy" decoding="async">
+        <img src="lightning.png" alt="3D Red Lightning Right" class="lightning-right" loading="lazy" decoding="async">
+
+        <header>
+            <div class="logo">Growth ForgeX</div>
+            <input type="checkbox" id="nav-toggle" class="nav-toggle">
+            <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle navigation"><span></span></label>
+            <nav class="nav-pill">
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="portfolio.html" class="nav-link">Portfolio</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="hire.html" class="nav-link">Career</a>
+            </nav>
+            <a href="#" onclick="forceDownloadPDF(event)" download="GrowthForgeX Brochure.pdf" class="header-btn" style="text-decoration: none;">
+                <div class="btn-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                </div>
+                Download<br>Brochure
+            </a>
+        </header>
+
+        <section class="main-content" style="max-width: 1200px; padding-top: 40px;">
+            <h2 class="subtitle reveal" style="transition-delay:0s"><span class="highlight">Our Work</span></h2>
+            <h1 class="title reveal" style="font-size: 56px; transition-delay:0.07s">Selected Projects</h1>
+
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 50px;">
+                <div class="service-card reveal" onclick="openProject('loyalty')" style="cursor: pointer; transition-delay:0s">
+                    <p style="color: #FF0000; font-size: 14px; letter-spacing: 2px; text-transform: uppercase;">SaaS · Web App</p>
+                    <h3 style="color: #FFFFFF; font-size: 24px; margin: 10px 0;">Loyalty Platform</h3>
+                    <p style="color: rgba(255,255,255,0.6); font-size: 16px;">Full-stack loyalty & rewards system with digital wallet, KYC onboarding, tier-based gamification, and real-time analytics for a leading retail chain.</p>
+                    <div class="view-hint">Explore Case Study &rarr;</div>
+                </div>
+                <div class="service-card reveal" onclick="openProject('dashboard')" style="cursor: pointer; transition-delay:0.12s">
+                    <p style="color: #FF0000; font-size: 14px; letter-spacing: 2px; text-transform: uppercase;">Dashboard · Analytics</p>
+                    <h3 style="color: #FFFFFF; font-size: 24px; margin: 10px 0;">Enterprise Dashboard Suite</h3>
+                    <p style="color: rgba(255,255,255,0.6); font-size: 16px;">Multi-level analytics dashboard with drill-down maps, hierarchy management, and real-time inventory tracking for a national pharma distributor.</p>
+                    <div class="view-hint">Explore Case Study &rarr;</div>
+                </div>
+                <div class="service-card reveal" onclick="openProject('brand-film')" style="cursor: pointer; transition-delay:0.22s">
+                    <p style="color: #FF0000; font-size: 14px; letter-spacing: 2px; text-transform: uppercase;">Video · Motion</p>
+                    <h3 style="color: #FFFFFF; font-size: 24px; margin: 10px 0;">Brand Film Production</h3>
+                    <p style="color: rgba(255,255,255,0.6); font-size: 16px;">End-to-end brand film from concept to delivery for a D2C fashion label — scripting, shoot direction, colour grading, and sound design.</p>
+                    <div class="view-hint">Watch Film &rarr;</div>
+                </div>
+                <div class="service-card reveal" style="transition-delay:0.32s">
+                    <p style="color: #FF0000; font-size: 14px; letter-spacing: 2px; text-transform: uppercase;">Mobile · Cross-Platform</p>
+                    <h3 style="color: #FFFFFF; font-size: 24px; margin: 10px 0;">Delivery Prediction ML App</h3>
+                    <p style="color: rgba(255,255,255,0.6); font-size: 16px;">ML-powered logistics app predicting delivery windows with 76% accuracy, built on React Native + FastAPI + custom-trained gradient boosting model.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="bottom-cards-section">
+            <a href="index.html" class="card"><div class="card-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3L21 9.5V20a1 1 0 0 1-1 1H15v-6H9v6H4a1 1 0 0 1-1-1V9.5Z"/></svg></div><span>Home</span></a>
+            <a href="about.html" class="card"><div class="card-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><span>About Us</span></a>
+            <a href="services.html" class="card"><div class="card-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div><span>Our Services</span></a>
+            <a href="portfolio.html" class="card"><div class="card-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div><span>Portfolio</span></a>
+            <a href="contact.html" class="card"><div class="card-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><span>Contact</span></a>
+        </section>
+    </main>
+
+    <!-- Portfolio 3D Achievement Diamond -->
+    <div class="page-3d-wrapper" id="portfolio-3d-wrapper">
+        <canvas id="portfolio-3d-canvas"></canvas>
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg"           class="float-icon portfolio-icon-1" alt="Git"      loading="lazy" decoding="async">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" class="float-icon portfolio-icon-2" alt="Tailwind" loading="lazy" decoding="async">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg"   class="float-icon portfolio-icon-3" alt="MongoDB"  loading="lazy" decoding="async">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg"     class="float-icon portfolio-icon-4" alt="Next.js"  loading="lazy" decoding="async">
+    </div>
+
+    <!-- Project Showcase Modal — two-panel layout -->
+    <div id="project-modal" class="project-modal">
+        <div class="modal-overlay" onclick="closeProject()"></div>
+        <div class="modal-content-v2">
+            <button class="close-btn" onclick="closeProject()">&times;</button>
+
+            <!-- LEFT: gallery -->
+            <div class="modal-gallery-panel">
+                <div class="gallery-container">
+                    <button class="nav-btn prev" onclick="changeImage(-1)">&#10094;</button>
+                    <div id="modal-image-wrapper">
+                        <img id="modal-image" src="" alt="Project Output" style="display:none;">
+                        <video id="modal-video" controls muted autoplay style="display:none;"></video>
+                    </div>
+                    <button class="nav-btn next" onclick="changeImage(1)">&#10095;</button>
+                </div>
+                <div class="image-indicator" id="image-indicator"></div>
+            </div>
+
+            <!-- RIGHT: project info + review -->
+            <div class="modal-info-panel">
+
+                <!-- Project meta -->
+                <div class="modal-project-meta">
+                    <span id="modal-tag" class="modal-tag-badge"></span>
+                    <span id="modal-year" class="modal-year"></span>
+                </div>
+                <h2 id="modal-title" class="modal-project-title"></h2>
+                <p id="modal-desc" class="modal-project-desc"></p>
+
+                <!-- Tech stack chips -->
+                <div id="modal-stack" class="modal-stack"></div>
+
+                <!-- Divider -->
+                <div class="modal-divider"></div>
+
+                <!-- Reviews label -->
+                <div class="reviews-label">Client Reviews</div>
+
+                <!-- Multi-review list (populated by JS) -->
+                <div id="reviews-list" class="reviews-list"></div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/three@0.158.0/build/three.min.js"></script>
+    <script>
+    (function initPortfolioScene() {
+        var wrapper = document.getElementById('portfolio-3d-wrapper');
+        if (!wrapper || !window.THREE) return;
+        var THREE = window.THREE;
+        var isMobile = window.innerWidth <= 768;
+        var canvas = document.getElementById('portfolio-3d-canvas');
+
+        var renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: !isMobile, alpha: true });
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1.5 : 2));
+        renderer.setClearColor(0x000000, 0);
+
+        var scene  = new THREE.Scene();
+        var camera = new THREE.PerspectiveCamera(52, 1, 0.1, 100);
+        camera.position.z = 5.2;
+
+        var group = new THREE.Group();
+        scene.add(group);
+
+        /* Main diamond — OctahedronGeometry scaled tall */
+        var dGeo = new THREE.OctahedronGeometry(1.3, 0);
+        dGeo.applyMatrix4(new THREE.Matrix4().makeScale(1, 1.55, 1));
+
+        /* Edge glow lines */
+        var edgeGeo = new THREE.EdgesGeometry(dGeo);
+        group.add(new THREE.LineSegments(edgeGeo, new THREE.LineBasicMaterial({
+            color: 0xFF0000, transparent: true, opacity: 0.95
+        })));
+
+        /* Semi-transparent faces */
+        group.add(new THREE.Mesh(dGeo, new THREE.MeshBasicMaterial({
+            color: 0xFF0000, transparent: true, opacity: 0.05, side: THREE.DoubleSide
+        })));
+
+        /* Inner counter-rotating diamond */
+        var iGeo = new THREE.OctahedronGeometry(0.78, 0);
+        iGeo.applyMatrix4(new THREE.Matrix4().makeScale(1, 1.55, 1));
+        var innerEdge = new THREE.EdgesGeometry(iGeo);
+        var innerDiamond = new THREE.LineSegments(innerEdge, new THREE.LineBasicMaterial({
+            color: 0xFF4444, transparent: true, opacity: 0.55
+        }));
+        group.add(innerDiamond);
+
+        /* Vertex glow — white highlight at points */
+        var dPos = dGeo.attributes.position;
+        var vSeen = {}, vArr = [];
+        for (var i = 0; i < dPos.count; i++) {
+            var vk = Math.round(dPos.getX(i)*100)+','+Math.round(dPos.getY(i)*100)+','+Math.round(dPos.getZ(i)*100);
+            if (!vSeen[vk]) { vSeen[vk] = true; vArr.push(dPos.getX(i), dPos.getY(i), dPos.getZ(i)); }
+        }
+        var vGeo = new THREE.BufferGeometry();
+        vGeo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(vArr), 3));
+
+        /* White core point */
+        group.add(new THREE.Points(vGeo, new THREE.PointsMaterial({
+            color: 0xFFFFFF, size: 0.20, transparent: true, opacity: 1.0, sizeAttenuation: true
+        })));
+        /* Red aura around each vertex */
+        group.add(new THREE.Points(vGeo, new THREE.PointsMaterial({
+            color: 0xFF0000, size: 0.40, transparent: true, opacity: 0.28, sizeAttenuation: true
+        })));
+
+        /* Sparkle particle cloud — 520 desktop / 120 mobile */
+        var sparkN = isMobile ? 120 : 520;
+        var sPos   = new Float32Array(sparkN * 3);
+        for (var s = 0; s < sparkN; s++) {
+            var st = Math.random()*Math.PI*2, sp = Math.random()*Math.PI;
+            var sr = 2.2 + Math.random()*2.4;
+            sPos[s*3]   = sr*Math.sin(sp)*Math.cos(st);
+            sPos[s*3+1] = sr*Math.sin(sp)*Math.sin(st);
+            sPos[s*3+2] = sr*Math.cos(sp);
+        }
+        var sGeo = new THREE.BufferGeometry();
+        sGeo.setAttribute('position', new THREE.BufferAttribute(sPos, 3));
+        var sparkleMat = new THREE.PointsMaterial({
+            color: 0xFFFFFF, size: 0.032, transparent: true, opacity: 0.55, sizeAttenuation: true
+        });
+        group.add(new THREE.Points(sGeo, sparkleMat));
+
+        /* 4 orbiting mini-diamonds */
+        var minis = [];
+        for (var md = 0; md < 4; md++) {
+            var mAng = (md / 4) * Math.PI * 2;
+            var mEdgeGeo = new THREE.EdgesGeometry(new THREE.OctahedronGeometry(0.22, 0));
+            var mini     = new THREE.LineSegments(mEdgeGeo, new THREE.LineBasicMaterial({
+                color: 0xFF2222, transparent: true, opacity: 0.75
+            }));
+            mini.userData.angle  = mAng;
+            mini.userData.radius = 2.9;
+            mini.userData.speed  = 0.010 + md * 0.003;
+            mini.userData.yOff   = (md % 2 === 0 ? 0.8 : -0.8);
+            mini.position.set(
+                mini.userData.radius * Math.cos(mAng),
+                mini.userData.yOff,
+                mini.userData.radius * Math.sin(mAng)
+            );
+            minis.push(mini);
+            group.add(mini);
+        }
+
+        var mx = 0, my = 0;
+        document.addEventListener('mousemove', function(e) {
+            mx = (e.clientX/window.innerWidth  - 0.5)*2;
+            my = -(e.clientY/window.innerHeight - 0.5)*2;
+        });
+
+        function onResize() {
+            var w = wrapper.offsetWidth || 900;
+            var h = wrapper.offsetHeight || 700;
+            renderer.setSize(w, h);
+            camera.aspect = w / h;
+            camera.updateProjectionMatrix();
+        }
+        window.addEventListener('resize', onResize);
+        onResize();
+
+        var time = 0;
+        (function animate() {
+            requestAnimationFrame(animate);
+            time += 0.007;
+
+            group.rotation.y = time*0.28 + mx*0.30;
+            group.rotation.x = time*0.10 + my*0.15;
+
+            innerDiamond.rotation.y = -time*0.42;
+            innerDiamond.rotation.z =  time*0.20;
+
+            minis.forEach(function(m) {
+                m.userData.angle += m.userData.speed;
+                m.position.x = m.userData.radius * Math.cos(m.userData.angle);
+                m.position.z = m.userData.radius * Math.sin(m.userData.angle);
+                m.rotation.x = time*0.55;
+                m.rotation.y = time*0.35;
+            });
+
+            sparkleMat.opacity = 0.30 + Math.abs(Math.sin(time*1.6))*0.38;
+
+            renderer.render(scene, camera);
+        })();
+    })();
+    </script>
+
+    <script src="transition.js" defer></script>
+    <script src="effects.js" defer></script>
+</body>
+</html>
+
