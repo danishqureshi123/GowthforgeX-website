@@ -12,23 +12,31 @@ document.addEventListener('DOMContentLoaded', () => {
     hideSplineBadges();
 });
 
-// ─── Hide "Built with Spline" badge from all spline-viewer shadow roots ───────
+// ─── Hide "Built with Spline" badge — inject CSS into each shadow root ────────
 function hideSplineBadges() {
     const viewers = document.querySelectorAll('spline-viewer');
     if (!viewers.length) return;
+
     viewers.forEach(viewer => {
-        const attempt = setInterval(() => {
+        function injectHideStyle(shadow) {
+            // Bail if we already injected
+            if (shadow.querySelector('#gfx-hide-badge')) return;
+            const s = document.createElement('style');
+            s.id = 'gfx-hide-badge';
+            s.textContent = '#logo,a[href*="spline"],a[href*="spline.design"],[class*="logo"]{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important}';
+            shadow.appendChild(s);
+        }
+
+        // Poll until the shadow root exists, then inject + watch for future nodes
+        const probe = setInterval(() => {
             const shadow = viewer.shadowRoot;
             if (!shadow) return;
-            // The badge is rendered as #logo or a[href*="spline"] inside shadow DOM
-            ['#logo', 'a[href*="spline.design"]', '[class*="logo"]'].forEach(sel => {
-                shadow.querySelectorAll(sel).forEach(el => { el.style.display = 'none'; });
-            });
-            // Stop polling once shadow root is populated
-            if (shadow.children.length) clearInterval(attempt);
-        }, 100);
-        // Safety: stop after 10 s regardless
-        setTimeout(() => clearInterval(attempt), 10000);
+            clearInterval(probe);
+            injectHideStyle(shadow);
+            // MutationObserver catches badge nodes added after initial render
+            new MutationObserver(() => injectHideStyle(shadow))
+                .observe(shadow, { childList: true, subtree: true });
+        }, 50);
     });
 }
 
