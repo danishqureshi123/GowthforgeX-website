@@ -132,6 +132,14 @@ header {
 
 /* ── Mobile performance tuning ── */
 @media (max-width: 768px) {
+    /* CRITICAL: un-lock scroll that the global html rule above froze.
+       perf.css loads after style.css, so this block must re-assert it. */
+    html {
+        overflow-x: hidden;
+        overflow-y: auto;
+        height: auto;
+    }
+
     /* Cheaper blur on mobile GPU */
     .background-glow {
         filter: blur(100px);
@@ -142,7 +150,7 @@ header {
         image-rendering: auto;
     }
 
-    /* Remove will-change on elements hidden or repositioned on mobile */
+    /* Remove will-change on elements that are resized/repositioned on mobile */
     .lightning-left,
     .lightning-right {
         will-change: auto;
