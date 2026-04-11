@@ -1926,6 +1926,46 @@ spline-viewer::part(logo) {
         font-size: 11px !important;
         padding: 4px 10px !important;
     }
+
+    /* ── 20. Contact page — override inline padding & fix form layout ── */
+
+    /* contact.html has inline padding-left/right: 8% on section.main-content
+       which stacks with hero-container's 18px and makes the form too narrow.
+       Also overrides text-align:center so form labels/inputs stay left-aligned. */
+    section.main-content {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        flex: unset !important;
+        min-height: unset !important;
+        overflow-y: visible !important;
+        overflow-x: hidden !important;
+        text-align: left !important;
+        align-items: flex-start !important;
+    }
+
+    /* Restore center-alignment for hero elements that rely on it */
+    .main-content .cta-group   { align-self: center; }
+    .main-content .title       { text-align: center; }
+    .main-content .subtitle    { text-align: center; }
+    .main-content .description { text-align: center; }
+    .main-content .discount-ticker { align-self: center; }
+
+    /* Contact layout — tighter gaps on mobile */
+    .contact-split-wrapper {
+        gap: 24px !important;
+        margin-top: 12px !important;
+    }
+
+    .contact-form-container {
+        margin-top: 12px !important;
+        padding: 16px !important;
+    }
+
+    .submit-btn {
+        padding: 16px !important;
+        font-size: 14px !important;
+        letter-spacing: 1px !important;
+    }
 }
 
 /* ── Touch-device hover guard (prevents sticky transforms) ── */
