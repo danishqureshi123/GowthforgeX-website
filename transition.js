@@ -9,7 +9,28 @@ document.addEventListener('DOMContentLoaded', () => {
     animateCardsEntrance();
     createGlitterCanvas();
     revealPageIn();
+    hideSplineBadges();
 });
+
+// ─── Hide "Built with Spline" badge from all spline-viewer shadow roots ───────
+function hideSplineBadges() {
+    const viewers = document.querySelectorAll('spline-viewer');
+    if (!viewers.length) return;
+    viewers.forEach(viewer => {
+        const attempt = setInterval(() => {
+            const shadow = viewer.shadowRoot;
+            if (!shadow) return;
+            // The badge is rendered as #logo or a[href*="spline"] inside shadow DOM
+            ['#logo', 'a[href*="spline.design"]', '[class*="logo"]'].forEach(sel => {
+                shadow.querySelectorAll(sel).forEach(el => { el.style.display = 'none'; });
+            });
+            // Stop polling once shadow root is populated
+            if (shadow.children.length) clearInterval(attempt);
+        }, 100);
+        // Safety: stop after 10 s regardless
+        setTimeout(() => clearInterval(attempt), 10000);
+    });
+}
 
 // ─── Overlay element (reused for every transition) ───────────────────────────
 let overlay;
