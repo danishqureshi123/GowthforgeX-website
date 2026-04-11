@@ -1714,12 +1714,16 @@ spline-viewer::part(logo) {
         top: 50px;
     }
 
-    /* ── 12. Bottom nav cards — 2-column grid, 5th spans full width ── */
+    /* ── 12. Divider — hidden on mobile (causes the visible line) ── */
+    .divider { display: none !important; }
+
+    /* ── 13. Bottom nav cards — 2-column grid, 5th spans full width ── */
     .bottom-cards-section {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-        padding-bottom: 16px;
+        gap: 8px;
+        padding-bottom: 12px;
+        padding-top: 0;
         flex-wrap: unset;
         justify-content: unset;
     }
@@ -1728,12 +1732,24 @@ spline-viewer::part(logo) {
         grid-column: 1 / -1;
     }
 
+    /* Cards fill the column width, auto height */
     .card {
         width: auto;
         min-width: 0;
+        height: 100px;
+        border-radius: 16px;
     }
 
-    /* ── 13. 3D canvas wrappers (about/services/portfolio)
+    .card-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .card span {
+        font-size: 11px;
+    }
+
+    /* ── 14. 3D canvas wrappers (about/services/portfolio)
              Override the ≤1200px hide rule — show them stacked ── */
     .page-3d-wrapper,
     .services-3d-wrapper {
@@ -1748,7 +1764,7 @@ spline-viewer::part(logo) {
         bottom: auto;
         max-width: 100%;
         animation: none;
-        margin: 10px 0;
+        margin: 8px 0;
     }
 
     .page-3d-wrapper canvas,
@@ -1757,22 +1773,22 @@ spline-viewer::part(logo) {
         height: 100% !important;
     }
 
-    /* ── 14. Portfolio inline grid — force single column ── */
+    /* ── 15. Portfolio inline grid — force single column ── */
     section.main-content > div[style*="repeat(2"] {
         grid-template-columns: 1fr !important;
     }
 
-    /* ── 15. About values list — single column on mobile ── */
+    /* ── 16. About values list — single column on mobile ── */
     .about-values-list {
         grid-template-columns: 1fr !important;
     }
 
-    /* ── 16. About headline — scale down ── */
+    /* ── 17. About headline — scale down ── */
     .about-headline {
-        font-size: 38px !important;
+        font-size: 36px !important;
     }
 
-    /* ── 17. Modal — full-screen stacked (900px already stacks, this refines) ── */
+    /* ── 18. Modal — full-screen stacked ── */
     .modal-content-v2 {
         width: 100vw;
         height: 100dvh;
@@ -1790,6 +1806,77 @@ spline-viewer::part(logo) {
         width: 100%;
         padding: 14px 16px;
     }
+}
+
+/* ── Touch-device hover guard (prevents sticky transforms) ── */
+@media (max-width: 768px) and (hover: none) {
+    .value-card:hover .value-card-inner { transform: none; }
+    .service-card:hover { transform: none !important; }
+}
+
+/* ════════════════════════════════════════════════════════
+   PHONE SIZE FINE-TUNING — covers every common handset
+   320px  → old/small  (Android base, iPhone 5)
+   360px  → Galaxy S-series
+   375px  → iPhone SE 2/3, iPhone 8
+   390px  → iPhone 14, Pixel 4a
+   412px  → Pixel 6/7, OnePlus
+   430px  → iPhone 14/15 Pro Max
+   ════════════════════════════════════════════════════════ */
+
+/* Very small phones (320 – 359px) */
+@media (max-width: 359px) {
+    .hero-container { padding: 10px 14px 18px; gap: 10px; }
+    .title     { font-size: 24px !important; }
+    .subtitle  { font-size: 12px !important; }
+    .description { font-size: 12px !important; }
+    .logo { font-size: 20px; }
+    .header-btn { font-size: 8px; padding: 4px 6px; }
+    .card { height: 86px; }
+    .card-icon { width: 34px; height: 34px; }
+    .card span { font-size: 10px; }
+    .hero-character-wrapper {
+        height: 52vw !important;
+        min-height: 200px !important;
+    }
+    .order-btn { font-size: 14px; padding: 12px 28px; }
+}
+
+/* Small phones (360 – 374px) — Galaxy S-series */
+@media (min-width: 360px) and (max-width: 374px) {
+    .title { font-size: 26px !important; }
+    .hero-character-wrapper { height: 54vw !important; }
+    .card { height: 96px; }
+}
+
+/* Mid phones (375 – 389px) — iPhone SE 2/3, iPhone 8 */
+@media (min-width: 375px) and (max-width: 389px) {
+    .title { font-size: 28px !important; }
+    .hero-character-wrapper { height: 55vw !important; min-height: 230px !important; }
+}
+
+/* Standard phones (390 – 411px) — iPhone 14, Pixel 4a, S23 */
+@media (min-width: 390px) and (max-width: 411px) {
+    .title { font-size: 30px !important; }
+    .hero-character-wrapper { height: 56vw !important; min-height: 245px !important; }
+    .card { height: 108px; }
+}
+
+/* Large phones (412 – 429px) — Pixel 6/7, OnePlus */
+@media (min-width: 412px) and (max-width: 429px) {
+    .title { font-size: 32px !important; }
+    .hero-character-wrapper { height: 56vw !important; min-height: 260px !important; }
+    .card { height: 112px; }
+    .description { font-size: 14px !important; }
+}
+
+/* XL phones (430px+) — iPhone 14/15 Pro Max */
+@media (min-width: 430px) and (max-width: 768px) {
+    .title { font-size: 34px !important; }
+    .hero-character-wrapper { height: 54vw !important; min-height: 270px !important; }
+    .card { height: 116px; }
+    .description { font-size: 15px !important; }
+    .hero-container { gap: 18px; }
 }
 
 /* ── Touch-device hover guard (prevents sticky transforms) ── */
