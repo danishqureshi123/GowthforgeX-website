@@ -1937,16 +1937,39 @@ spline-viewer::part(logo) {
 }
 
 /* ════════════════════════════════════════════════════════
-   PHONE SIZE FINE-TUNING — covers every common handset
-   320px  → old/small  (Android base, iPhone 5)
-   360px  → Galaxy S-series
-   375px  → iPhone SE 2/3, iPhone 8
-   390px  → iPhone 14, Pixel 4a
-   412px  → Pixel 6/7, OnePlus
-   430px  → iPhone 14/15 Pro Max
+   PHONE SIZE FINE-TUNING — all researched CSS viewport widths
+   ── Apple ──────────────────────────────────────────────
+   320px  iPhone 5 / SE 1st gen
+   375px  iPhone 6/7/8/X/XS / SE 2nd & 3rd gen / 11 Pro
+   390px  iPhone 12 / 13 / 14 · Samsung Galaxy S23
+   393px  iPhone 15 / 16 Pro · Pixel 7/8/8a
+   414px  iPhone 11 / XR / XS Max / 7 Plus / 8 Plus
+   430px  iPhone 14/15/16 Plus · iPhone 14/15 Pro Max
+   440px  iPhone 16 Pro Max
+   ── Samsung ────────────────────────────────────────────
+   360px  Galaxy S6/S7/S8/S9/S10 · Galaxy Z Flip 4/5
+   390px  Galaxy S23
+   412px  Galaxy S20/S21/S22/S24 · Note 20 · A51/A52/A71
+   ── Google Pixel ───────────────────────────────────────
+   393px  Pixel 7 / 8 / 8a
+   412px  Pixel 4 / 4a / 6 / 6a / 7a
+   ── OnePlus ────────────────────────────────────────────
+   412px  OnePlus 7T / 8 / 9 / 10 / 11 / Nord 2/3
+   ── iQOO / Vivo ────────────────────────────────────────
+   360px  Vivo Y30/Y31/Y33/Y51/Y52/Y72/Y73 · iQOO Z3/Z5/Z6/Z7
+   393px  Vivo X80/X90/X100 · iQOO 11/12/Neo 9
+   412px  Vivo V29/V30/V27 · iQOO 9T/10/11 Pro
+   ── Oppo ───────────────────────────────────────────────
+   360px  Oppo A32/A53/A54/A72/A74/A77
+   393px  Oppo Reno 10/11/12 · Find X6/X7
+   412px  Oppo Reno 8/9 · Find X5 · K11/K11x
+   ── Poco / Redmi / Xiaomi ──────────────────────────────
+   360px  Poco M2/M3/X2 · Redmi 9/9A/9C/Note 9 · Mi A3
+   393px  Poco X5/F5/F6 · Redmi Note 10/11/12 Pro · Mi 11 Lite/12 Lite
+   412px  Poco X4/X6 Pro/F4 · Redmi Note 13 Pro · Mi 11/12/13
    ════════════════════════════════════════════════════════ */
 
-/* Very small phones (320 – 359px) */
+/* ── Very small phones (≤ 359px) — iPhone 5/SE 1st gen, old Androids ── */
 @media (max-width: 359px) {
     .hero-container { padding: 10px 14px 18px; gap: 10px; }
     .title     { font-size: 24px !important; }
@@ -1964,41 +1987,80 @@ spline-viewer::part(logo) {
     .order-btn { font-size: 14px; padding: 12px 28px; }
 }
 
-/* Small phones (360 – 374px) — Galaxy S-series */
+/* ── Small phones (360 – 374px)
+   Samsung: Galaxy S6/S7/S8/S9/S10/Z Flip · Vivo Y-series
+   iQOO: Z3/Z5/Z6/Z7 · Oppo A-series
+   Poco: M2/M3/X2 · Redmi: 9/9A/9C/Note 9 · Xiaomi Mi A3 ── */
 @media (min-width: 360px) and (max-width: 374px) {
     .title { font-size: 26px !important; }
     .hero-character-wrapper { height: 54vw !important; }
     .card { height: 96px; }
+    .hero-container { gap: 12px; }
 }
 
-/* Mid phones (375 – 389px) — iPhone SE 2/3, iPhone 8 */
+/* ── Mid phones (375 – 389px)
+   Apple: iPhone 6/7/8/X/XS/11 Pro/SE 2nd & 3rd gen ── */
 @media (min-width: 375px) and (max-width: 389px) {
     .title { font-size: 28px !important; }
     .hero-character-wrapper { height: 55vw !important; min-height: 230px !important; }
 }
 
-/* Standard phones (390 – 411px) — iPhone 14, Pixel 4a, S23 */
-@media (min-width: 390px) and (max-width: 411px) {
+/* ── Standard phones (390 – 392px)
+   Apple: iPhone 12/13/14 · Samsung: Galaxy S23 ── */
+@media (min-width: 390px) and (max-width: 392px) {
     .title { font-size: 30px !important; }
     .hero-character-wrapper { height: 56vw !important; min-height: 245px !important; }
     .card { height: 108px; }
 }
 
-/* Large phones (412 – 429px) — Pixel 6/7, OnePlus */
-@media (min-width: 412px) and (max-width: 429px) {
+/* ── 393px phones — iPhone 15/16 Pro · Google Pixel 7/8/8a
+   Vivo: X80/X90/X100 · iQOO: 11/12/Neo 9
+   Oppo: Reno 10/11/Find X6 · Poco: X5/F5/F6
+   Redmi: Note 10/11/12 Pro · Xiaomi Mi 11 Lite ── */
+@media (min-width: 393px) and (max-width: 411px) {
+    .title { font-size: 30px !important; }
+    .hero-character-wrapper { height: 56vw !important; min-height: 248px !important; }
+    .card { height: 110px; }
+    .description { font-size: 13.5px !important; }
+}
+
+/* ── Large phones 412 – 413px
+   Google: Pixel 4/4a/6/6a/7a · Samsung: S20/S21/S22/S24/Note 20/A51/A52/A71
+   OnePlus: 7T/8/9/10/11/Nord 2/3 · Vivo: V27/V29/V30
+   iQOO: 9T/10/11 Pro · Oppo: Reno 8/9/Find X5
+   Poco: X4/X6 Pro/F4 · Redmi: Note 13 Pro · Xiaomi Mi 11/12/13 ── */
+@media (min-width: 412px) and (max-width: 413px) {
     .title { font-size: 32px !important; }
     .hero-character-wrapper { height: 56vw !important; min-height: 260px !important; }
     .card { height: 112px; }
     .description { font-size: 14px !important; }
 }
 
-/* XL phones (430px+) — iPhone 14/15 Pro Max */
-@media (min-width: 430px) and (max-width: 768px) {
+/* ── 414px phones — iPhone 11/XR/XS Max/7 Plus/8 Plus ── */
+@media (min-width: 414px) and (max-width: 429px) {
+    .title { font-size: 32px !important; }
+    .hero-character-wrapper { height: 56vw !important; min-height: 262px !important; }
+    .card { height: 114px; }
+    .description { font-size: 14px !important; }
+}
+
+/* ── XL phones (430 – 439px)
+   Apple: iPhone 14/15/16 Plus · iPhone 14/15 Pro Max ── */
+@media (min-width: 430px) and (max-width: 439px) {
     .title { font-size: 34px !important; }
     .hero-character-wrapper { height: 54vw !important; min-height: 270px !important; }
     .card { height: 116px; }
     .description { font-size: 15px !important; }
     .hero-container { gap: 18px; }
+}
+
+/* ── Max phones (440px+) — iPhone 16 Pro Max · future large handsets ── */
+@media (min-width: 440px) and (max-width: 768px) {
+    .title { font-size: 36px !important; }
+    .hero-character-wrapper { height: 52vw !important; min-height: 280px !important; }
+    .card { height: 120px; }
+    .description { font-size: 15px !important; }
+    .hero-container { gap: 20px; }
 }
 
 /* ── Touch-device hover guard (prevents sticky transforms) ── */
