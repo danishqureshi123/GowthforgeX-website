@@ -814,6 +814,7 @@ spline-viewer::part(logo) {
     justify-content: center;
     align-items: center;
     gap: 30px;
+    min-height: 0;
 }
 
 #modal-image-wrapper {
@@ -881,7 +882,7 @@ spline-viewer::part(logo) {
 
 .dot.active {
     background: #FF0000;
-    width: 300px;
+    width: clamp(36px, 15vw, 180px);   /* responsive: never overflows small screens */
     border-radius: 10px;
 }
 
@@ -1638,11 +1639,12 @@ spline-viewer::part(logo) {
     /* ── 4. Main content ── */
     .main-content {
         padding-left: 0;
+        padding-top: 0 !important;   /* override inline padding-top:40px on inner pages */
         align-items: center;
         text-align: center;
         max-width: 100% !important;
         width: 100%;
-        gap: 12px;
+        gap: 10px;
     }
 
     /* ── 5. Typography ── */
@@ -1788,23 +1790,143 @@ spline-viewer::part(logo) {
         font-size: 36px !important;
     }
 
-    /* ── 18. Modal — full-screen stacked ── */
+    /* ── 18. Portfolio / service cards on mobile ── */
+    .service-card {
+        padding: 18px !important;
+        border-radius: 16px;
+        text-align: left;
+    }
+
+    .service-card h3 {
+        font-size: 18px !important;
+        margin-bottom: 8px !important;
+    }
+
+    .service-card p {
+        font-size: 13px !important;
+        line-height: 1.55;
+    }
+
+    .view-hint {
+        font-size: 12px;
+        margin-top: 10px;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    /* ── 19. Modal — full-screen mobile redesign ── */
+
+    /* Modal backdrop covers whole viewport including dynamic chrome */
+    .project-modal {
+        height: 100dvh;
+        align-items: flex-end;   /* sheet slides up from bottom */
+    }
+
+    /* The content panel — full width, full height, no rounding */
     .modal-content-v2 {
-        width: 100vw;
+        width: 100%;
         height: 100dvh;
         max-height: 100dvh;
         border-radius: 0;
+        flex-direction: column;
+        overflow: hidden;
     }
 
+    /* Gallery: top 44% of the modal */
     .modal-gallery-panel {
-        height: 42vw;
-        min-height: 180px;
-        max-height: 260px;
+        flex: none;
+        width: 100%;
+        height: 44vh;
+        min-height: 190px;
+        max-height: 320px;
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        padding: 46px 10px 10px;   /* top room for close btn */
+        gap: 8px;
     }
 
-    .modal-info-panel {
+    /* Gallery nav arrows — smaller for mobile */
+    .nav-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 14px;
+        flex-shrink: 0;
+    }
+
+    /* Image / video fills the wrapper */
+    #modal-image-wrapper {
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    #modal-image,
+    #modal-video {
+        border-radius: 8px;
+        object-fit: cover;
         width: 100%;
-        padding: 14px 16px;
+        height: 100%;
+    }
+
+    /* Dot indicator — fix the 300px active dot that overflows mobile */
+    .image-indicator {
+        margin-top: 8px;
+        gap: 5px;
+    }
+
+    .dot {
+        width: 7px;
+        height: 7px;
+    }
+
+    .dot.active {
+        width: 36px;   /* was 300px — totally broken on mobile */
+        border-radius: 6px;
+    }
+
+    /* Info panel: fills remaining height, scrollable */
+    .modal-info-panel {
+        flex: 1;
+        width: 100%;
+        min-height: 0;
+        overflow-y: auto;
+        padding: 16px 18px 28px;
+        border-top: none;
+    }
+
+    /* Close button — visible above gallery */
+    .close-btn {
+        top: 10px;
+        right: 14px;
+        font-size: 22px;
+        width: 34px;
+        height: 34px;
+        background: rgba(20, 20, 20, 0.85);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+    }
+
+    /* Review cards — compact on mobile */
+    .review-card {
+        padding: 14px !important;
+    }
+
+    .review-quote {
+        font-size: 13px !important;
+        line-height: 1.5;
+    }
+
+    /* Stack chips wrap nicely */
+    .modal-stack {
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    .stack-chip {
+        font-size: 11px !important;
+        padding: 4px 10px !important;
     }
 }
 
