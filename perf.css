@@ -130,8 +130,8 @@ header {
     body { animation: none; }
 }
 
-/* ── Mobile performance tuning ── */
-@media (max-width: 768px) {
+/* ── Mobile + tablet performance tuning ── */
+@media (max-width: 1024px) {
     /* CRITICAL: un-lock scroll that the global html rule above froze.
        perf.css loads after style.css, so this block must re-assert it. */
     html {

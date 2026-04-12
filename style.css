@@ -556,7 +556,7 @@ header {
 }
 
 /* Responsive basics */
-@media (max-width: 1200px) {
+@media (max-width: 1024px) {
     .nav-pill {
         display: none;
     }
@@ -1512,6 +1512,136 @@ spline-viewer::part(logo) {
 /* ── Hamburger toggle — hidden on desktop, shown only via mobile rule below ── */
 .nav-toggle { display: none; }
 .nav-toggle-label { display: none; }
+/* Tablet (<= 1024px) � keep nav accessible and allow scrolling */
+@media (max-width: 1024px) {
+
+    html, body {
+        overflow-x: hidden;
+        overflow-y: auto;
+        height: auto;
+    }
+
+    .hero-container {
+        height: auto;
+        min-height: unset;
+        padding: 16px 24px 30px;
+        gap: 18px;
+        overflow: visible;
+    }
+
+    .nav-toggle-label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        z-index: 1001;
+        order: 2;
+    }
+
+    .nav-toggle-label span {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: #ffffff;
+        border-radius: 2px;
+        position: relative;
+        transition: background 0.25s ease;
+    }
+
+    .nav-toggle-label span::before,
+    .nav-toggle-label span::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 24px;
+        height: 2px;
+        background: #ffffff;
+        border-radius: 2px;
+        transition: top 0.25s ease, transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .nav-toggle-label span::before { top: -7px; }
+    .nav-toggle-label span::after  { top:  7px; }
+
+    .nav-toggle:checked + .nav-toggle-label span { background: transparent; }
+    .nav-toggle:checked + .nav-toggle-label span::before { top: 0; transform: rotate(45deg); }
+    .nav-toggle:checked + .nav-toggle-label span::after  { top: 0; transform: rotate(-45deg); }
+
+    .nav-pill {
+        display: none;
+        position: fixed;
+        top: 68px;
+        left: 0;
+        right: 0;
+        background: #050505;
+        flex-direction: column;
+        padding: 8px 26px 20px;
+        gap: 0;
+        z-index: 99999;
+        border-radius: 0 0 18px 18px;
+        border-top: 1px solid rgba(255, 0, 0, 0.25);
+        box-shadow: 0 22px 60px rgba(0, 0, 0, 0.85);
+    }
+
+    .nav-toggle:checked ~ .nav-pill { display: flex; }
+
+    .nav-link {
+        padding: 14px 0;
+        font-size: 16px;
+        display: block;
+        width: 100%;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        color: rgba(255, 255, 255, 0.85);
+    }
+    .nav-link:last-child { border-bottom: none; }
+
+    .header-btn {
+        font-size: 12px;
+        padding: 6px 12px 6px 10px;
+        line-height: 1.2;
+        order: 3;
+    }
+
+    .main-content {
+        max-width: 100% !important;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .bottom-cards-section {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .card {
+        width: calc(50% - 10px);
+        min-width: 150px;
+    }
+
+    .page-3d-wrapper,
+    .services-3d-wrapper {
+        display: block;
+        position: relative;
+        width: 100%;
+        max-width: 100%;
+        height: 56vw;
+        min-height: 280px;
+        max-height: 360px;
+        right: auto;
+        bottom: auto;
+        top: auto;
+        animation: none;
+        margin: 10px 0 0;
+    }
+
+    .page-3d-wrapper canvas,
+    .services-3d-wrapper canvas {
+        width: 100% !important;
+        height: 100% !important;
+    }
+}
 
 /* ══════════════════════════════════════════════════════════════
    MOBILE  ≤ 768 px
