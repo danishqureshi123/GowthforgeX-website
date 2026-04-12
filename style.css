@@ -2236,3 +2236,23 @@ spline-viewer::part(logo) {
     .value-card:hover .value-card-inner { transform: none; }
     .service-card:hover { transform: none !important; }
 }
+/* Mobile overflow guard */
+@media (max-width: 768px) {
+    html, body {
+        width: 100%;
+        max-width: 100vw;
+        overflow-x: hidden;
+    }
+    .hero-container,
+    header,
+    .main-content,
+    .bottom-cards-section,
+    .contact-split-wrapper,
+    .contact-info-column,
+    .contact-form-column,
+    .contact-form-container {
+        width: 100% !important;
+        max-width: 100vw !important;
+        overflow-x: hidden;
+    }
+}
