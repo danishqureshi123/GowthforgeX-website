@@ -321,6 +321,9 @@ function easeOutQuad(t) { return 1 - (1 - t) * (1 - t); }
     const page   = getCurrentPage();
     const config = PAGE_LOADER_CONFIG[page] || PAGE_LOADER_CONFIG['index.html'];
 
+    // Skip loader after first view for snappier navigation
+    if (sessionStorage.getItem('gfx-loader-seen') === '1') return;
+
     injectLoaderStyles();
 
     const loader = buildLoader(config);
@@ -334,7 +337,7 @@ function easeOutQuad(t) { return 1 - (1 - t) * (1 - t); }
     requestAnimationFrame(() => loader.classList.add('loaded'));
 
     // ── Animate progress 0 → 100 over 2500ms ─────────────────────────────────
-    const DURATION  = 2500;
+    const DURATION  = 1500;
     const start     = performance.now();
     const barEl     = document.getElementById('gfx-loader-bar');
     const counterEl = document.getElementById('gfx-loader-counter');
@@ -344,7 +347,7 @@ function easeOutQuad(t) { return 1 - (1 - t) * (1 - t); }
     const rocketEl  = document.getElementById('gfx-rocket');
     const trailEl   = document.getElementById('gfx-rocket-trail');
 
-    // How far the rocket travels (px) over the full 2.5s loading duration
+    // How far the rocket travels (px) over the full load duration
     const TRAVEL_PX = window.innerHeight * 0.42;
 
     function tick(now) {
@@ -384,7 +387,7 @@ function easeOutQuad(t) { return 1 - (1 - t) * (1 - t); }
         if (progress < 1) {
             requestAnimationFrame(tick);
         } else {
-            // Hold at 100 for 300ms, then exit
+            // Hold at 100 briefly, then exit
             counterEl.textContent = '100';
             barEl.style.width = '100%';
             statusEl.textContent = 'Ready.';
@@ -393,8 +396,9 @@ function easeOutQuad(t) { return 1 - (1 - t) * (1 - t); }
                 loader.classList.add('gfx-loader-exit');
                 setTimeout(() => {
                     loader.remove();
+                    sessionStorage.setItem('gfx-loader-seen', '1');
                 }, 460);
-            }, 300);
+            }, 150);
         }
     }
 
