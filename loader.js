@@ -385,7 +385,7 @@ function showMobileNotice() {
     card.innerHTML = `
         <div class="gfx-mobile-title">Mobile build in progress</div>
         <div class="gfx-mobile-text">
-            We’re still crafting the mobile experience For a smooth, full-featured ride, please open this on desktop for now
+            We’re still crafting the mobile experience. For a smooth, full-featured ride, please open this on desktop for now
         </div>
     `;
     backdrop.appendChild(card);
