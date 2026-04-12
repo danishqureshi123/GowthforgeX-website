@@ -387,19 +387,9 @@ function showMobileNotice() {
         <div class="gfx-mobile-text">
             We’re tuning this site for mobile right now. For the smoothest experience, please view on desktop.
         </div>
-        <div class="gfx-mobile-actions">
-            <button class="gfx-btn" id="gfx-mobile-dismiss">Continue on mobile</button>
-            <button class="gfx-btn gfx-btn-primary" id="gfx-mobile-close">Got it</button>
-        </div>
     `;
     backdrop.appendChild(card);
     document.body.appendChild(backdrop);
-
-    function close() {
-        backdrop.remove();
-    }
-    card.querySelector('#gfx-mobile-dismiss').addEventListener('click', close);
-    card.querySelector('#gfx-mobile-close').addEventListener('click', close);
 }
 
 function isPreviewHost() {
