@@ -46,9 +46,17 @@ const PAGE_LOADER_CONFIG = {
 
 // ── Detect current page ───────────────────────────────────────────────────────
 function getCurrentPage() {
-    const path = window.location.pathname;
-    const file = path.split('/').pop() || 'index.html';
-    return file || 'index.html';
+    // Normalize pathname (supports cleanUrls like /about -> about.html)
+    const path = (window.location.pathname || '/').replace(/\/+$/, '') || '/';
+    let file = path.split('/').pop() || '';
+
+    // Root -> index.html
+    if (file === '' || file === '/') file = 'index';
+
+    // If no extension (clean URL), append .html
+    if (!file.includes('.')) file += '.html';
+
+    return file;
 }
 
 // ── Build loader HTML ─────────────────────────────────────────────────────────
