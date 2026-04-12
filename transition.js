@@ -196,9 +196,26 @@ function createGlitterCanvas() {
 
 // ─── Deferred PDF Download ────────────────────────────────────────────────────
 let pdfLoaded = false;
+let brochureAuthorized = false;
+
+// Replace with your deployed Google Apps Script Web App URL that appends rows to a Sheet
+const BROCHURE_CAPTURE_URL = 'https://script.google.com/macros/s/AKfycby_5nPm9D1GHGFLAE4kwZ5DyC9c80nvxnG2QP_l1lU0mcUPqflRM6K_lr8OxIPIUCHu2Q/exec';
+// Google OAuth client ID (Google Identity Services)
+const GOOGLE_CLIENT_ID = '166398935590-f12a2rje617t169oj3tih09peto3vqmv.apps.googleusercontent.com';
+
+let gsiLoaded = false;
+
+// Restore auth state per session
+    if (sessionStorage.getItem('brochureAuthorized') === '1') {
+        brochureAuthorized = true;
+    }
 
 function forceDownloadPDF(e) {
     e.preventDefault();
+    if (!brochureAuthorized) {
+        _showBrochureAuthModal();
+        return;
+    }
     if (pdfLoaded) { _doPDFDownload(); return; }
 
     const btn  = e.currentTarget;
@@ -237,3 +254,283 @@ function _doPDFDownload() {
     a.download = 'GrowthForgeX Brochure.pdf';
     a.click();
 }
+
+async function _sendBrochureCapture(data) {
+    if (!BROCHURE_CAPTURE_URL || BROCHURE_CAPTURE_URL.startsWith('<YOUR_')) return;
+    try {
+        await fetch(BROCHURE_CAPTURE_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                ...data,
+                ts: new Date().toISOString(),
+                userAgent: navigator.userAgent || ''
+            })
+        });
+    } catch (err) {
+        // swallow errors silently; download should not be blocked
+        console.warn('Capture failed', err);
+    }
+}
+
+// ── Booking form capture to Sheet ───────────────────────────────────────────
+function _initBookingFormCapture() {
+    const forms = document.querySelectorAll('form.contact-form-container');
+    forms.forEach((form) => {
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const pl = {
+                type: 'meet_request',
+                firstName: '',
+                lastName: '',
+                email: '',
+                phone: '',
+                company: '',
+                service: '',
+                brief: '',
+                timestamp: new Date().toISOString(),
+                path: window.location.pathname
+            };
+
+            const fields = form.querySelectorAll('input, textarea, select');
+            fields.forEach((field) => {
+                const label = (field.placeholder || field.name || '').toLowerCase();
+                const val = field.value || '';
+                if (label.includes('first')) pl.firstName = val;
+                else if (label.includes('last')) pl.lastName = val;
+                else if (label.includes('email')) pl.email = val;
+                else if (label.includes('phone') || label.includes('mobile')) pl.phone = val;
+                else if (label.includes('company') || label.includes('organization')) pl.company = val;
+                else if (label.includes('service')) pl.service = val;
+                else if (field.tagName === 'TEXTAREA' || label.includes('brief') || label.includes('message')) pl.brief = val;
+            });
+
+            await _sendBrochureCapture(pl);
+
+            // Simple UX feedback
+            const btn = form.querySelector('button[type="submit"], .submit-btn');
+            if (btn) {
+                const prev = btn.textContent;
+                btn.textContent = 'Request Sent';
+                btn.disabled = true;
+                setTimeout(() => { btn.textContent = prev; btn.disabled = false; }, 2600);
+            }
+        });
+    });
+}
+
+// ── Lightweight auth modal (Google / mobile) ────────────────────────────────
+let brochureModalInjected = false;
+
+function _ensureBrochureModalStyles() {
+    if (brochureModalInjected) return;
+    brochureModalInjected = true;
+    const style = document.createElement('style');
+    style.textContent = `
+        .brochure-auth-backdrop {
+            position: fixed; inset: 0;
+            background: rgba(0,0,0,0.65);
+            backdrop-filter: blur(6px);
+            z-index: 200000;
+            display: grid; place-items: center;
+            padding: 20px;
+        }
+        .brochure-auth-card {
+            width: min(420px, 94vw);
+            background: #0f0f12;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 18px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+            padding: 22px 20px 18px;
+            color: #fff;
+            font-family: 'Outfit', sans-serif;
+        }
+        .brochure-auth-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .brochure-auth-text {
+            color: rgba(255,255,255,0.75);
+            line-height: 1.55;
+            margin-bottom: 16px;
+        }
+        .brochure-auth-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .brochure-btn {
+            flex: 1 1 100%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            border: 1px solid rgba(255,255,255,0.25);
+            background: rgba(255,255,255,0.08);
+            color: #fff;
+            padding: 12px 14px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        .brochure-btn:hover { border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.12); }
+        .brochure-btn.google { background: linear-gradient(90deg,#4285F4,#34A853,#FBBC05,#EA4335); color: #0f0f12; border: none; }
+        .brochure-btn.google span { background: #fff; color: #222; padding: 4px 8px; border-radius: 8px; font-weight: 700; }
+        .brochure-input {
+            width: 100%;
+            background: #18181d;
+            border: 1px solid rgba(255,255,255,0.14);
+            color: #fff;
+            border-radius: 10px;
+            padding: 12px 12px;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+        .brochure-hint { font-size: 0.82rem; color: rgba(255,255,255,0.55); margin-bottom: 10px; }
+        .brochure-submit {
+            width: 100%;
+            background: #FF0000;
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            padding: 12px 14px;
+            font-weight: 700;
+            letter-spacing: 0.4px;
+            cursor: pointer;
+            transition: transform 0.15s ease, box-shadow 0.2s ease;
+        }
+        .brochure-submit:hover { transform: translateY(-1px); box-shadow: 0 10px 30px rgba(255,0,0,0.25); }
+    `;
+    document.head.appendChild(style);
+}
+
+function _ensureGSIScript() {
+    if (gsiLoaded || document.getElementById('gsi-client')) return;
+    const s = document.createElement('script');
+    s.id = 'gsi-client';
+    s.src = 'https://accounts.google.com/gsi/client';
+    s.async = true;
+    s.defer = true;
+    s.onload = () => { gsiLoaded = true; };
+    document.head.appendChild(s);
+}
+
+function _startGoogleSignIn() {
+    return new Promise((resolve, reject) => {
+        if (!GOOGLE_CLIENT_ID) {
+            reject(new Error('Missing GOOGLE_CLIENT_ID'));
+            return;
+        }
+        if (!gsiLoaded) {
+            const check = setInterval(() => {
+                if (window.google && window.google.accounts && window.google.accounts.id) {
+                    clearInterval(check);
+                    proceed();
+                }
+            }, 50);
+            setTimeout(() => {
+                if (!window.google || !window.google.accounts || !window.google.accounts.id) {
+                    clearInterval(check);
+                    reject(new Error('Google Identity not loaded'));
+                }
+            }, 5000);
+        } else {
+            proceed();
+        }
+
+        function proceed() {
+            window.google.accounts.id.initialize({
+                client_id: GOOGLE_CLIENT_ID,
+                callback: (response) => {
+                    try {
+                        const jwt = response.credential;
+                        // Decode payload for email (no verification here; for gating only)
+                        const payload = JSON.parse(atob(jwt.split('.')[1]));
+                        resolve(payload);
+                    } catch (err) {
+                        resolve({ sub: 'google-oauth' });
+                    }
+                },
+                auto_select: false,
+                cancel_on_tap_outside: true,
+            });
+            window.google.accounts.id.prompt((notif) => {
+                if (notif && notif.isNotDisplayed()) reject(new Error('Prompt not displayed'));
+                if (notif && notif.isSkippedMoment()) reject(new Error('Prompt skipped'));
+            });
+        }
+    });
+}
+
+function _showBrochureAuthModal() {
+    _ensureBrochureModalStyles();
+    _ensureGSIScript();
+
+    const backdrop = document.createElement('div');
+    backdrop.className = 'brochure-auth-backdrop';
+
+    const card = document.createElement('div');
+    card.className = 'brochure-auth-card';
+    card.innerHTML = `
+        <div class="brochure-auth-title">Access the brochure</div>
+        <div class="brochure-auth-text">
+            Sign in or verify your number to download the latest GrowthForgeX brochure.
+        </div>
+        <div class="brochure-auth-actions">
+            <button class="brochure-btn google" id="brochure-google">
+                <span>G</span> Continue with Google
+            </button>
+            <div class="brochure-hint">Or verify with mobile</div>
+            <input type="tel" class="brochure-input" id="brochure-phone" placeholder="Enter mobile number">
+            <button class="brochure-submit" id="brochure-phone-submit">Verify & Download</button>
+        </div>
+    `;
+    backdrop.appendChild(card);
+    document.body.appendChild(backdrop);
+
+    function authorizeAndDownload(provider, contact) {
+        brochureAuthorized = true;
+        sessionStorage.setItem('brochureAuthorized', '1');
+        const payload = {
+            type: 'download',
+            name: provider === 'google' && contact && contact.name ? contact.name : '',
+            email: provider === 'google' ? (contact && (contact.email || contact.sub) || '') : '',
+            phone: provider === 'phone' ? contact : '',
+            brochure: 'GrowthForgeX Brochure',
+            timestamp: new Date().toISOString(),
+            path: window.location.pathname
+        };
+        _sendBrochureCapture(payload);
+        backdrop.remove();
+        if (pdfLoaded) _doPDFDownload(); else {
+            const fakeEvent = { preventDefault: () => {}, currentTarget: null };
+            forceDownloadPDF(fakeEvent);
+        }
+    }
+
+    card.querySelector('#brochure-google').addEventListener('click', async () => {
+        try {
+            const profile = await _startGoogleSignIn();
+            authorizeAndDownload('google', profile || {});
+        } catch (err) {
+            console.warn('Google sign-in failed', err);
+        }
+    });
+
+    const phoneInput = card.querySelector('#brochure-phone');
+    const phoneBtn   = card.querySelector('#brochure-phone-submit');
+    phoneBtn.addEventListener('click', () => {
+        const val = (phoneInput.value || '').trim();
+        if (val.length < 8) {
+            phoneInput.focus();
+            phoneInput.style.borderColor = '#ff5555';
+            return;
+        }
+        authorizeAndDownload('phone', val);
+    });
+}
+
+// Initialize booking form capture on DOM ready
+document.addEventListener('DOMContentLoaded', _initBookingFormCapture);
