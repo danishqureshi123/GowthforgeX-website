@@ -197,6 +197,7 @@ function createGlitterCanvas() {
 // ─── Deferred PDF Download ────────────────────────────────────────────────────
 let pdfLoaded = false;
 let brochureAuthorized = false;
+let authStatusStylesInjected = false;
 
 // Replace with your deployed Google Apps Script Web App URL that appends rows to a Sheet
 const BROCHURE_CAPTURE_URL = 'https://script.google.com/macros/s/AKfycby_5nPm9D1GHGFLAE4kwZ5DyC9c80nvxnG2QP_l1lU0mcUPqflRM6K_lr8OxIPIUCHu2Q/exec';
@@ -206,9 +207,9 @@ const GOOGLE_CLIENT_ID = '166398935590-f12a2rje617t169oj3tih09peto3vqmv.apps.goo
 let gsiLoaded = false;
 
 // Restore auth state per session
-    if (sessionStorage.getItem('brochureAuthorized') === '1') {
-        brochureAuthorized = true;
-    }
+if (sessionStorage.getItem('brochureAuthorized') === '1') {
+    brochureAuthorized = true;
+}
 
 function forceDownloadPDF(e) {
     e.preventDefault();
@@ -253,6 +254,67 @@ function _doPDFDownload() {
     }
     a.download = 'GrowthForgeX Brochure.pdf';
     a.click();
+}
+
+function _ensureAuthStatusStyles() {
+    if (authStatusStylesInjected) return;
+    authStatusStylesInjected = true;
+    const style = document.createElement('style');
+    style.textContent = `
+      .auth-status-pill {
+        position: fixed;
+        top: 14px;
+        right: 14px;
+        background: rgba(15,15,18,0.92);
+        color: #fff;
+        border: 1px solid rgba(255,255,255,0.12);
+        border-radius: 12px;
+        padding: 10px 14px;
+        font-family: 'Outfit', sans-serif;
+        font-size: 0.9rem;
+        box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+        z-index: 200001;
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        opacity: 0;
+        transform: translateY(-6px);
+        transition: opacity 0.25s ease, transform 0.25s ease;
+      }
+      .auth-status-pill.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .auth-status-pill .dot {
+        width: 10px; height: 10px;
+        border-radius: 50%;
+        background: #27c93f;
+        box-shadow: 0 0 12px rgba(39,201,63,0.6);
+      }
+    `;
+    document.head.appendChild(style);
+}
+
+function _showAuthStatus(provider, contact) {
+    _ensureAuthStatusStyles();
+    const existing = document.getElementById('auth-status-pill');
+    const pill = existing || document.createElement('div');
+    pill.id = 'auth-status-pill';
+    pill.className = 'auth-status-pill';
+
+    let who = '';
+    if (provider === 'google') {
+        who = contact.email || contact.name || contact.sub || 'Google user';
+    } else if (provider === 'phone') {
+        who = contact || 'Verified phone';
+    } else {
+        who = 'Signed in';
+    }
+    pill.innerHTML = `<span class="dot"></span><span>Signed in via ${provider}: ${who}</span>`;
+    document.body.appendChild(pill);
+
+    requestAnimationFrame(() => pill.classList.add('show'));
+    setTimeout(() => pill.classList.remove('show'), 6000);
 }
 
 async function _sendBrochureCapture(data) {
@@ -490,24 +552,25 @@ function _showBrochureAuthModal() {
     backdrop.appendChild(card);
     document.body.appendChild(backdrop);
 
-    function authorizeAndDownload(provider, contact) {
-        brochureAuthorized = true;
-        sessionStorage.setItem('brochureAuthorized', '1');
-        const payload = {
-            type: 'download',
-            name: provider === 'google' && contact && contact.name ? contact.name : '',
-            email: provider === 'google' ? (contact && (contact.email || contact.sub) || '') : '',
-            phone: provider === 'phone' ? contact : '',
-            brochure: 'GrowthForgeX Brochure',
-            timestamp: new Date().toISOString(),
-            path: window.location.pathname
-        };
-        _sendBrochureCapture(payload);
-        backdrop.remove();
-        if (pdfLoaded) _doPDFDownload(); else {
-            const fakeEvent = { preventDefault: () => {}, currentTarget: null };
-            forceDownloadPDF(fakeEvent);
-        }
+function authorizeAndDownload(provider, contact) {
+    brochureAuthorized = true;
+    sessionStorage.setItem('brochureAuthorized', '1');
+    const payload = {
+        type: 'download',
+        name: provider === 'google' && contact && contact.name ? contact.name : '',
+        email: provider === 'google' ? (contact && (contact.email || contact.sub) || '') : '',
+        phone: provider === 'phone' ? contact : '',
+        brochure: 'GrowthForgeX Brochure',
+        timestamp: new Date().toISOString(),
+        path: window.location.pathname
+    };
+    _sendBrochureCapture(payload);
+    _showAuthStatus(provider, contact);
+    backdrop.remove();
+    if (pdfLoaded) _doPDFDownload(); else {
+        const fakeEvent = { preventDefault: () => {}, currentTarget: null };
+        forceDownloadPDF(fakeEvent);
+    }
     }
 
     card.querySelector('#brochure-google').addEventListener('click', async () => {
