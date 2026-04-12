@@ -3,7 +3,17 @@
     "allow": [
       "WebSearch",
       "Bash(py -c ':*)",
-      "Bash(python -c ':*)"
+      "Bash(python -c ':*)",
+      "WebFetch(domain:screensizechecker.com)",
+      "WebFetch(domain:www.mydevice.io)",
+      "WebFetch(domain:browserstack.com)",
+      "WebFetch(domain:yesviz.com)",
+      "WebFetch(domain:screensiz.es)",
+      "WebFetch(domain:phone-simulator.com)",
+      "WebFetch(domain:www.webmobilefirst.com)",
+      "WebFetch(domain:www.screensize.io)",
+      "WebFetch(domain:www.ios-resolution.com)",
+      "WebFetch(domain:viewportsizer.com)"
     ]
   }
 }
