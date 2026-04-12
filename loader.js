@@ -99,6 +99,11 @@ function buildLoader(config) {
 function injectLoaderStyles() {
     const style = document.createElement('style');
     style.textContent = `
+        /* Hide page content while loader is active to avoid flashes */
+        html.gfx-loading body {
+            visibility: hidden;
+        }
+
         #gfx-loader {
             position: fixed;
             inset: 0;
@@ -322,6 +327,7 @@ function easeOutQuad(t) { return 1 - (1 - t) * (1 - t); }
     const config = PAGE_LOADER_CONFIG[page] || PAGE_LOADER_CONFIG['index.html'];
 
     injectLoaderStyles();
+    document.documentElement.classList.add('gfx-loading');
 
     const loader = buildLoader(config);
     document.documentElement.appendChild(loader);
@@ -393,6 +399,7 @@ function easeOutQuad(t) { return 1 - (1 - t) * (1 - t); }
                 loader.classList.add('gfx-loader-exit');
                 setTimeout(() => {
                     loader.remove();
+                    document.documentElement.classList.remove('gfx-loading');
                 }, 460);
             }, 300);
         }
