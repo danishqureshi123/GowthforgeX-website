@@ -1,4 +1,4 @@
-* {
+﻿* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -292,7 +292,7 @@ header {
     }
 }
 
-/* ── Discount News Ticker ── */
+/* â”€â”€ Discount News Ticker â”€â”€ */
 .discount-ticker {
     display: flex;
     align-items: center;
@@ -322,7 +322,7 @@ header {
     white-space: nowrap;
 }
 
-/* Scrolling track wrapper — clips the moving text */
+/* Scrolling track wrapper â€” clips the moving text */
 .discount-ticker-track-wrap {
     flex: 1;
     overflow: hidden;
@@ -331,7 +331,7 @@ header {
 }
 
 /* Track = 2 identical segments side by side.
-   Animating -50% moves exactly one segment width → seamless loop. */
+   Animating -50% moves exactly one segment width â†’ seamless loop. */
 .discount-ticker-track {
     display: flex;
     align-items: center;
@@ -498,7 +498,7 @@ header {
     overflow: hidden;
 }
 
-/* Subtle red corner glow — hidden until hover */
+/* Subtle red corner glow â€” hidden until hover */
 .card::before {
     content: '';
     position: absolute;
@@ -886,7 +886,7 @@ spline-viewer::part(logo) {
     border-radius: 10px;
 }
 
-/* ── Modal V2 — Two-Panel Layout ───────────────────────────────────────────── */
+/* â”€â”€ Modal V2 â€” Two-Panel Layout â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .modal-content-v2 {
     position: relative;
     width: 92%;
@@ -902,7 +902,7 @@ spline-viewer::part(logo) {
     animation: modalEnter 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* LEFT panel — gallery */
+/* LEFT panel â€” gallery */
 .modal-gallery-panel {
     flex: 1.2;
     display: flex;
@@ -927,7 +927,7 @@ spline-viewer::part(logo) {
     height: 100%;
 }
 
-/* RIGHT panel — info */
+/* RIGHT panel â€” info */
 .modal-info-panel {
     width: 360px;
     flex-shrink: 0;
@@ -1015,7 +1015,7 @@ spline-viewer::part(logo) {
     margin: 18px 0;
 }
 
-/* ── Review Card ─────────────────────────────────────────────────────────────  */
+/* â”€â”€ Review Card â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€  */
 .reviews-label {
     font-size: 0.68rem;
     font-weight: 700;
@@ -1293,7 +1293,7 @@ spline-viewer::part(logo) {
     }
 }
 
-/* ─── Scroll-Reveal Animations (Gridline-style) ────────────────────────────── */
+/* â”€â”€â”€ Scroll-Reveal Animations (Gridline-style) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .reveal {
     opacity: 0;
     transform: translateY(44px);
@@ -1311,7 +1311,7 @@ spline-viewer::part(logo) {
     transform: none !important;
 }
 
-/* ─── Marquee Strip ─────────────────────────────────────────────────────────── */
+/* â”€â”€â”€ Marquee Strip â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .gfx-marquee-section {
     width: 100%;
     overflow: hidden;
@@ -1362,7 +1362,7 @@ spline-viewer::part(logo) {
 }
 
 
-/* ─── Inner Page 3D Canvas Wrappers ────────────────────────────────────────── */
+/* â”€â”€â”€ Inner Page 3D Canvas Wrappers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .page-3d-wrapper {
     position: absolute;
     right: 0;
@@ -1380,7 +1380,7 @@ spline-viewer::part(logo) {
     pointer-events: none;
 }
 
-/* Services has different sizing — existing Spline BG already there */
+/* Services has different sizing â€” existing Spline BG already there */
 .services-3d-wrapper {
     position: absolute;
     right: -2%;
@@ -1398,7 +1398,7 @@ spline-viewer::part(logo) {
     display: block;
 }
 
-/* ── About page floating icons ── */
+/* â”€â”€ About page floating icons â”€â”€ */
 .about-icon-1 {
     top: 12%;
     right: 32%;
@@ -1423,7 +1423,7 @@ spline-viewer::part(logo) {
     animation: floatIcon4 5.5s ease-in-out infinite alternate 0.5s;
 }
 
-/* ── Services page floating icons ── */
+/* â”€â”€ Services page floating icons â”€â”€ */
 .services-icon-1 {
     top: 8%;
     right: 42%;
@@ -1448,7 +1448,7 @@ spline-viewer::part(logo) {
     animation: floatIcon4 5.5s ease-in-out infinite alternate 0.5s;
 }
 
-/* ── Portfolio page floating icons ── */
+/* â”€â”€ Portfolio page floating icons â”€â”€ */
 .portfolio-icon-1 {
     top: 14%;
     right: 30%;
@@ -1509,10 +1509,10 @@ spline-viewer::part(logo) {
     }
 }
 
-/* ── Hamburger toggle — hidden on desktop, shown only via mobile rule below ── */
+/* â”€â”€ Hamburger toggle â€” hidden on desktop, shown only via mobile rule below â”€â”€ */
 .nav-toggle { display: none; }
 .nav-toggle-label { display: none; }
-/* Tablet (<= 1024px) � keep nav accessible and allow scrolling */
+/* Tablet (<= 1024px) — keep nav accessible and allow scrolling */
 @media (max-width: 1024px) {
 
     html, body {
@@ -1643,21 +1643,21 @@ spline-viewer::part(logo) {
     }
 }
 
-/* ══════════════════════════════════════════════════════════════
-   MOBILE  ≤ 768 px
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   MOBILE  â‰¤ 768 px
    Strategy: add-only. Desktop rules are NEVER modified above.
    All effects (lightning, float icons, 3D, glitter) stay visible.
-   ══════════════════════════════════════════════════════════════ */
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 @media (max-width: 768px) {
 
-    /* ── 1. Enable page scrolling ── */
+    /* â”€â”€ 1. Enable page scrolling â”€â”€ */
     html, body {
         overflow-x: hidden;
         overflow-y: auto;
         height: auto;
     }
 
-    /* ── 2. Main container — stack children top-to-bottom, no space-between trap ── */
+    /* â”€â”€ 2. Main container â€” stack children top-to-bottom, no space-between trap â”€â”€ */
     .hero-container {
         padding: 14px 18px 24px;
         height: auto;
@@ -1667,7 +1667,7 @@ spline-viewer::part(logo) {
         gap: 16px;
     }
 
-    /* ── 3. Header — row layout with hamburger ── */
+    /* â”€â”€ 3. Header â€” row layout with hamburger â”€â”€ */
     header {
         flex-direction: row;
         align-items: center;
@@ -1716,19 +1716,19 @@ spline-viewer::part(logo) {
     .nav-toggle-label span::before { top: -7px; }
     .nav-toggle-label span::after  { top:  7px; }
 
-    /* Animate to × when menu is open */
+    /* Animate to Ã— when menu is open */
     .nav-toggle:checked + .nav-toggle-label span { background: transparent; }
     .nav-toggle:checked + .nav-toggle-label span::before { top: 0; transform: rotate(45deg); }
     .nav-toggle:checked + .nav-toggle-label span::after  { top: 0; transform: rotate(-45deg); }
 
-    /* Nav pill — becomes a full-width dropdown */
+    /* Nav pill â€” becomes a full-width dropdown */
     .nav-pill {
         display: none;
         position: fixed;               /* viewport-relative: won't scroll away */
         top: 62px;                     /* sits just below the mobile header row */
         left: 0;
         right: 0;
-        background: #050505;           /* fully opaque — no content bleed-through */
+        background: #050505;           /* fully opaque â€” no content bleed-through */
         flex-direction: column;
         padding: 6px 24px 18px;
         gap: 0;
@@ -1753,7 +1753,7 @@ spline-viewer::part(logo) {
 
     .nav-link:last-child { border-bottom: none; }
 
-    /* Download brochure button — compact */
+    /* Download brochure button â€” compact */
     .header-btn {
         font-size: 9px;
         padding: 5px 8px;
@@ -1764,7 +1764,7 @@ spline-viewer::part(logo) {
     /* Logo order */
     .logo { order: 1; }
 
-    /* ── 4. Main content ── */
+    /* â”€â”€ 4. Main content â”€â”€ */
     .main-content {
         padding-left: 0;
         padding-top: 0 !important;   /* override inline padding-top:40px on inner pages */
@@ -1775,7 +1775,7 @@ spline-viewer::part(logo) {
         gap: 10px;
     }
 
-    /* ── 5. Typography ── */
+    /* â”€â”€ 5. Typography â”€â”€ */
     .title     { font-size: 28px !important; line-height: 1.2 !important; margin-bottom: 8px !important; }
     .subtitle  { font-size: 13px !important; margin-bottom: 4px !important; }
     .description {
@@ -1785,14 +1785,14 @@ spline-viewer::part(logo) {
         margin-bottom: 0 !important;
     }
 
-    /* ── 6. CTA buttons ── */
+    /* â”€â”€ 6. CTA buttons â”€â”€ */
     .cta-group {
         flex-direction: column;
         gap: 12px;
         align-items: center;
     }
 
-    /* ── 7. Lightning bolts — restore display (1200px block hides them), scale down ── */
+    /* â”€â”€ 7. Lightning bolts â€” restore display (1200px block hides them), scale down â”€â”€ */
     .lightning-left {
         display: block;
         width: 150px;
@@ -1809,7 +1809,7 @@ spline-viewer::part(logo) {
         opacity: 0.42;
     }
 
-    /* ── 8. Spline hero wrapper — pull out of absolute flow, stack below content ── */
+    /* â”€â”€ 8. Spline hero wrapper â€” pull out of absolute flow, stack below content â”€â”€ */
     .hero-character-wrapper {
         position: relative !important;
         right: auto !important;
@@ -1824,19 +1824,19 @@ spline-viewer::part(logo) {
         z-index: 5;
     }
 
-    /* ── 9. fi-icons (index.html floating tech icons) — smaller ── */
+    /* â”€â”€ 9. fi-icons (index.html floating tech icons) â€” smaller â”€â”€ */
     .fi-icon {
         width: 32px !important;
         height: 32px !important;
     }
 
-    /* ── 10. float-icon (about/services/portfolio 3D wrapper icons) ── */
+    /* â”€â”€ 10. float-icon (about/services/portfolio 3D wrapper icons) â”€â”€ */
     .float-icon {
         width: 28px;
         height: 28px;
     }
 
-    /* ── 11. Background glow — cheaper, smaller ── */
+    /* â”€â”€ 11. Background glow â€” cheaper, smaller â”€â”€ */
     .background-glow {
         width: 600px;
         height: 600px;
@@ -1844,10 +1844,10 @@ spline-viewer::part(logo) {
         top: 50px;
     }
 
-    /* ── 12. Divider — hidden on mobile (causes the visible line) ── */
+    /* â”€â”€ 12. Divider â€” hidden on mobile (causes the visible line) â”€â”€ */
     .divider { display: none !important; }
 
-    /* ── 13. Bottom nav cards — 2-column grid, 5th spans full width ── */
+    /* â”€â”€ 13. Bottom nav cards â€” 2-column grid, 5th spans full width â”€â”€ */
     .bottom-cards-section {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -1879,8 +1879,8 @@ spline-viewer::part(logo) {
         font-size: 11px;
     }
 
-    /* ── 14. 3D canvas wrappers (about/services/portfolio)
-             Override the ≤1200px hide rule — show them stacked ── */
+    /* â”€â”€ 14. 3D canvas wrappers (about/services/portfolio)
+             Override the â‰¤1200px hide rule â€” show them stacked â”€â”€ */
     .page-3d-wrapper,
     .services-3d-wrapper {
         display: block;
@@ -1903,22 +1903,22 @@ spline-viewer::part(logo) {
         height: 100% !important;
     }
 
-    /* ── 15. Portfolio inline grid — force single column ── */
+    /* â”€â”€ 15. Portfolio inline grid â€” force single column â”€â”€ */
     section.main-content > div[style*="repeat(2"] {
         grid-template-columns: 1fr !important;
     }
 
-    /* ── 16. About values list — single column on mobile ── */
+    /* â”€â”€ 16. About values list â€” single column on mobile â”€â”€ */
     .about-values-list {
         grid-template-columns: 1fr !important;
     }
 
-    /* ── 17. About headline — scale down ── */
+    /* â”€â”€ 17. About headline â€” scale down â”€â”€ */
     .about-headline {
         font-size: 36px !important;
     }
 
-    /* ── 18. Portfolio / service cards on mobile ── */
+    /* â”€â”€ 18. Portfolio / service cards on mobile â”€â”€ */
     .service-card {
         padding: 18px !important;
         border-radius: 16px;
@@ -1942,7 +1942,7 @@ spline-viewer::part(logo) {
         transform: none !important;
     }
 
-    /* ── 19. Modal — full-screen mobile redesign ── */
+    /* â”€â”€ 19. Modal â€” full-screen mobile redesign â”€â”€ */
 
     /* Modal backdrop covers whole viewport including dynamic chrome */
     .project-modal {
@@ -1950,7 +1950,7 @@ spline-viewer::part(logo) {
         align-items: flex-end;   /* sheet slides up from bottom */
     }
 
-    /* The content panel — full width, full height, no rounding */
+    /* The content panel â€” full width, full height, no rounding */
     .modal-content-v2 {
         width: 100%;
         height: 100dvh;
@@ -1973,7 +1973,7 @@ spline-viewer::part(logo) {
         gap: 8px;
     }
 
-    /* Gallery nav arrows — smaller for mobile */
+    /* Gallery nav arrows â€” smaller for mobile */
     .nav-btn {
         width: 36px;
         height: 36px;
@@ -1995,7 +1995,7 @@ spline-viewer::part(logo) {
         height: 100%;
     }
 
-    /* Dot indicator — fix the 300px active dot that overflows mobile */
+    /* Dot indicator â€” fix the 300px active dot that overflows mobile */
     .image-indicator {
         margin-top: 8px;
         gap: 5px;
@@ -2007,7 +2007,7 @@ spline-viewer::part(logo) {
     }
 
     .dot.active {
-        width: 36px;   /* was 300px — totally broken on mobile */
+        width: 36px;   /* was 300px â€” totally broken on mobile */
         border-radius: 6px;
     }
 
@@ -2021,7 +2021,7 @@ spline-viewer::part(logo) {
         border-top: none;
     }
 
-    /* Close button — visible above gallery */
+    /* Close button â€” visible above gallery */
     .close-btn {
         top: 10px;
         right: 14px;
@@ -2036,7 +2036,7 @@ spline-viewer::part(logo) {
         z-index: 10;
     }
 
-    /* Review cards — compact on mobile */
+    /* Review cards â€” compact on mobile */
     .review-card {
         padding: 14px !important;
     }
@@ -2057,7 +2057,7 @@ spline-viewer::part(logo) {
         padding: 4px 10px !important;
     }
 
-    /* ── 20. Contact page — override inline padding & fix form layout ── */
+    /* â”€â”€ 20. Contact page â€” override inline padding & fix form layout â”€â”€ */
 
     /* contact.html has inline padding-left/right: 8% on section.main-content
        which stacks with hero-container's 18px and makes the form too narrow.
@@ -2080,7 +2080,7 @@ spline-viewer::part(logo) {
     .main-content .description { text-align: center; }
     .main-content .discount-ticker { align-self: center; }
 
-    /* Contact layout — tighter gaps on mobile */
+    /* Contact layout â€” tighter gaps on mobile */
     .contact-split-wrapper {
         gap: 24px !important;
         margin-top: 12px !important;
@@ -2098,46 +2098,46 @@ spline-viewer::part(logo) {
     }
 }
 
-/* ── Touch-device hover guard (prevents sticky transforms) ── */
+/* â”€â”€ Touch-device hover guard (prevents sticky transforms) â”€â”€ */
 @media (max-width: 768px) and (hover: none) {
     .value-card:hover .value-card-inner { transform: none; }
     .service-card:hover { transform: none !important; }
 }
 
-/* ════════════════════════════════════════════════════════
-   PHONE SIZE FINE-TUNING — all researched CSS viewport widths
-   ── Apple ──────────────────────────────────────────────
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   PHONE SIZE FINE-TUNING â€” all researched CSS viewport widths
+   â”€â”€ Apple â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
    320px  iPhone 5 / SE 1st gen
    375px  iPhone 6/7/8/X/XS / SE 2nd & 3rd gen / 11 Pro
-   390px  iPhone 12 / 13 / 14 · Samsung Galaxy S23
-   393px  iPhone 15 / 16 Pro · Pixel 7/8/8a
+   390px  iPhone 12 / 13 / 14 Â· Samsung Galaxy S23
+   393px  iPhone 15 / 16 Pro Â· Pixel 7/8/8a
    414px  iPhone 11 / XR / XS Max / 7 Plus / 8 Plus
-   430px  iPhone 14/15/16 Plus · iPhone 14/15 Pro Max
+   430px  iPhone 14/15/16 Plus Â· iPhone 14/15 Pro Max
    440px  iPhone 16 Pro Max
-   ── Samsung ────────────────────────────────────────────
-   360px  Galaxy S6/S7/S8/S9/S10 · Galaxy Z Flip 4/5
+   â”€â”€ Samsung â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   360px  Galaxy S6/S7/S8/S9/S10 Â· Galaxy Z Flip 4/5
    390px  Galaxy S23
-   412px  Galaxy S20/S21/S22/S24 · Note 20 · A51/A52/A71
-   ── Google Pixel ───────────────────────────────────────
+   412px  Galaxy S20/S21/S22/S24 Â· Note 20 Â· A51/A52/A71
+   â”€â”€ Google Pixel â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
    393px  Pixel 7 / 8 / 8a
    412px  Pixel 4 / 4a / 6 / 6a / 7a
-   ── OnePlus ────────────────────────────────────────────
+   â”€â”€ OnePlus â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
    412px  OnePlus 7T / 8 / 9 / 10 / 11 / Nord 2/3
-   ── iQOO / Vivo ────────────────────────────────────────
-   360px  Vivo Y30/Y31/Y33/Y51/Y52/Y72/Y73 · iQOO Z3/Z5/Z6/Z7
-   393px  Vivo X80/X90/X100 · iQOO 11/12/Neo 9
-   412px  Vivo V29/V30/V27 · iQOO 9T/10/11 Pro
-   ── Oppo ───────────────────────────────────────────────
+   â”€â”€ iQOO / Vivo â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   360px  Vivo Y30/Y31/Y33/Y51/Y52/Y72/Y73 Â· iQOO Z3/Z5/Z6/Z7
+   393px  Vivo X80/X90/X100 Â· iQOO 11/12/Neo 9
+   412px  Vivo V29/V30/V27 Â· iQOO 9T/10/11 Pro
+   â”€â”€ Oppo â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
    360px  Oppo A32/A53/A54/A72/A74/A77
-   393px  Oppo Reno 10/11/12 · Find X6/X7
-   412px  Oppo Reno 8/9 · Find X5 · K11/K11x
-   ── Poco / Redmi / Xiaomi ──────────────────────────────
-   360px  Poco M2/M3/X2 · Redmi 9/9A/9C/Note 9 · Mi A3
-   393px  Poco X5/F5/F6 · Redmi Note 10/11/12 Pro · Mi 11 Lite/12 Lite
-   412px  Poco X4/X6 Pro/F4 · Redmi Note 13 Pro · Mi 11/12/13
-   ════════════════════════════════════════════════════════ */
+   393px  Oppo Reno 10/11/12 Â· Find X6/X7
+   412px  Oppo Reno 8/9 Â· Find X5 Â· K11/K11x
+   â”€â”€ Poco / Redmi / Xiaomi â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   360px  Poco M2/M3/X2 Â· Redmi 9/9A/9C/Note 9 Â· Mi A3
+   393px  Poco X5/F5/F6 Â· Redmi Note 10/11/12 Pro Â· Mi 11 Lite/12 Lite
+   412px  Poco X4/X6 Pro/F4 Â· Redmi Note 13 Pro Â· Mi 11/12/13
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
-/* ── Very small phones (≤ 359px) — iPhone 5/SE 1st gen, old Androids ── */
+/* â”€â”€ Very small phones (â‰¤ 359px) â€” iPhone 5/SE 1st gen, old Androids â”€â”€ */
 @media (max-width: 359px) {
     .hero-container { padding: 10px 14px 18px; gap: 10px; }
     .title     { font-size: 24px !important; }
@@ -2155,10 +2155,10 @@ spline-viewer::part(logo) {
     .order-btn { font-size: 14px; padding: 12px 28px; }
 }
 
-/* ── Small phones (360 – 374px)
-   Samsung: Galaxy S6/S7/S8/S9/S10/Z Flip · Vivo Y-series
-   iQOO: Z3/Z5/Z6/Z7 · Oppo A-series
-   Poco: M2/M3/X2 · Redmi: 9/9A/9C/Note 9 · Xiaomi Mi A3 ── */
+/* â”€â”€ Small phones (360 â€“ 374px)
+   Samsung: Galaxy S6/S7/S8/S9/S10/Z Flip Â· Vivo Y-series
+   iQOO: Z3/Z5/Z6/Z7 Â· Oppo A-series
+   Poco: M2/M3/X2 Â· Redmi: 9/9A/9C/Note 9 Â· Xiaomi Mi A3 â”€â”€ */
 @media (min-width: 360px) and (max-width: 374px) {
     .title { font-size: 26px !important; }
     .hero-character-wrapper { height: 54vw !important; }
@@ -2166,25 +2166,25 @@ spline-viewer::part(logo) {
     .hero-container { gap: 12px; }
 }
 
-/* ── Mid phones (375 – 389px)
-   Apple: iPhone 6/7/8/X/XS/11 Pro/SE 2nd & 3rd gen ── */
+/* â”€â”€ Mid phones (375 â€“ 389px)
+   Apple: iPhone 6/7/8/X/XS/11 Pro/SE 2nd & 3rd gen â”€â”€ */
 @media (min-width: 375px) and (max-width: 389px) {
     .title { font-size: 28px !important; }
     .hero-character-wrapper { height: 55vw !important; min-height: 230px !important; }
 }
 
-/* ── Standard phones (390 – 392px)
-   Apple: iPhone 12/13/14 · Samsung: Galaxy S23 ── */
+/* â”€â”€ Standard phones (390 â€“ 392px)
+   Apple: iPhone 12/13/14 Â· Samsung: Galaxy S23 â”€â”€ */
 @media (min-width: 390px) and (max-width: 392px) {
     .title { font-size: 30px !important; }
     .hero-character-wrapper { height: 56vw !important; min-height: 245px !important; }
     .card { height: 108px; }
 }
 
-/* ── 393px phones — iPhone 15/16 Pro · Google Pixel 7/8/8a
-   Vivo: X80/X90/X100 · iQOO: 11/12/Neo 9
-   Oppo: Reno 10/11/Find X6 · Poco: X5/F5/F6
-   Redmi: Note 10/11/12 Pro · Xiaomi Mi 11 Lite ── */
+/* â”€â”€ 393px phones â€” iPhone 15/16 Pro Â· Google Pixel 7/8/8a
+   Vivo: X80/X90/X100 Â· iQOO: 11/12/Neo 9
+   Oppo: Reno 10/11/Find X6 Â· Poco: X5/F5/F6
+   Redmi: Note 10/11/12 Pro Â· Xiaomi Mi 11 Lite â”€â”€ */
 @media (min-width: 393px) and (max-width: 411px) {
     .title { font-size: 30px !important; }
     .hero-character-wrapper { height: 56vw !important; min-height: 248px !important; }
@@ -2192,11 +2192,11 @@ spline-viewer::part(logo) {
     .description { font-size: 13.5px !important; }
 }
 
-/* ── Large phones 412 – 413px
-   Google: Pixel 4/4a/6/6a/7a · Samsung: S20/S21/S22/S24/Note 20/A51/A52/A71
-   OnePlus: 7T/8/9/10/11/Nord 2/3 · Vivo: V27/V29/V30
-   iQOO: 9T/10/11 Pro · Oppo: Reno 8/9/Find X5
-   Poco: X4/X6 Pro/F4 · Redmi: Note 13 Pro · Xiaomi Mi 11/12/13 ── */
+/* â”€â”€ Large phones 412 â€“ 413px
+   Google: Pixel 4/4a/6/6a/7a Â· Samsung: S20/S21/S22/S24/Note 20/A51/A52/A71
+   OnePlus: 7T/8/9/10/11/Nord 2/3 Â· Vivo: V27/V29/V30
+   iQOO: 9T/10/11 Pro Â· Oppo: Reno 8/9/Find X5
+   Poco: X4/X6 Pro/F4 Â· Redmi: Note 13 Pro Â· Xiaomi Mi 11/12/13 â”€â”€ */
 @media (min-width: 412px) and (max-width: 413px) {
     .title { font-size: 32px !important; }
     .hero-character-wrapper { height: 56vw !important; min-height: 260px !important; }
@@ -2204,7 +2204,7 @@ spline-viewer::part(logo) {
     .description { font-size: 14px !important; }
 }
 
-/* ── 414px phones — iPhone 11/XR/XS Max/7 Plus/8 Plus ── */
+/* â”€â”€ 414px phones â€” iPhone 11/XR/XS Max/7 Plus/8 Plus â”€â”€ */
 @media (min-width: 414px) and (max-width: 429px) {
     .title { font-size: 32px !important; }
     .hero-character-wrapper { height: 56vw !important; min-height: 262px !important; }
@@ -2212,8 +2212,8 @@ spline-viewer::part(logo) {
     .description { font-size: 14px !important; }
 }
 
-/* ── XL phones (430 – 439px)
-   Apple: iPhone 14/15/16 Plus · iPhone 14/15 Pro Max ── */
+/* â”€â”€ XL phones (430 â€“ 439px)
+   Apple: iPhone 14/15/16 Plus Â· iPhone 14/15 Pro Max â”€â”€ */
 @media (min-width: 430px) and (max-width: 439px) {
     .title { font-size: 34px !important; }
     .hero-character-wrapper { height: 54vw !important; min-height: 270px !important; }
@@ -2222,7 +2222,7 @@ spline-viewer::part(logo) {
     .hero-container { gap: 18px; }
 }
 
-/* ── Max phones (440px+) — iPhone 16 Pro Max · future large handsets ── */
+/* â”€â”€ Max phones (440px+) â€” iPhone 16 Pro Max Â· future large handsets â”€â”€ */
 @media (min-width: 440px) and (max-width: 768px) {
     .title { font-size: 36px !important; }
     .hero-character-wrapper { height: 52vw !important; min-height: 280px !important; }
@@ -2231,28 +2231,8 @@ spline-viewer::part(logo) {
     .hero-container { gap: 20px; }
 }
 
-/* ── Touch-device hover guard (prevents sticky transforms) ── */
+/* â”€â”€ Touch-device hover guard (prevents sticky transforms) â”€â”€ */
 @media (max-width: 768px) and (hover: none) {
     .value-card:hover .value-card-inner { transform: none; }
     .service-card:hover { transform: none !important; }
-}
-/* Mobile overflow guard */
-@media (max-width: 768px) {
-    html, body {
-        width: 100%;
-        max-width: 100vw;
-        overflow-x: hidden;
-    }
-    .hero-container,
-    header,
-    .main-content,
-    .bottom-cards-section,
-    .contact-split-wrapper,
-    .contact-info-column,
-    .contact-form-column,
-    .contact-form-container {
-        width: 100% !important;
-        max-width: 100vw !important;
-        overflow-x: hidden;
-    }
 }
