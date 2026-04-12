@@ -402,6 +402,10 @@ function showMobileNotice() {
     card.querySelector('#gfx-mobile-close').addEventListener('click', close);
 }
 
+function isPreviewHost() {
+    return /\.vercel\.app$/i.test(window.location.hostname);
+}
+
 // ── Status messages per progress checkpoint ───────────────────────────────────
 const STATUS_MESSAGES = [
     { at:  0,  text: 'Initializing...' },
@@ -494,7 +498,9 @@ function easeOutQuad(t) { return 1 - (1 - t) * (1 - t); }
                 setTimeout(() => {
                     loader.remove();
                     document.documentElement.classList.remove('gfx-loading');
-                    showMobileNotice();
+                    if (isPreviewHost()) {
+                        showMobileNotice();
+                    }
                 }, 460);
             }, 300);
         }
