@@ -11,27 +11,24 @@ body {
     text-rendering: optimizeSpeed;
 }
 
-/* ── GPU layers: only on things that actually move ── */
+/* GPU layers */
 .lightning-left,
 .lightning-right {
     will-change: transform;
     transform: translateZ(0) rotate(15deg);
 }
 
-.hero-character  { will-change: transform; }
-.float-icon      { will-change: transform; }
+.hero-character { will-change: transform; }
+.float-icon { will-change: transform; }
 
-/* Background glow — cheaper blur value */
 .background-glow {
     filter: blur(160px);
     contain: strict;
 }
 
-/* Cards */
 .card {
     will-change: transform;
-    transition: transform 0.32s cubic-bezier(0.34, 1.56, 0.64, 1),
-                box-shadow 0.32s ease;
+    transition: transform 0.32s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.32s ease;
 }
 
 .bottom-cards-section .card {
@@ -40,11 +37,9 @@ body {
     transform: translateZ(0);
 }
 
-/* Buttons */
 .order-btn {
     will-change: transform;
-    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
-                box-shadow 0.2s ease;
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
 }
 
 .header-btn {
@@ -52,29 +47,26 @@ body {
 }
 .header-btn:hover { transform: translateY(-1px); }
 
-/* Service cards */
 .service-card {
     will-change: transform;
     transition: transform 0.08s ease-out, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
-/* Nav links */
 .nav-link { transition: color 0.2s ease; }
 
-/* Modal */
+/* Modal animation */
 @keyframes modalEnter {
     from { opacity: 0; transform: scale(0.94) translateY(14px); }
-    to   { opacity: 1; transform: scale(1)    translateY(0); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
 }
-.modal-content,
 .modal-content-v2 {
     animation: modalEnter 0.28s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-/* ── Staggered content entrance on page load ── */
+/* Staggered entrance */
 @keyframes slideUpIn {
     from { opacity: 0; transform: translateY(24px); }
-    to   { opacity: 1; transform: translateY(0); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .subtitle {
@@ -98,7 +90,6 @@ body {
     animation: slideUpIn 0.38s ease 0.50s both;
 }
 
-/* Service & portfolio card stagger */
 .service-card {
     opacity: 0;
     animation: slideUpIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
@@ -110,14 +101,13 @@ body {
 .service-card:nth-child(5) { animation-delay: 0.42s; }
 .service-card:nth-child(6) { animation-delay: 0.48s; }
 
-/* Header */
 header {
     opacity: 0;
     animation: headerDrop 0.42s cubic-bezier(0.22, 1, 0.36, 1) 0.05s both;
 }
 @keyframes headerDrop {
     from { opacity: 0; transform: translateY(-18px); }
-    to   { opacity: 1; transform: translateY(0); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 /* Reduce motion */
@@ -130,27 +120,19 @@ header {
     body { animation: none; }
 }
 
-/* ── Mobile performance tuning ── */
+/* Mobile performance */
 @media (max-width: 768px) {
-    /* CRITICAL: un-lock scroll that the global html rule above froze.
-       perf.css loads after style.css, so this block must re-assert it. */
     html {
         overflow-x: hidden;
         overflow-y: auto;
         height: auto;
     }
-
-    /* Cheaper blur on mobile GPU */
     .background-glow {
         filter: blur(100px);
     }
-
-    /* Pixel-ratio cap enforced via CSS hint (JS already caps at 1.5) */
     canvas {
         image-rendering: auto;
     }
-
-    /* Remove will-change on elements that are resized/repositioned on mobile */
     .lightning-left,
     .lightning-right {
         will-change: auto;
