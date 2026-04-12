@@ -383,9 +383,9 @@ function showMobileNotice() {
     const card = document.createElement('div');
     card.className = 'gfx-mobile-card';
     card.innerHTML = `
-        <div class="gfx-mobile-title">Mobile view in progress</div>
+        <div class="gfx-mobile-title">Mobile build in progress</div>
         <div class="gfx-mobile-text">
-            We’re tuning this site for mobile right now. For the smoothest experience, please view on desktop.
+            We’re still crafting the mobile experience. For a smooth, full-featured ride, please open this on desktop for now.
         </div>
     `;
     backdrop.appendChild(card);
