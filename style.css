@@ -2288,9 +2288,12 @@ spline-viewer::part(logo) {
     .value-card:hover .value-card-inner { transform: none; }
     .service-card:hover { transform: none !important; }
 }
-/* --- AUTOMATIC MOBILE ADJUSTMENTS --- */
-@media (max-width: 1024px) {
-    /* Allow scrolling on mobile as content stacks vertically */
+/* ============================================================
+   CONSOLIDATED MOBILE FIX
+   ============================================================ */
+@media (max-width: 850px) {
+
+    /* 1. Base Container: Allow natural scrolling without traps */
     html, body {
         overflow-x: hidden;
         overflow-y: auto;
@@ -2298,257 +2301,124 @@ spline-viewer::part(logo) {
     }
 
     .hero-container {
-        height: auto;
-        min-height: 100vh;
-        padding: 20px 15px;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        gap: 25px;
+        height: auto !important;
+        min-height: 100dvh !important;
+        padding: 15px 16px env(safe-area-inset-bottom, 20px) !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important;
+        gap: 15px !important;
+        overflow: visible !important;
     }
 
-    /* Header & Mobile Menu */
+    /* 2. Header: Solve the cramped "Download Brochure" button */
     header {
-        position: sticky;
-        top: 0;
-        background: rgba(5, 5, 5, 0.8);
-        backdrop-filter: blur(10px);
-        padding: 10px 0;
-        z-index: 100;
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        flex-wrap: nowrap !important;
+        width: 100% !important;
+        gap: 8px !important;
     }
 
-    .nav-toggle-label {
-        display: flex;
-        order: 2;
-    }
-
-    .nav-pill {
-        display: none;
-        position: fixed;
-        top: 70px;
-        left: 0;
-        width: 100%;
-        background: #0a0a0a;
-        flex-direction: column;
-        padding: 20px;
-        border-bottom: 2px solid #FF0000;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    }
-
-    .nav-toggle:checked ~ .nav-pill {
-        display: flex;
+    .logo {
+        font-size: clamp(16px, 4vw, 20px) !important;
+        white-space: nowrap;
+        flex-shrink: 1;
     }
 
     .header-btn {
-        order: 3;
-        transform: scale(0.85); /* Compact for mobile */
+        padding: 5px 10px !important;
+        font-size: 10px !important;
+        height: 38px !important;
+        white-space: nowrap !important;
+        border-width: 1px !important;
     }
 
-    /* Main Content Scaling */
+    .header-btn br { display: none !important; }
+    .btn-icon { width: 28px !important; height: 28px !important; }
+
+    /* 3. Content: Fix typography scaling and spacing */
     .main-content {
         max-width: 100% !important;
+        width: 100% !important;
         padding: 0 !important;
-        text-align: center;
-        align-items: center;
+        text-align: center !important;
+        align-items: center !important;
+        gap: 8px !important;
     }
 
     .title {
-        font-size: clamp(28px, 8vw, 42px) !important;
+        font-size: clamp(26px, 8vw, 34px) !important;
+        line-height: 1.2 !important;
         margin-bottom: 15px !important;
+        padding: 0 5px;
     }
 
     .description {
-        font-size: 16px !important;
-        margin-bottom: 25px !important;
+        font-size: 14px !important;
+        line-height: 1.5 !important;
+        margin-bottom: 12px !important;
+        max-width: 100% !important;
     }
 
-    /* 3D Character - Automatic sizing below text */
-    .hero-character-wrapper {
+    .cta-group { margin-bottom: 10px; }
+
+    /* 4. Robot/3D Fix: Stop it from covering the navigation cards */
+    .hero-character-wrapper, .page-3d-wrapper {
         position: relative !important;
         width: 100% !important;
-        height: 60vw !important; /* Aspect ratio scaling */
-        min-height: 250px;
-        right: auto !important;
-        bottom: auto !important;
-        margin: 0 auto;
+        height: 300px !important;
+        max-height: 40vh !important;
+        margin: 10px auto !important;
+        z-index: 1 !important;
+        pointer-events: auto !important;
+        transform: translateY(0) !important;
     }
 
-    /* Reposition Tech Icons for Mobile bounds */
-    .fi-icon {
-        width: 35px !important;
-        height: 35px !important;
-    }
-    .i-figma { top: 5% !important; left: 15% !important; }
-    .i-react { top: 15% !important; left: 75% !important; }
-    .i-node  { top: 50% !important; left: 80% !important; }
-
-    /* Bottom Cards - 2 Column Grid for space efficiency */
+    /* 5. Bottom Nav: Prevent overlap with Safari bar and Android nav */
     .bottom-cards-section {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-        width: 100%;
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px !important;
+        width: 100% !important;
+        padding-top: 10px !important;
+        margin-top: auto !important;
     }
 
     .bottom-cards-section .card:last-child {
-        grid-column: span 2; /* Contact card full width */
+        grid-column: span 2 !important;
     }
 
     .card {
-        width: 100% !important;
-        height: 100px !important;
+        width: auto !important;
+        height: 95px !important;
+        border-radius: 14px !important;
     }
 
-    /* Hide Desktop-only decorations if they overlap */
-    .lightning-left { left: -60px; opacity: 0.3; }
-    .lightning-right { right: -60px; opacity: 0.3; }
+    .card-icon { width: 42px !important; height: 42px !important; }
+    .card span { font-size: 11px !important; }
+
+    /* 6. Fix for Tech Icons (Floating Icons) */
+    .fi-icon { width: 34px !important; height: 34px !important; }
+    .i-figma { top: 5% !important; left: 10% !important; }
+    .i-react { top: 15% !important; left: 80% !important; }
+    .i-node  { top: 55% !important; left: 75% !important; }
+
+    /* Hide desktop decorations that cause overflow */
+    .lightning-left, .lightning-right { display: none !important; }
+    .divider { display: none !important; }
+}
+
+/* Fix for very small screens (iPhone SE) */
+@media (max-width: 380px) {
+    .header-btn span { display: none; }
+    .title { font-size: 26px !important; }
 }
 
 /* Fix for very small screens (iPhone SE) */
 @media (max-width: 380px) {
     .header-btn span { display: none; } /* Show only icon if extreme space is needed */
     .title { font-size: 26px !important; }
-}
-/* --- MOBILE UI FINE-TUNING (Fixes overlapping and cramped text) --- */
-@media (max-width: 768px) {
-    
-    /* 1. Fix the "Download Brochure" button in the header */
-    .header-btn {
-        padding: 5px 10px !important;
-        font-size: 10px !important;
-        line-height: 1.1 !important;
-        white-space: nowrap !important;
-        gap: 5px !important;
-    }
-
-    .header-btn br {
-        display: none; /* Hide the line break on mobile to keep it one line */
-    }
-
-    .btn-icon {
-        width: 24px !important;
-        height: 24px !important;
-        flex-shrink: 0;
-    }
-
-    /* 2. Fix the 3D Robot / Character Overlap */
-    .hero-character-wrapper, .page-3d-wrapper {
-        position: relative !important;
-        height: 300px !important; /* Forces a specific height so it stays in the middle */
-        margin-top: -20px !important;
-        margin-bottom: 20px !important;
-        z-index: 1 !important;
-        pointer-events: auto !important;
-    }
-
-    /* 3. Adjust the Hero Content spacing */
-    .main-content {
-        padding-top: 20px !important;
-        gap: 8px !important;
-    }
-
-    .title {
-        font-size: 28px !important;
-        margin-bottom: 12px !important;
-        padding: 0 10px;
-    }
-
-    /* 4. Fix Ticker Alignment */
-    .discount-ticker {
-        height: 30px !important;
-        margin-bottom: 15px !important;
-        max-width: 90% !important;
-    }
-
-    .discount-tag {
-        font-size: 8px !important;
-        padding: 0 10px !important;
-    }
-
-    /* 5. Ensure bottom cards are always visible */
-    .hero-container {
-        height: auto !important;
-        min-height: 100vh !important;
-        display: flex !important;
-        flex-direction: column !important;
-        padding-bottom: 30px !important; /* Space for the bottom cards */
-    }
-
-    /* 6. Fix Logo Scaling */
-    .logo {
-        font-size: 20px !important;
-    }
-}
-/* --- UNIVERSAL MOBILE FIX (Safe Area for iOS + Standard for Android) --- */
-@media (max-width: 768px) {
-
-    /* 1. Use dvh (Dynamic Viewport Height) to prevent Safari toolbar overlap */
-    .hero-container {
-        height: 100dvh !important; 
-        min-height: 100dvh !important;
-        /* This adds extra padding ONLY on iPhones with home bars */
-        padding-bottom: calc(15px + env(safe-area-inset-bottom)) !important;
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: flex-start !important;
-        overflow-y: auto !important;
-    }
-
-    /* 2. Header Adjustments (Fixing the cramped UI in your screenshot) */
-    header {
-        display: flex !important;
-        justify-content: space-between !important;
-        align-items: center !important;
-        width: 100% !important;
-        gap: 5px !important;
-    }
-
-    .logo {
-        font-size: 18px !important;
-        flex-shrink: 1 !important;
-    }
-
-    .header-btn {
-        padding: 4px 8px !important;
-        font-size: 10px !important;
-        height: 34px !important;
-    }
-
-    .header-btn br {
-        display: none !important; /* Forces single line text */
-    }
-
-    /* 3. Push the Robot/Spline up so it doesn't cover the bottom navigation */
-    .hero-character-wrapper, .page-3d-wrapper {
-        position: relative !important;
-        height: 32vh !important; /* Shorter height so navigation can breathe */
-        margin: 10px 0 !important;
-        z-index: 1 !important;
-        pointer-events: none !important; /* Critical: allows clicking nav through character */
-    }
-
-    /* 4. Fix for the Bottom Nav Cards overlap */
-    .bottom-cards-section {
-        margin-top: auto !important;
-        padding-bottom: 5px !important; /* Extra spacing from screen edge */
-        display: grid !important;
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 8px !important;
-        z-index: 10 !important;
-    }
-
-    /* 5. Typography spacing to prevent scrolling */
-    .title {
-        font-size: clamp(24px, 6vw, 28px) !important;
-        margin-bottom: 8px !important;
-    }
-
-    .description {
-        font-size: 13px !important;
-        margin-bottom: 12px !important;
-    }
-
-    .cta-group {
-        margin-bottom: 15px !important;
-    }
 }
