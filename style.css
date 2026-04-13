@@ -2479,3 +2479,76 @@ spline-viewer::part(logo) {
         font-size: 20px !important;
     }
 }
+/* --- UNIVERSAL MOBILE FIX (Safe Area for iOS + Standard for Android) --- */
+@media (max-width: 768px) {
+
+    /* 1. Use dvh (Dynamic Viewport Height) to prevent Safari toolbar overlap */
+    .hero-container {
+        height: 100dvh !important; 
+        min-height: 100dvh !important;
+        /* This adds extra padding ONLY on iPhones with home bars */
+        padding-bottom: calc(15px + env(safe-area-inset-bottom)) !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important;
+        overflow-y: auto !important;
+    }
+
+    /* 2. Header Adjustments (Fixing the cramped UI in your screenshot) */
+    header {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        width: 100% !important;
+        gap: 5px !important;
+    }
+
+    .logo {
+        font-size: 18px !important;
+        flex-shrink: 1 !important;
+    }
+
+    .header-btn {
+        padding: 4px 8px !important;
+        font-size: 10px !important;
+        height: 34px !important;
+    }
+
+    .header-btn br {
+        display: none !important; /* Forces single line text */
+    }
+
+    /* 3. Push the Robot/Spline up so it doesn't cover the bottom navigation */
+    .hero-character-wrapper, .page-3d-wrapper {
+        position: relative !important;
+        height: 32vh !important; /* Shorter height so navigation can breathe */
+        margin: 10px 0 !important;
+        z-index: 1 !important;
+        pointer-events: none !important; /* Critical: allows clicking nav through character */
+    }
+
+    /* 4. Fix for the Bottom Nav Cards overlap */
+    .bottom-cards-section {
+        margin-top: auto !important;
+        padding-bottom: 5px !important; /* Extra spacing from screen edge */
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 8px !important;
+        z-index: 10 !important;
+    }
+
+    /* 5. Typography spacing to prevent scrolling */
+    .title {
+        font-size: clamp(24px, 6vw, 28px) !important;
+        margin-bottom: 8px !important;
+    }
+
+    .description {
+        font-size: 13px !important;
+        margin-bottom: 12px !important;
+    }
+
+    .cta-group {
+        margin-bottom: 15px !important;
+    }
+}
