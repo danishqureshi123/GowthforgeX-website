@@ -20,7 +20,7 @@
 
         <header>
             <div class="logo">Growth ForgeX</div>
-            <input type="checkbox" id="nav-toggle" class="nav-toggle">
+            <input type="checkbox" id="nav-toggle" class="nav-toggle" hidden>
             <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle navigation"><span></span></label>
             <nav class="nav-pill">
                 <a href="services.html" class="nav-link">Services</a>
@@ -44,7 +44,7 @@
             <h2 class="subtitle reveal" style="transition-delay:0s"><span class="highlight">Our Work</span></h2>
             <h1 class="title reveal" style="font-size: clamp(28px, 4.5vw, 56px); transition-delay:0.07s">Selected Projects</h1>
 
-            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 50px;">
+            <div class="portfolio-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 50px;">
                 <div class="service-card reveal" onclick="openProject('loyalty')" style="cursor: pointer; transition-delay:0s">
                     <p style="color: #FF0000; font-size: 14px; letter-spacing: 2px; text-transform: uppercase;">SaaS · Web App</p>
                     <h3 style="color: #FFFFFF; font-size: 24px; margin: 10px 0;">Rewards Engine</h3>
