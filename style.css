@@ -2485,7 +2485,8 @@ spline-viewer::part(logo) {
     }
 
     /* 4. Globe & Robot Fix: Put them in the content flow so they don't overlap tags or buttons */
-    .page-3d-wrapper, 
+    .page-3d-wrapper,
+    .services-3d-wrapper,
     .hero-character-wrapper {
         position: relative !important;
         height: 280px !important; /* Fixed height for mobile */
