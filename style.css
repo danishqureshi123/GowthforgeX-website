@@ -206,6 +206,18 @@ header {
 }
 
 
+.fi-icon {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.7));
+    z-index: 6;
+    animation: floatIcon1 4.5s ease-in-out infinite alternate;
+}
+.i-figma { top: 10%; left: 62%; animation-duration: 4.2s; animation-delay: 0s; }
+.i-react { top: 25%; left: 72%; animation-duration: 5.1s; animation-delay: 0.9s; }
+.i-node  { top: 42%; left: 65%; animation-duration: 4.7s; animation-delay: 1.6s; }
+
 .float-icon {
     position: absolute;
     width: 60px;
@@ -2272,4 +2284,125 @@ spline-viewer::part(logo) {
 @media (max-width: 768px) and (hover: none) {
     .value-card:hover .value-card-inner { transform: none; }
     .service-card:hover { transform: none !important; }
+}
+/* --- AUTOMATIC MOBILE ADJUSTMENTS --- */
+@media (max-width: 1024px) {
+    /* Allow scrolling on mobile as content stacks vertically */
+    html, body {
+        overflow-x: hidden;
+        overflow-y: auto;
+        height: auto;
+    }
+
+    .hero-container {
+        height: auto;
+        min-height: 100vh;
+        padding: 20px 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 25px;
+    }
+
+    /* Header & Mobile Menu */
+    header {
+        position: sticky;
+        top: 0;
+        background: rgba(5, 5, 5, 0.8);
+        backdrop-filter: blur(10px);
+        padding: 10px 0;
+        z-index: 100;
+    }
+
+    .nav-toggle-label {
+        display: flex;
+        order: 2;
+    }
+
+    .nav-pill {
+        display: none;
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: #0a0a0a;
+        flex-direction: column;
+        padding: 20px;
+        border-bottom: 2px solid #FF0000;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .nav-toggle:checked ~ .nav-pill {
+        display: flex;
+    }
+
+    .header-btn {
+        order: 3;
+        transform: scale(0.85); /* Compact for mobile */
+    }
+
+    /* Main Content Scaling */
+    .main-content {
+        max-width: 100% !important;
+        padding: 0 !important;
+        text-align: center;
+        align-items: center;
+    }
+
+    .title {
+        font-size: clamp(28px, 8vw, 42px) !important;
+        margin-bottom: 15px !important;
+    }
+
+    .description {
+        font-size: 16px !important;
+        margin-bottom: 25px !important;
+    }
+
+    /* 3D Character - Automatic sizing below text */
+    .hero-character-wrapper {
+        position: relative !important;
+        width: 100% !important;
+        height: 60vw !important; /* Aspect ratio scaling */
+        min-height: 250px;
+        right: auto !important;
+        bottom: auto !important;
+        margin: 0 auto;
+    }
+
+    /* Reposition Tech Icons for Mobile bounds */
+    .fi-icon {
+        width: 35px !important;
+        height: 35px !important;
+    }
+    .i-figma { top: 5% !important; left: 15% !important; }
+    .i-react { top: 15% !important; left: 75% !important; }
+    .i-node  { top: 50% !important; left: 80% !important; }
+
+    /* Bottom Cards - 2 Column Grid for space efficiency */
+    .bottom-cards-section {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        width: 100%;
+    }
+
+    .bottom-cards-section .card:last-child {
+        grid-column: span 2; /* Contact card full width */
+    }
+
+    .card {
+        width: 100% !important;
+        height: 100px !important;
+    }
+
+    /* Hide Desktop-only decorations if they overlap */
+    .lightning-left { left: -60px; opacity: 0.3; }
+    .lightning-right { right: -60px; opacity: 0.3; }
+}
+
+/* Fix for very small screens (iPhone SE) */
+@media (max-width: 380px) {
+    .header-btn span { display: none; } /* Show only icon if extreme space is needed */
+    .title { font-size: 26px !important; }
 }
