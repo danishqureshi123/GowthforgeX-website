@@ -2417,8 +2417,44 @@ spline-viewer::part(logo) {
     .title { font-size: 26px !important; }
 }
 
-/* Fix for very small screens (iPhone SE) */
-@media (max-width: 380px) {
-    .header-btn span { display: none; } /* Show only icon if extreme space is needed */
-    .title { font-size: 26px !important; }
+/* --- FINAL REFINEMENT FOR SPACE & OVERLAP --- */
+@media (max-width: 768px) {
+
+    .hero-container {
+        height: auto !important;
+        min-height: 100dvh !important;
+        justify-content: flex-start !important;
+        gap: 10px !important;
+    }
+
+    .hero-character-wrapper,
+    .page-3d-wrapper {
+        position: relative !important;
+        height: 280px !important;
+        width: 100% !important;
+        margin: 0 auto !important;
+        inset: auto !important;
+        z-index: 1 !important;
+        pointer-events: none !important;
+    }
+
+    .main-content {
+        justify-content: flex-start !important;
+        padding-top: 10px !important;
+        min-height: unset !important;
+    }
+
+    header {
+        flex-wrap: nowrap !important;
+        justify-content: space-between !important;
+    }
+
+    .header-btn {
+        flex-shrink: 0 !important;
+        padding: 4px 10px !important;
+        height: 36px !important;
+        font-size: 10px !important;
+    }
+
+    .header-btn br { display: none !important; }
 }

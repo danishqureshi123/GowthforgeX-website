@@ -53,7 +53,16 @@
                 Every project we take on becomes a part of us. Your success isn't just a goal — it's our standard.
             </p>
 
-            <p class="reveal" style="color: rgba(255,255,255,0.40); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; margin-top: 22px; margin-bottom: 14px; transition-delay:0.20s">What We Stand For</p>
+            <!-- 3D Globe — sits between description and value cards -->
+            <div class="page-3d-wrapper" id="about-3d-wrapper">
+                <canvas id="about-3d-canvas"></canvas>
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"       class="float-icon about-icon-1" alt="React"      loading="lazy" decoding="async">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"    class="float-icon about-icon-2" alt="Python"     loading="lazy" decoding="async">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" class="float-icon about-icon-3" alt="TypeScript" loading="lazy" decoding="async">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" class="float-icon about-icon-4" alt="AWS" loading="lazy" decoding="async">
+            </div>
+
+            <p class="reveal" style="color: rgba(255,255,255,0.40); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; margin-top: 10px; margin-bottom: 14px; transition-delay:0.20s">What We Stand For</p>
 
             <!-- 2×2 Interactive value cards grid -->
             <ul class="about-values-list">
@@ -376,15 +385,6 @@
             <a href="contact.html" class="card"><div class="card-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><span>Contact</span></a>
         </section>
     </main>
-
-    <!-- About – Three.js Globe with particles, rings & DNA helix -->
-    <div class="page-3d-wrapper" id="about-3d-wrapper">
-        <canvas id="about-3d-canvas"></canvas>
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"       class="float-icon about-icon-1" alt="React"      loading="lazy" decoding="async">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"    class="float-icon about-icon-2" alt="Python"     loading="lazy" decoding="async">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" class="float-icon about-icon-3" alt="TypeScript" loading="lazy" decoding="async">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" class="float-icon about-icon-4" alt="AWS" loading="lazy" decoding="async">
-    </div>
 
     <script src="https://unpkg.com/three@0.158.0/build/three.min.js"></script>
     <script>
