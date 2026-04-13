@@ -8,10 +8,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="loader.js"></script>
+    <script type="module" src="https://unpkg.com/@splinetool/viewer/build/spline-viewer.js" defer></script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="perf.css">
     <script>!function(){var e=console.error;console.error=function(){if(arguments[0]&&typeof arguments[0]==='string'&&arguments[0].includes('Missing property'))return;e.apply(console,arguments)};}();</script>
-    <script type="module" src="https://unpkg.com/@splinetool/viewer/build/spline-viewer.js" defer></script>
 </head>
 <body>
     <div class="background-glow"></div>
@@ -22,7 +22,7 @@
 
         <header>
             <div class="logo">Growth ForgeX</div>
-            <input type="checkbox" id="nav-toggle" class="nav-toggle">
+            <input type="checkbox" id="nav-toggle" class="nav-toggle" hidden>
             <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle navigation"><span></span></label>
             <nav class="nav-pill">
                 <a href="services.html" class="nav-link">Services</a>
@@ -42,7 +42,7 @@
             </a>
         </header>
 
-        <section class="main-content" style="max-width: 920px; padding-top: 30px; position: relative; z-index: 10;">
+        <section class="main-content">
             <h2 class="subtitle reveal" style="transition-delay:0s"><span class="highlight">Our Vision</span></h2>
 
             <!-- Animated headline -->
