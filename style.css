@@ -2417,44 +2417,107 @@ spline-viewer::part(logo) {
     .title { font-size: 26px !important; }
 }
 
-/* --- FINAL REFINEMENT FOR SPACE & OVERLAP --- */
-@media (max-width: 768px) {
+/* ============================================================
+   FINAL CONSOLIDATED MOBILE FIX (REPLACE ALL BOTTOM CSS)
+   ============================================================ */
+@media (max-width: 850px) {
+
+    /* 1. Fix the "Space" issue: Allow natural stacking instead of pushing items apart */
+    html, body {
+        overflow-y: auto !important;
+        height: auto !important;
+    }
 
     .hero-container {
         height: auto !important;
         min-height: 100dvh !important;
-        justify-content: flex-start !important;
-        gap: 10px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important; /* Forces items to follow each other */
+        gap: 20px !important;
+        padding: 15px 15px 40px !important;
     }
 
-    .hero-character-wrapper,
-    .page-3d-wrapper {
-        position: relative !important;
-        height: 280px !important;
-        width: 100% !important;
-        margin: 0 auto !important;
-        inset: auto !important;
-        z-index: 1 !important;
-        pointer-events: none !important;
-    }
-
-    .main-content {
-        justify-content: flex-start !important;
-        padding-top: 10px !important;
-        min-height: unset !important;
-    }
-
+    /* 2. Header Fix: Stop the "Download Brochure" button from overlapping/breaking */
     header {
-        flex-wrap: nowrap !important;
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important; /* Keeps Logo, Hamburger, and Button on one line */
         justify-content: space-between !important;
+        align-items: center !important;
+        gap: 8px !important;
+        width: 100% !important;
+    }
+
+    .logo {
+        font-size: 18px !important;
+        white-space: nowrap;
     }
 
     .header-btn {
         flex-shrink: 0 !important;
         padding: 4px 10px !important;
-        height: 36px !important;
         font-size: 10px !important;
+        height: 38px !important;
+        display: flex !important;
+        align-items: center !important;
+        line-height: 1.1 !important;
+        white-space: nowrap !important;
     }
 
-    .header-btn br { display: none !important; }
+    .header-btn br {
+        display: none !important; /* Fixes the text overlap seen in your screenshot */
+    }
+
+    /* 3. Spacing Fix: Remove the huge gaps on the About page content */
+    .main-content {
+        padding: 0 !important;
+        margin: 0 !important;
+        justify-content: flex-start !important;
+        gap: 12px !important;
+        min-height: unset !important;
+    }
+
+    .about-headline, .title {
+        font-size: clamp(26px, 8vw, 32px) !important;
+        line-height: 1.2 !important;
+        margin: 10px 0 !important;
+    }
+
+    /* 4. Globe & Robot Fix: Put them in the content flow so they don't overlap tags or buttons */
+    .page-3d-wrapper, 
+    .hero-character-wrapper {
+        position: relative !important;
+        height: 280px !important; /* Fixed height for mobile */
+        width: 100% !important;
+        margin: 10px auto !important;
+        inset: auto !important; 
+        z-index: 1 !important;
+        pointer-events: none !important; /* Allows you to scroll even if touching the globe */
+    }
+
+    /* 5. Value Cards & Bottom Navigation */
+    .about-values-list {
+        grid-template-columns: 1fr !important;
+        margin-top: 10px !important;
+    }
+
+    .bottom-cards-section {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px !important;
+        margin-top: auto !important;
+        padding-bottom: env(safe-area-inset-bottom, 20px) !important;
+    }
+
+    .bottom-cards-section .card:last-child {
+        grid-column: span 2 !important;
+    }
+
+    .card { height: 90px !important; }
+
+    /* Hide decorative items that cause horizontal scrolling */
+    .lightning-left, .lightning-right, .divider { 
+        display: none !important; 
+    }
 }

@@ -98,12 +98,11 @@
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" class="float-icon services-icon-4" alt="PostgreSQL" loading="lazy" decoding="async">
     </div>
 
-    <script src="https://unpkg.com/three@0.158.0/build/three.min.js"></script>
-    <script>
+    <script type="module">
+    import * as THREE from 'https://unpkg.com/three@0.165.0/build/three.module.min.js';
     (function initServicesScene() {
         var wrapper = document.getElementById('services-3d-wrapper');
-        if (!wrapper || !window.THREE) return;
-        var THREE = window.THREE;
+        if (!wrapper) return;
         var isMobile = window.innerWidth <= 768;
         var canvas = document.getElementById('services-3d-canvas');
 

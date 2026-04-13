@@ -8,7 +8,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="loader.js"></script>
-    <script type="module" src="https://unpkg.com/@splinetool/viewer/build/spline-viewer.js" defer></script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="perf.css">
     <script>!function(){var e=console.error;console.error=function(){if(arguments[0]&&typeof arguments[0]==='string'&&arguments[0].includes('Missing property'))return;e.apply(console,arguments)};}();</script>
@@ -386,12 +385,11 @@
         </section>
     </main>
 
-    <script src="https://unpkg.com/three@0.158.0/build/three.min.js"></script>
-    <script>
+    <script type="module">
+    import * as T from 'https://unpkg.com/three@0.165.0/build/three.module.min.js';
     (function initAboutScene() {
         var wrapper = document.getElementById('about-3d-wrapper');
-        if (!wrapper || !window.THREE) return;
-        var T = window.THREE;
+        if (!wrapper) return;
         var isMobile = window.innerWidth <= 768;
 
         var canvas   = document.getElementById('about-3d-canvas');
