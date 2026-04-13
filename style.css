@@ -1700,8 +1700,11 @@ spline-viewer::part(logo) {
         min-height: unset;
         overflow: visible;
         justify-content: flex-start;
-        gap: 16px;
+        gap: 8px;
     }
+
+    /* Hide heavy Spline background on mobile for performance */
+    .services-holographic-bg { display: none !important; }
 
     /* â”€â”€ 3. Header â€” row layout with hamburger â”€â”€ */
     header {

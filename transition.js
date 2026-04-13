@@ -23,7 +23,7 @@ function hideSplineBadges() {
             if (shadow.querySelector('#gfx-hide-badge')) return;
             const s = document.createElement('style');
             s.id = 'gfx-hide-badge';
-            s.textContent = '#logo,a[href*="spline"],a[href*="spline.design"],[class*="logo"]{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important}';
+            s.textContent = '#logo,a[href*="spline"],a[href*="spline.design"],[class*="logo"]{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important}canvas,#scene,#app{background:#050505!important;background-color:#050505!important;}';
             shadow.appendChild(s);
         }
 
