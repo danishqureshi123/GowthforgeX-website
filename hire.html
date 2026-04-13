@@ -26,7 +26,7 @@
         <header>
             <div class="logo">Growth ForgeX</div>
             
-            <input type="checkbox" id="nav-toggle" class="nav-toggle">
+            <input type="checkbox" id="nav-toggle" class="nav-toggle" hidden>
             <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle navigation"><span></span></label>
             <nav class="nav-pill">
                 <a href="services.html" class="nav-link">Services</a>
@@ -35,7 +35,7 @@
                 <a href="hire.html" class="nav-link">Career</a>
             </nav>
 
-            <a href="#" onclick="forceDownloadPDF(event)" download="GrowthForgeX Brochure.pdf" class="header-btn" style="text-decoration: none;">
+            <a href="#" onclick="forceDownloadPDF(event)" class="header-btn">
                 <div class="btn-icon">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
@@ -43,7 +43,7 @@
                         <line x1="12" y1="15" x2="12" y2="3"></line>
                     </svg>
                 </div>
-                Download<br>Brochure
+                <span>Download<br>Brochure</span>
             </a>
         </header>
 
