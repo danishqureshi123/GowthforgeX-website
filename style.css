@@ -19,10 +19,10 @@ body {
 /* Red blur glow */
 .background-glow {
     position: absolute;
-    width: 1200px;
-    height: 1200px;
-    right: -200px;
-    top: 100px;
+    width: min(1200px, 90vw);
+    height: min(1200px, 90vw);
+    right: -10%;
+    top: clamp(40px, 8vh, 100px);
     background: rgba(255, 0, 0, 0.5);
     filter: blur(250px);
     border-radius: 50%;
@@ -34,7 +34,7 @@ body {
     position: relative;
     width: 100%;
     height: 100vh;
-    padding: 10px 50px 30px 50px;
+    padding: clamp(10px, 1.5vh, 20px) clamp(18px, 4%, 50px) clamp(20px, 3vh, 30px);
     z-index: 1;
     overflow: hidden;
     display: flex;
@@ -105,7 +105,7 @@ header {
 
 .logo {
     font-weight: 600;
-    font-size: 28px;
+    font-size: clamp(20px, 2.2vw, 28px);
     color: #FFFFFF;
 }
 
@@ -114,15 +114,15 @@ header {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 80px;
-    padding: 12px 32px;
-    gap: 40px;
+    padding: clamp(8px, 1vw, 12px) clamp(16px, 2.5vw, 32px);
+    gap: clamp(20px, 3vw, 40px);
     backdrop-filter: blur(10px);
 }
 
 .nav-link {
     text-decoration: none;
     color: rgba(255, 255, 255, 0.7);
-    font-size: 18px;
+    font-size: clamp(14px, 1.4vw, 18px);
     transition: color 0.3s ease;
 }
 
@@ -133,14 +133,14 @@ header {
 .header-btn {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: clamp(6px, 0.8vw, 12px);
     background: transparent;
     border: 1px solid #FF0000;
     border-radius: 50px;
-    padding: 8px 16px 8px 10px;
+    padding: clamp(6px, 0.6vh, 8px) clamp(10px, 1.2vw, 16px) clamp(6px, 0.6vh, 8px) clamp(8px, 0.8vw, 10px);
     color: #FFFFFF;
     font-family: 'Inter', sans-serif;
-    font-size: 16px;
+    font-size: clamp(12px, 1.1vw, 16px);
     cursor: pointer;
     transition: all 0.3s ease;
 }
@@ -165,7 +165,7 @@ header {
     position: relative;
     z-index: 10;
     max-width: 900px;
-    padding-left: 60px;
+    padding-left: clamp(20px, 5%, 60px);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -177,7 +177,7 @@ header {
     right: 0;
     bottom: -6vh;
     height: 85vh;
-    width: 1100px;
+    width: min(1100px, 65vw);
     max-width: 65vw;
     z-index: 5;
     pointer-events: none;
@@ -384,9 +384,9 @@ header {
 }
 
 .subtitle {
-    font-size: 28px;
+    font-size: clamp(16px, 2vw, 28px);
     color: rgba(255, 255, 255, 0.7);
-    margin-bottom: 24px;
+    margin-bottom: clamp(12px, 1.8vh, 24px);
 }
 
 .subtitle .highlight {
@@ -395,7 +395,7 @@ header {
 }
 
 .title {
-    font-size: 72px;
+    font-size: clamp(36px, 5.5vw, 72px);
     line-height: 1.1;
     color: #FFFFFF;
     font-weight: 500;
@@ -403,10 +403,10 @@ header {
 }
 
 .description {
-    font-size: 22px;
+    font-size: clamp(14px, 1.6vw, 22px);
     color: rgba(255, 255, 255, 0.6);
-    margin-bottom: 48px;
-    max-width: 600px;
+    margin-bottom: clamp(24px, 3.5vh, 48px);
+    max-width: min(600px, 100%);
 }
 
 /* Call to Action Buttons */
@@ -419,11 +419,11 @@ header {
 .order-btn {
     background: #FF0000;
     color: #FFFFFF;
-    font-size: 20px;
+    font-size: clamp(15px, 1.5vw, 20px);
     font-weight: 500;
     border: none;
     border-radius: 50px;
-    padding: 14px 32px;
+    padding: clamp(10px, 1.1vh, 14px) clamp(20px, 2.5vw, 32px);
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -459,28 +459,28 @@ header {
 
 /* Divider Line */
 .divider {
-    margin-top: 40px;
+    margin-top: clamp(20px, 3vh, 40px);
     width: 40%;
     height: 1px;
     background: linear-gradient(90deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 100%);
     position: relative;
     z-index: 10;
-    margin-left: 60px;
+    margin-left: clamp(20px, 5%, 60px);
 }
 
 /* Bottom Cards Section */
 .bottom-cards-section {
     display: flex;
     justify-content: center;
-    gap: 16px;
+    gap: clamp(8px, 1.2vw, 16px);
     padding-top: 10px;
     position: relative;
     z-index: 10;
 }
 
 .card {
-    width: 160px;
-    height: 136px;
+    width: clamp(120px, 13vw, 160px);
+    height: clamp(100px, 10vh, 136px);
     background: rgba(8, 8, 8, 0.72);
     border: 1px solid rgba(255, 255, 255, 0.07);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.05);
@@ -571,13 +571,49 @@ header {
     }
 }
 
+/* ── Tablet range: 769px–1024px fluid adjustments ── */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .hero-container {
+        padding: clamp(12px, 2vw, 24px) clamp(20px, 4%, 40px) clamp(16px, 2.5vh, 28px);
+    }
+
+    .main-content {
+        max-width: 70% !important;
+        padding-left: clamp(16px, 3%, 32px);
+    }
+
+    .hero-character-wrapper {
+        width: min(800px, 50vw);
+        max-width: 50vw;
+        height: 80vh;
+    }
+
+    .card {
+        width: clamp(120px, 16vw, 150px);
+        height: clamp(100px, 11vh, 120px);
+    }
+
+    .cta-group {
+        gap: 14px;
+    }
+
+    /* Services/About inline style override for tablet */
+    .service-card h3 {
+        font-size: clamp(18px, 2vw, 24px) !important;
+    }
+
+    .service-card p {
+        font-size: clamp(14px, 1.4vw, 16px) !important;
+    }
+}
+
 @media (max-width: 768px) {
     .title {
-        font-size: 48px;
+        font-size: clamp(28px, 7vw, 48px);
     }
 
     .subtitle {
-        font-size: 20px;
+        font-size: clamp(15px, 4vw, 20px);
     }
 
     .main-content {
@@ -1776,10 +1812,10 @@ spline-viewer::part(logo) {
     }
 
     /* â”€â”€ 5. Typography â”€â”€ */
-    .title     { font-size: 28px !important; line-height: 1.2 !important; margin-bottom: 8px !important; }
-    .subtitle  { font-size: 13px !important; margin-bottom: 4px !important; }
+    .title     { font-size: clamp(24px, 7vw, 36px) !important; line-height: 1.2 !important; margin-bottom: 8px !important; }
+    .subtitle  { font-size: clamp(12px, 3.5vw, 16px) !important; margin-bottom: 4px !important; }
     .description {
-        font-size: 13px !important;
+        font-size: clamp(12px, 3.5vw, 15px) !important;
         max-width: 100% !important;
         line-height: 1.5 !important;
         margin-bottom: 0 !important;
@@ -1915,7 +1951,7 @@ spline-viewer::part(logo) {
 
     /* â”€â”€ 17. About headline â€” scale down â”€â”€ */
     .about-headline {
-        font-size: 36px !important;
+        font-size: clamp(26px, 7vw, 36px) !important;
     }
 
     /* â”€â”€ 18. Portfolio / service cards on mobile â”€â”€ */
@@ -1926,12 +1962,12 @@ spline-viewer::part(logo) {
     }
 
     .service-card h3 {
-        font-size: 18px !important;
+        font-size: clamp(16px, 4.5vw, 20px) !important;
         margin-bottom: 8px !important;
     }
 
     .service-card p {
-        font-size: 13px !important;
+        font-size: clamp(12px, 3.2vw, 14px) !important;
         line-height: 1.55;
     }
 

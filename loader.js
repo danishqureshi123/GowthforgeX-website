@@ -305,96 +305,11 @@ function injectLoaderStyles() {
             100% { opacity: 0; transform: scale(0.95) translateY(-20px); }
         }
 
-        /* Mobile notice modal */
-        .gfx-mobile-backdrop {
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.75);
-            backdrop-filter: blur(6px);
-            z-index: 999998;
-            display: grid;
-            place-items: center;
-            padding: 24px;
-        }
-        .gfx-mobile-card {
-            width: min(420px, 96vw);
-            background: #0d0d0f;
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 18px;
-            box-shadow: 0 18px 50px rgba(0,0,0,0.45);
-            padding: 22px 20px 18px;
-            color: #fff;
-            font-family: 'Outfit', sans-serif;
-            text-align: left;
-        }
-        .gfx-mobile-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: #ffffff;
-        }
-        .gfx-mobile-text {
-            font-size: 0.95rem;
-            color: rgba(255,255,255,0.75);
-            line-height: 1.5;
-            margin-bottom: 14px;
-        }
-        .gfx-mobile-actions {
-            display: flex;
-            gap: 10px;
-            justify-content: flex-end;
-            flex-wrap: wrap;
-        }
-        .gfx-btn {
-            border: 1px solid rgba(255,255,255,0.2);
-            background: rgba(255,255,255,0.06);
-            color: #fff;
-            padding: 10px 14px;
-            border-radius: 10px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.2s ease;
-        }
-        .gfx-btn:hover {
-            border-color: rgba(255,255,255,0.35);
-            background: rgba(255,255,255,0.12);
-        }
-        .gfx-btn-primary {
-            border-color: rgba(255,0,0,0.7);
-            background: rgba(255,0,0,0.14);
-        }
-        .gfx-btn-primary:hover {
-            background: rgba(255,0,0,0.22);
-        }
     `;
     document.head.appendChild(style);
 }
 
-// Show mobile development notice once per session
-function showMobileNotice() {
-    const isMobile = ('ontouchstart' in window) || window.matchMedia('(max-width: 900px)').matches;
-    if (!isMobile) return;
-    if (sessionStorage.getItem('gfx-mobile-notice') === '1') return;
-    sessionStorage.setItem('gfx-mobile-notice', '1');
-
-    const backdrop = document.createElement('div');
-    backdrop.className = 'gfx-mobile-backdrop';
-
-    const card = document.createElement('div');
-    card.className = 'gfx-mobile-card';
-    card.innerHTML = `
-        <div class="gfx-mobile-title">Mobile build in progress</div>
-        <div class="gfx-mobile-text">
-            We’re still crafting the mobile experience. For a smooth, full-featured ride, please open this on desktop for now
-        </div>
-    `;
-    backdrop.appendChild(card);
-    document.body.appendChild(backdrop);
-}
-
-function isPreviewHost() {
-    return /\.vercel\.app$/i.test(window.location.hostname);
-}
+// Mobile notice removed — site is now fully responsive on all devices
 
 // ── Status messages per progress checkpoint ───────────────────────────────────
 const STATUS_MESSAGES = [
@@ -488,9 +403,6 @@ function easeOutQuad(t) { return 1 - (1 - t) * (1 - t); }
                 setTimeout(() => {
                     loader.remove();
                     document.documentElement.classList.remove('gfx-loading');
-                    if (isPreviewHost()) {
-                        showMobileNotice();
-                    }
                 }, 460);
             }, 300);
         }
