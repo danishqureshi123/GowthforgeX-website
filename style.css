@@ -44,7 +44,7 @@ body {
     height: 100vh;
     padding: clamp(10px, 1.5vh, 20px) clamp(18px, 4%, 50px) clamp(20px, 3vh, 30px);
     z-index: 1;
-    overflow: hidden;
+    overflow: visible;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
