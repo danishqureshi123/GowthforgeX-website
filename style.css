@@ -636,6 +636,7 @@ header {
     .divider {
         margin-left: 20px;
     }
+
 }
 
 /* Glitter Background Effect */
@@ -1534,19 +1535,29 @@ spline-viewer::part(logo) {
 }
 
 .contact-split-wrapper {
+    position: relative;
     display: flex;
-    justify-content: space-between;
-    gap: 80px;
+    justify-content: flex-start;
     margin-top: 40px;
     align-items: flex-start;
+    height: 100%;
 }
 
 .contact-info-column {
     flex: 0 1 400px;
+    position: relative;
+    z-index: 4;
 }
 
 .contact-form-column {
-    flex: 0 1 650px;
+    position: absolute;
+    left: 110%;
+    top: -100px;
+    width: 650px;
+    max-width: 42vw;
+    height: auto;
+    z-index: 3;
+    padding: 35px;
 }
 
 @media (max-width: 1024px) {
@@ -1554,10 +1565,25 @@ spline-viewer::part(logo) {
         flex-direction: column;
         gap: 60px;
         align-items: stretch;
+        position: relative; 
+        height: auto;
     }
 
     .contact-info-column {
         max-width: 100%;
+        position: relative;
+        z-index: 4;
+    }
+
+    .contact-form-column {
+        position: relative;
+        right: auto;
+        top: auto;
+        width: 100%;
+        max-width: 100%;
+        background: none;
+        padding: 0;
+        border-radius: 0;
     }
 }
 
@@ -2487,12 +2513,13 @@ spline-viewer::part(logo) {
     /* 4. Globe & Robot Fix: Put them in the content flow so they don't overlap tags or buttons */
     .page-3d-wrapper,
     .services-3d-wrapper,
-    .hero-character-wrapper {
+    .hero-character-wrapper,
+    .about-3d-wrapper {
         position: relative !important;
         height: 280px !important; /* Fixed height for mobile */
         width: 100% !important;
         margin: 10px auto !important;
-        inset: auto !important; 
+        inset: auto !important;
         z-index: 1 !important;
         pointer-events: none !important; /* Allows you to scroll even if touching the globe */
     }
