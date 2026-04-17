@@ -16,6 +16,14 @@ body {
     overflow: hidden;
 }
 
+/* Mobile: Fix 100vh issue for scrollable content */
+@media (max-width: 768px) {
+    html, body {
+        height: auto;
+        overflow-y: auto;
+    }
+}
+
 /* Red blur glow */
 .background-glow {
     position: absolute;
@@ -1551,13 +1559,13 @@ spline-viewer::part(logo) {
 
 .contact-form-column {
     position: absolute;
-    left: 110%;
-    top: -100px;
+    left: 130%;
+    top: -250px;
     width: 650px;
     max-width: 42vw;
     height: auto;
     z-index: 3;
-    padding: 35px;
+    padding: 30px;
 }
 
 @media (max-width: 1024px) {
@@ -1611,8 +1619,8 @@ spline-viewer::part(logo) {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 40px;
-        height: 40px;
+        width: 48px;
+        height: 48px;
         cursor: pointer;
         z-index: 1001;
         order: 2;
@@ -1735,6 +1743,12 @@ spline-viewer::part(logo) {
         height: auto;
     }
 
+    /* Word-break for long URLs/emails on mobile */
+    * {
+        word-break: break-word;
+        overflow-wrap: break-word;
+    }
+
     /* â”€â”€ 2. Main container â€” stack children top-to-bottom, no space-between trap â”€â”€ */
     .hero-container {
         padding: 14px 18px 24px;
@@ -1755,13 +1769,13 @@ spline-viewer::part(logo) {
         gap: 0;
     }
 
-    /* Hamburger label */
+    /* Hamburger label - 48px minimum touch target */
     .nav-toggle-label {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 36px;
-        height: 36px;
+        width: 48px;
+        height: 48px;
         cursor: pointer;
         z-index: 1001;
         flex-shrink: 0;
@@ -2053,9 +2067,9 @@ spline-viewer::part(logo) {
 
     /* Gallery nav arrows â€” smaller for mobile */
     .nav-btn {
-        width: 36px;
-        height: 36px;
-        font-size: 14px;
+        width: 48px;
+        height: 48px;
+        font-size: 16px;
         flex-shrink: 0;
     }
 
@@ -2102,10 +2116,10 @@ spline-viewer::part(logo) {
     /* Close button â€” visible above gallery */
     .close-btn {
         top: 10px;
-        right: 14px;
-        font-size: 22px;
-        width: 34px;
-        height: 34px;
+        right: 10px;
+        font-size: 24px;
+        width: 48px;
+        height: 48px;
         background: rgba(20, 20, 20, 0.85);
         border-radius: 50%;
         display: flex;
