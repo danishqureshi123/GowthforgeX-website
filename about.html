@@ -620,6 +620,52 @@
     });
     </script>
 
+    <script>
+    // Matrix code effect
+    document.addEventListener('DOMContentLoaded', function() {
+        const canvas = document.createElement('canvas');
+        canvas.className = 'matrix-canvas';
+        document.body.insertBefore(canvas, document.body.firstChild);
+
+        const ctx = canvas.getContext('2d');
+        let W = canvas.width = window.innerWidth;
+        let H = canvas.height = window.innerHeight;
+
+        const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+        const charArray = chars.split('');
+        const fontSize = 20;
+        const columns = Math.floor(W / fontSize);
+        const drops = Array(columns).fill(0);
+
+        function draw() {
+            ctx.fillStyle = 'rgba(5, 5, 5, 0.05)';
+            ctx.fillRect(0, 0, W, H);
+
+            ctx.fillStyle = '#FF0000';
+            ctx.font = fontSize + 'px monospace';
+            ctx.globalAlpha = 0.7;
+
+            for (let i = 0; i < columns; i++) {
+                const char = charArray[Math.floor(Math.random() * charArray.length)];
+                ctx.fillText(char, i * fontSize, drops[i] * fontSize);
+
+                drops[i]++;
+                if (drops[i] * fontSize > H && Math.random() > 0.95) {
+                    drops[i] = 0;
+                }
+            }
+            ctx.globalAlpha = 1;
+        }
+
+        window.addEventListener('resize', function() {
+            W = canvas.width = window.innerWidth;
+            H = canvas.height = window.innerHeight;
+        }, { passive: true });
+
+        setInterval(draw, 50);
+    });
+    </script>
+
     <script src="transition.js" defer></script>
     <script src="effects.js" defer></script>
 </body>
