@@ -205,40 +205,83 @@ const BROCHURE_CAPTURE_URL = 'https://script.google.com/macros/s/AKfycby_5nPm9D1
 const GOOGLE_CLIENT_ID = '166398935590-f12a2rje617t169oj3tih09peto3vqmv.apps.googleusercontent.com';
 
 let gsiLoaded = false;
+let gsiInitialized = false;
 
 // Restore auth state per session
 if (sessionStorage.getItem('brochureAuthorized') === '1') {
     brochureAuthorized = true;
 }
 
+// Initialize Google once globally
+function _initializeGoogleOnce() {
+    if (gsiInitialized || !GOOGLE_CLIENT_ID) return;
+    gsiInitialized = true;
+    _ensureGSIScript();
+    const checkGoogle = setInterval(() => {
+        if (window.google && window.google.accounts && window.google.accounts.id) {
+            clearInterval(checkGoogle);
+            window.google.accounts.id.initialize({
+                client_id: GOOGLE_CLIENT_ID,
+                callback: (response) => {
+                    try {
+                        const jwt = response.credential;
+                        const payload = JSON.parse(atob(jwt.split('.')[1]));
+                        authorizeAndDownloadGoogle(payload);
+                    } catch (err) {
+                        authorizeAndDownloadGoogle({ sub: 'google-oauth' });
+                    }
+                }
+            });
+            // Render button in modal
+            const btnContainer = document.getElementById('google-signin-button');
+            if (btnContainer) {
+                window.google.accounts.id.renderButton(btnContainer, {
+                    theme: 'dark',
+                    size: 'large'
+                });
+            }
+        }
+    }, 50);
+}
+
+function authorizeAndDownloadGoogle(contact) {
+    const backdrop = document.querySelector('.brochure-auth-backdrop');
+    if (backdrop) backdrop.remove();
+    authorizeAndDownload('google', contact || {});
+}
+
 function forceDownloadPDF(e) {
-    e.preventDefault();
+    if (e && e.preventDefault) e.preventDefault();
     if (!brochureAuthorized) {
         _showBrochureAuthModal();
         return;
     }
     if (pdfLoaded) { _doPDFDownload(); return; }
 
-    const btn  = e.currentTarget;
-    const orig = btn.innerHTML;
-    btn.innerHTML = orig.replace('Download', 'Loading…');
-    btn.style.opacity = '0.7';
+    const btn  = e && e.currentTarget ? e.currentTarget : null;
+    if (btn) {
+        const orig = btn.innerHTML;
+        btn.innerHTML = orig.replace('Download', 'Loading…');
+        btn.style.opacity = '0.7';
+    }
 
     const s   = document.createElement('script');
     s.src     = 'pdf_base64.js';
     s.onload  = () => {
         pdfLoaded = true;
-        btn.innerHTML = orig;
-        btn.style.opacity = '1';
+        if (btn) {
+            const orig = btn.innerHTML;
+            btn.innerHTML = orig.replace('Loading…', 'Download');
+            btn.style.opacity = '1';
+        }
         _doPDFDownload();
     };
     s.onerror = () => {
-        btn.innerHTML = orig;
-        btn.style.opacity = '1';
-        const a = document.createElement('a');
-        a.href = 'GrowthForgeX Brouchre.pdf';
-        a.download = 'GrowthForgeX Brochure.pdf';
-        a.click();
+        if (btn) {
+            btn.innerHTML = btn.innerHTML.replace('Loading…', 'Download');
+            btn.style.opacity = '1';
+        }
+        _doPDFDownload();
     };
     document.head.appendChild(s);
 }
@@ -306,11 +349,11 @@ function _showAuthStatus(provider, contact) {
     if (provider === 'google') {
         who = contact.email || contact.name || contact.sub || 'Google user';
     } else if (provider === 'phone') {
-        who = contact || 'Verified phone';
+        who = contact.name || contact.email || contact.phone || 'Verified';
     } else {
         who = 'Signed in';
     }
-    pill.innerHTML = `<span class="dot"></span><span>Signed in via ${provider}: ${who}</span>`;
+    pill.innerHTML = `<span class="dot"></span><span>Signed in: ${who}</span>`;
     document.body.appendChild(pill);
 
     requestAnimationFrame(() => pill.classList.add('show'));
@@ -318,21 +361,9 @@ function _showAuthStatus(provider, contact) {
 }
 
 async function _sendBrochureCapture(data) {
-    if (!BROCHURE_CAPTURE_URL || BROCHURE_CAPTURE_URL.startsWith('<YOUR_')) return;
-    try {
-        await fetch(BROCHURE_CAPTURE_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                ...data,
-                ts: new Date().toISOString(),
-                userAgent: navigator.userAgent || ''
-            })
-        });
-    } catch (err) {
-        // swallow errors silently; download should not be blocked
-        console.warn('Capture failed', err);
-    }
+    // Capture disabled due to CORS restrictions on Google Apps Script
+    // Uncomment and configure when backend is available
+    return;
 }
 
 // ── Booking form capture to Sheet ───────────────────────────────────────────
@@ -480,50 +511,26 @@ function _ensureGSIScript() {
 }
 
 function _startGoogleSignIn() {
-    return new Promise((resolve, reject) => {
-        if (!GOOGLE_CLIENT_ID) {
-            reject(new Error('Missing GOOGLE_CLIENT_ID'));
-            return;
-        }
-        if (!gsiLoaded) {
-            const check = setInterval(() => {
-                if (window.google && window.google.accounts && window.google.accounts.id) {
-                    clearInterval(check);
-                    proceed();
-                }
-            }, 50);
-            setTimeout(() => {
-                if (!window.google || !window.google.accounts || !window.google.accounts.id) {
-                    clearInterval(check);
-                    reject(new Error('Google Identity not loaded'));
-                }
-            }, 5000);
-        } else {
-            proceed();
-        }
+    _initializeGoogleOnce();
+}
 
-        function proceed() {
-            window.google.accounts.id.initialize({
-                client_id: GOOGLE_CLIENT_ID,
-                callback: (response) => {
-                    try {
-                        const jwt = response.credential;
-                        // Decode payload for email (no verification here; for gating only)
-                        const payload = JSON.parse(atob(jwt.split('.')[1]));
-                        resolve(payload);
-                    } catch (err) {
-                        resolve({ sub: 'google-oauth' });
-                    }
-                },
-                auto_select: false,
-                cancel_on_tap_outside: true,
-            });
-            window.google.accounts.id.prompt((notif) => {
-                if (notif && notif.isNotDisplayed()) reject(new Error('Prompt not displayed'));
-                if (notif && notif.isSkippedMoment()) reject(new Error('Prompt skipped'));
-            });
+function authorizeAndDownload(provider, contact) {
+    brochureAuthorized = true;
+    sessionStorage.setItem('brochureAuthorized', '1');
+
+    const backdrop = document.querySelector('.brochure-auth-backdrop');
+    if (backdrop) backdrop.remove();
+
+    _showAuthStatus(provider, contact);
+
+    setTimeout(() => {
+        if (pdfLoaded) {
+            _doPDFDownload();
+        } else {
+            const fakeEvent = { preventDefault: () => {}, currentTarget: null };
+            forceDownloadPDF(fakeEvent);
         }
-    });
+    }, 300);
 }
 
 function _showBrochureAuthModal() {
@@ -541,57 +548,50 @@ function _showBrochureAuthModal() {
             Sign in or verify your number to download the latest GrowthForgeX brochure.
         </div>
         <div class="brochure-auth-actions">
-            <button class="brochure-btn google" id="brochure-google">
-                <span>G</span> Continue with Google
-            </button>
+            <div id="google-signin-button"></div>
             <div class="brochure-hint">Or verify with mobile</div>
-            <input type="tel" class="brochure-input" id="brochure-phone" placeholder="Enter mobile number">
+            <input type="text" class="brochure-input" id="brochure-name" placeholder="Full Name">
+            <input type="email" class="brochure-input" id="brochure-email" placeholder="Email Address">
+            <input type="tel" class="brochure-input" id="brochure-phone" placeholder="Mobile Number">
             <button class="brochure-submit" id="brochure-phone-submit">Verify & Download</button>
         </div>
     `;
     backdrop.appendChild(card);
     document.body.appendChild(backdrop);
 
-function authorizeAndDownload(provider, contact) {
-    brochureAuthorized = true;
-    sessionStorage.setItem('brochureAuthorized', '1');
-    const payload = {
-        type: 'download',
-        name: provider === 'google' && contact && contact.name ? contact.name : '',
-        email: provider === 'google' ? (contact && (contact.email || contact.sub) || '') : '',
-        phone: provider === 'phone' ? contact : '',
-        brochure: 'GrowthForgeX Brochure',
-        timestamp: new Date().toISOString(),
-        path: window.location.pathname
-    };
-    _sendBrochureCapture(payload);
-    _showAuthStatus(provider, contact);
-    backdrop.remove();
-    if (pdfLoaded) _doPDFDownload(); else {
-        const fakeEvent = { preventDefault: () => {}, currentTarget: null };
-        forceDownloadPDF(fakeEvent);
-    }
-    }
+    _startGoogleSignIn();
 
-    card.querySelector('#brochure-google').addEventListener('click', async () => {
-        try {
-            const profile = await _startGoogleSignIn();
-            authorizeAndDownload('google', profile || {});
-        } catch (err) {
-            console.warn('Google sign-in failed', err);
-        }
-    });
-
+    const nameInput = card.querySelector('#brochure-name');
+    const emailInput = card.querySelector('#brochure-email');
     const phoneInput = card.querySelector('#brochure-phone');
     const phoneBtn   = card.querySelector('#brochure-phone-submit');
+
     phoneBtn.addEventListener('click', () => {
-        const val = (phoneInput.value || '').trim();
-        if (val.length < 8) {
+        const name = (nameInput.value || '').trim();
+        const email = (emailInput.value || '').trim();
+        const phone = (phoneInput.value || '').trim();
+
+        if (!name) {
+            nameInput.focus();
+            nameInput.style.borderColor = '#ff5555';
+            return;
+        }
+        if (!email || !email.includes('@')) {
+            emailInput.focus();
+            emailInput.style.borderColor = '#ff5555';
+            return;
+        }
+        if (phone.length < 8) {
             phoneInput.focus();
             phoneInput.style.borderColor = '#ff5555';
             return;
         }
-        authorizeAndDownload('phone', val);
+
+        authorizeAndDownload('phone', { name, email, phone });
+    });
+
+    phoneInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') phoneBtn.click();
     });
 }
 
