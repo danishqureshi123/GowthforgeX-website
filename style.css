@@ -1674,7 +1674,7 @@ spline-viewer::part(logo) {
         top: 68px;
         left: 0;
         right: 0;
-        background: rgba(5, 5, 5, 1);
+        background: rgba(5, 5, 5, 0.98);
         backdrop-filter: blur(10px);
         flex-direction: column;
         padding: 8px 26px 20px;
@@ -1834,8 +1834,7 @@ spline-viewer::part(logo) {
         top: 62px;                     /* sits just below the mobile header row */
         left: 0;
         right: 0;
-        background: rgba(5, 5, 5, 1);
-        backdrop-filter: blur(10px);
+        background: #050505;           /* fully opaque â€” no content bleed-through */
         flex-direction: column;
         padding: 6px 24px 18px;
         gap: 0;
