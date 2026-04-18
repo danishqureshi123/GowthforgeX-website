@@ -1214,11 +1214,11 @@ spline-viewer::part(logo) {
 
 /* Contact Form Styles */
 .contact-form-container {
-    margin-top: 50px;
+    margin-top: clamp(14px, 1.8vh, 18px);
     width: 100%;
     background: rgba(10, 10, 10, 0.4);
     backdrop-filter: blur(10px);
-    padding: clamp(20px, 4vw, 30px);
+    padding: clamp(12px, 1.8vw, 16px);
     border-radius: 12px;
     border: 1px solid rgba(255, 0, 0, 0.1);
     box-shadow: 0 0 100px rgba(255, 0, 0, 0.05);
@@ -1226,30 +1226,31 @@ spline-viewer::part(logo) {
 
 .form-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: clamp(15px, 3vw, 25px);
-    margin-bottom: 25px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(4px, 0.8vw, 8px);
+    margin-bottom: clamp(10px, 1.5vh, 14px);
 }
 
 .form-group {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: clamp(6px, 1vh, 8px);
 }
 
 .form-group.full-width {
-    grid-column: span 2;
+    grid-column: 1 / -1;
 }
 
 .form-label {
     color: rgba(255, 255, 255, 0.4);
-    font-size: 12px;
+    font-size: clamp(10px, 1.2vw, 11px);
     font-weight: 600;
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
     display: flex;
     align-items: center;
     gap: 8px;
+    margin-bottom: clamp(6px, 1vh, 8px);
 }
 
 .form-label.required::after {
@@ -1263,10 +1264,10 @@ spline-viewer::part(logo) {
     background: #0A0A0A;
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 8px;
-    padding: 18px 20px;
+    padding: clamp(13px, 1.6vw, 15px) clamp(15px, 2.1vw, 17px);
     color: #FFFFFF;
     font-family: 'Inter', sans-serif;
-    font-size: 16px;
+    font-size: clamp(12px, 1.4vw, 14px);
     transition: all 0.3s ease;
 }
 
@@ -1280,7 +1281,7 @@ spline-viewer::part(logo) {
 }
 
 .form-textarea {
-    min-height: 150px;
+    min-height: clamp(80px, 10vh, 110px);
     resize: vertical;
 }
 
@@ -1290,18 +1291,18 @@ spline-viewer::part(logo) {
     color: #FFFFFF;
     border: none;
     border-radius: 8px;
-    padding: 22px;
-    font-size: 16px;
+    padding: clamp(10px, 1.4vh, 13px);
+    font-size: clamp(10px, 1vw, 12px);
     font-weight: 700;
-    letter-spacing: 3px;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 15px;
-    margin-top: 10px;
+    gap: clamp(6px, 1vw, 10px);
+    margin-top: clamp(8px, 1.1vh, 11px);
 }
 
 .submit-btn:hover {
@@ -1558,9 +1559,10 @@ spline-viewer::part(logo) {
     position: relative;
     display: flex;
     justify-content: flex-start;
-    margin-top: 40px;
+    margin-top: clamp(24px, 3vh, 40px);
     align-items: flex-start;
-    height: 100%;
+    height: 90%;
+    overflow: visible;
 }
 
 .contact-info-column {
@@ -1571,25 +1573,25 @@ spline-viewer::part(logo) {
 
 .contact-form-column {
     position: absolute;
-    left: 130%;
-    top: -250px;
-    width: clamp(500px, 42vw, 650px);
+    right: -95%;
+    top: 0;
+    width: clamp(340px, 32vw, 530px);
     height: auto;
     z-index: 3;
-    padding: clamp(20px, 3vw, 30px);
+    padding: clamp(12px, 1.8vw, 16px);
 }
 
 @media (max-width: 1024px) {
     .contact-split-wrapper {
         flex-direction: column;
-        gap: 60px;
+        gap: 45px;
         align-items: stretch;
         position: relative; 
         height: auto;
     }
 
     .contact-info-column {
-        max-width: 100%;
+        max-width: 50%;
         position: relative;
         z-index: 4;
     }
