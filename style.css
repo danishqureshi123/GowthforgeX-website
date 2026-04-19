@@ -116,29 +116,38 @@ body::-webkit-scrollbar {
     }
 }
 
-/* Social Media Icons */
+/* Social Media Icons - Hidden old position */
 .social-icons-section {
-    position: absolute;
-    right: clamp(20px, 3vw, 40px);
-    bottom: clamp(60px, 15vh, 150px);
+    display: none !important;
+}
+
+/* Form Header Row with Social Icons */
+.form-header-row {
     display: flex;
-    flex-direction: column;
-    gap: clamp(16px, 2vw, 24px);
-    z-index: 5;
-    opacity: 0.85;
-    transition: opacity 0.3s ease;
+    justify-content: space-between;
+    align-items: center;
+    gap: clamp(12px, 2vw, 20px);
+    margin-bottom: clamp(12px, 1.5vh, 16px);
 }
 
-.social-icons-section:hover {
-    opacity: 1;
+.form-header-row .title {
+    margin: 0;
+    flex: 1;
 }
 
-.social-icon {
+.form-social-icons {
+    display: flex !important;
+    gap: clamp(8px, 1.2vw, 12px);
+    flex-shrink: 0;
+    visibility: visible !important;
+}
+
+.form-social-icon {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: clamp(40px, 5vw, 48px);
-    height: clamp(40px, 5vw, 48px);
+    width: clamp(32px, 4vw, 40px);
+    height: clamp(32px, 4vw, 40px);
     border-radius: 50%;
     background: rgba(255, 0, 0, 0.1);
     border: 1.5px solid rgba(255, 0, 0, 0.3);
@@ -147,21 +156,21 @@ body::-webkit-scrollbar {
     flex-shrink: 0;
 }
 
-.social-icon:hover {
+.form-social-icon:hover {
     background: rgba(255, 0, 0, 0.2);
     border-color: rgba(255, 0, 0, 0.6);
     color: #FFFFFF;
-    transform: translateY(-4px);
-    box-shadow: 0 8px 16px rgba(255, 0, 0, 0.2);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(255, 0, 0, 0.2);
 }
 
-.social-icon svg {
-    width: clamp(24px, 3vw, 28px);
-    height: clamp(24px, 3vw, 28px);
+.form-social-icon svg {
+    width: clamp(18px, 2.5vw, 22px);
+    height: clamp(18px, 2.5vw, 22px);
     transition: transform 0.3s ease;
 }
 
-.social-icon:hover svg {
+.form-social-icon:hover svg {
     transform: scale(1.1);
 }
 
@@ -1283,7 +1292,7 @@ spline-viewer::part(logo) {
 /* Contact Form Styles */
 .contact-form-container {
     margin-top: clamp(14px, 1.8vh, 18px);
-    width: 100%;
+    width: 185%;
     background: rgba(10, 10, 10, 0.4);
     backdrop-filter: blur(10px);
     padding: clamp(12px, 1.2vw, 14px);
