@@ -76,6 +76,7 @@ body::-webkit-scrollbar {
     animation: float 6s ease-in-out infinite;
     pointer-events: none;
     object-fit: contain;
+    mix-blend-mode: lighten;
 }
 
 .lightning-right {
@@ -88,6 +89,7 @@ body::-webkit-scrollbar {
     opacity: 0.9;
     animation: floatAlt 8s ease-in-out infinite;
     object-fit: contain;
+    mix-blend-mode: lighten;
 }
 
 @keyframes float {
