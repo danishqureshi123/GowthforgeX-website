@@ -13,7 +13,25 @@
       "WebFetch(domain:www.webmobilefirst.com)",
       "WebFetch(domain:www.screensize.io)",
       "WebFetch(domain:www.ios-resolution.com)",
-      "WebFetch(domain:viewportsizer.com)"
+      "WebFetch(domain:viewportsizer.com)",
+      "Bash(python verify_fit.py)",
+      "Bash(python check_widths.py)",
+      "Bash(python final_check.py)",
+      "Bash(python test_form_fit.py)",
+      "Bash(python test_new_layout.py)",
+      "Bash(pkill -f \"python -m http.server\")",
+      "Bash(python -m http.server 8001)",
+      "Bash(python test_dom_check.py)",
+      "Read(//c/c/Users/ADMIN/OneDrive/Desktop/GrowthForgeX Website/**)",
+      "Bash(python test_parent_visibility.py)",
+      "Bash(python test_lightning.py)",
+      "Bash(python test_svg_dom.py)",
+      "Bash(file thunder.*)",
+      "Bash(python verify_thunder.py)",
+      "Bash(python test_background.py)"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\ADMIN\\OneDrive\\Desktop\\GrowthForgeX Website"
     ]
   }
 }
