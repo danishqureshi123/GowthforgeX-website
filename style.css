@@ -1631,12 +1631,12 @@ spline-viewer::part(logo) {
     align-items: flex-start;
     height: auto;
     overflow: visible;
-    gap: clamp(30px, 5vw, 80px);
+    gap: clamp(20px, 2.5vw, 40px);
     max-width: 100%;
 }
 
 .contact-info-column {
-    flex: 0 0 clamp(280px, 30vw, 380px);
+    flex: 0 0 clamp(240px, 22vw, 280px);
     position: relative;
     z-index: 4;
     min-width: 0;
@@ -1646,7 +1646,7 @@ spline-viewer::part(logo) {
     position: relative;
     right: auto;
     top: auto;
-    flex: 0 0 clamp(320px, 28vw, 420px);
+    flex: 0 0 clamp(260px, 20vw, 300px);
     height: auto;
     z-index: 3;
     padding: clamp(12px, 1.8vw, 16px);
