@@ -1626,18 +1626,17 @@ spline-viewer::part(logo) {
 .contact-split-wrapper {
     position: relative;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     margin-top: clamp(24px, 3vh, 40px);
     align-items: flex-start;
     height: auto;
     overflow: visible;
-    gap: clamp(20px, 4vw, 60px);
-    flex-wrap: wrap;
+    gap: clamp(30px, 5vw, 80px);
     max-width: 100%;
 }
 
 .contact-info-column {
-    flex: 0 0 clamp(300px, 35vw, 400px);
+    flex: 0 0 clamp(280px, 30vw, 380px);
     position: relative;
     z-index: 4;
     min-width: 0;
@@ -1647,7 +1646,7 @@ spline-viewer::part(logo) {
     position: relative;
     right: auto;
     top: auto;
-    flex: 0 0 clamp(340px, 28vw, 450px);
+    flex: 0 0 clamp(320px, 28vw, 420px);
     height: auto;
     z-index: 3;
     padding: clamp(12px, 1.8vw, 16px);
