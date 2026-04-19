@@ -1294,7 +1294,7 @@ spline-viewer::part(logo) {
 /* Contact Form Styles */
 .contact-form-container {
     margin-top: clamp(14px, 1.8vh, 18px);
-    width: 185%;
+    width: 100%;
     background: rgba(10, 10, 10, 0.4);
     backdrop-filter: blur(10px);
     padding: clamp(12px, 1.2vw, 14px);
