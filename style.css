@@ -1343,6 +1343,7 @@ spline-viewer::part(logo) {
 .form-input,
 .form-select,
 .form-textarea {
+    width: 100%;
     background: #0A0A0A;
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 8px;
@@ -1351,6 +1352,7 @@ spline-viewer::part(logo) {
     font-family: 'Inter', sans-serif;
     font-size: clamp(12px, 1.4vw, 14px);
     transition: all 0.3s ease;
+    box-sizing: border-box;
 }
 
 .form-input:focus,
