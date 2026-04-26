@@ -8,7 +8,10 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="//unpkg.com">
+    <link rel="dns-prefetch" href="//prod.spline.design">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="loader.js"></script>
     <script>!function(){var e=console.error;console.error=function(){if(arguments[0]&&typeof arguments[0]==='string'&&arguments[0].includes('Missing property'))return;e.apply(console,arguments)};}();</script>
     <script type="module" src="https://unpkg.com/@splinetool/viewer/build/spline-viewer.js" defer></script>
@@ -21,8 +24,8 @@
 
     <main class="hero-container">
         <!-- Lightning decoration images -->
-        <img src="thunder.png" alt="3D Red Lightning Left" class="lightning-left" loading="lazy">
-        <img src="thunder.png" alt="3D Red Lightning Right" class="lightning-right" loading="lazy">
+        <img src="thunder.png" alt="3D Red Lightning Left" class="lightning-left" width="220" height="220" loading="lazy" decoding="async">
+        <img src="thunder.png" alt="3D Red Lightning Right" class="lightning-right" width="220" height="220" loading="lazy" decoding="async">
 
         <header>
             <div class="logo">Growth ForgeX</div>
@@ -84,9 +87,9 @@
         <div class="hero-character-wrapper" id="hero-3d-wrapper">
             <spline-viewer url="https://prod.spline.design/ZqtdkgZTSpb2PDCs/scene.splinecode"></spline-viewer>
             <!-- Tech Icons remain in HTML, styled for mobile below -->
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg" class="fi-icon i-figma" alt="Figma" loading="lazy">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" class="fi-icon i-react" alt="React" loading="lazy">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" class="fi-icon i-node" alt="NodeJS" loading="lazy">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/figma/figma-original.svg" class="fi-icon i-figma" alt="Figma" width="60" height="60" loading="lazy" decoding="async">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/react/react-original.svg" class="fi-icon i-react" alt="React" width="60" height="60" loading="lazy" decoding="async">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/nodejs/nodejs-original.svg" class="fi-icon i-node" alt="NodeJS" width="60" height="60" loading="lazy" decoding="async">
         </div>
 
         <section class="bottom-cards-section">

@@ -6,6 +6,8 @@
     <title>Growth ForgeX - About Us</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="//unpkg.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="loader.js"></script>
     <link rel="stylesheet" href="style.css">
@@ -16,8 +18,8 @@
     <div class="background-glow"></div>
     <main class="hero-container">
         
-        <img src="thunder.png" alt="3D Red Lightning Left" class="lightning-left" loading="lazy" decoding="async">
-        <img src="thunder.png" alt="3D Red Lightning Right" class="lightning-right" loading="lazy" decoding="async">
+        <img src="thunder.png" alt="3D Red Lightning Left" class="lightning-left" width="220" height="220" loading="lazy" decoding="async">
+        <img src="thunder.png" alt="3D Red Lightning Right" class="lightning-right" width="220" height="220" loading="lazy" decoding="async">
 
         <header>
             <div class="logo">Growth ForgeX</div>
@@ -378,10 +380,10 @@
         <!-- About 3D Model — positioned absolutely on desktop, relative on mobile -->
         <div class="page-3d-wrapper" id="about-3d-wrapper">
             <canvas id="about-3d-canvas"></canvas>
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"     class="float-icon about-icon-1" alt="React"    loading="lazy" decoding="async">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg"   class="float-icon about-icon-2" alt="Node.js"  loading="lazy" decoding="async">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" class="float-icon about-icon-3" alt="TypeScript" loading="lazy" decoding="async">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" class="float-icon about-icon-4" alt="PostgreSQL" loading="lazy" decoding="async">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/react/react-original.svg"     class="float-icon about-icon-1" alt="React"      width="60" height="60" loading="lazy" decoding="async">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/nodejs/nodejs-original.svg"   class="float-icon about-icon-2" alt="Node.js"    width="60" height="60" loading="lazy" decoding="async">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/typescript/typescript-original.svg" class="float-icon about-icon-3" alt="TypeScript" width="60" height="60" loading="lazy" decoding="async">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/postgresql/postgresql-original.svg" class="float-icon about-icon-4" alt="PostgreSQL" width="60" height="60" loading="lazy" decoding="async">
         </div>
 
     </main>
@@ -662,7 +664,11 @@
             H = canvas.height = window.innerHeight;
         }, { passive: true });
 
-        setInterval(draw, 50);
+        let timer = setInterval(draw, 50);
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) { clearInterval(timer); timer = null; }
+            else if (!timer) { timer = setInterval(draw, 50); }
+        });
     });
     </script>
 
