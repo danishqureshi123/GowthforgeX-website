@@ -1,9 +1,12 @@
 /* ===== GROWTHFORGEX — PERFORMANCE CSS ===== */
 
 html {
-    overflow-x: hidden;
-    overflow-y: auto;
-    height: auto;
+    overflow: hidden;
+    scrollbar-width: none;
+}
+
+html::-webkit-scrollbar {
+    display: none;
 }
 
 body {
@@ -145,12 +148,9 @@ header {
 
 /* ── Mobile + tablet performance tuning ── */
 @media (max-width: 1024px) {
-    /* CRITICAL: un-lock scroll that the global html rule above froze.
-       perf.css loads after style.css, so this block must re-assert it. */
     html {
-        overflow-x: hidden;
-        overflow-y: auto;
-        height: auto;
+        overflow: hidden;
+        scrollbar-width: none;
     }
 
     /* Cheaper blur on mobile GPU */
