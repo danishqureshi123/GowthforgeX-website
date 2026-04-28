@@ -200,8 +200,7 @@ let pdfLoaded = false;
 let brochureAuthorized = false;
 let authStatusStylesInjected = false;
 
-// Replace with your deployed Google Apps Script Web App URL that appends rows to a Sheet
-const BROCHURE_CAPTURE_URL = 'https://script.google.com/macros/s/AKfycby_5nPm9D1GHGFLAE4kwZ5DyC9c80nvxnG2QP_l1lU0mcUPqflRM6K_lr8OxIPIUCHu2Q/exec';
+const BROCHURE_CAPTURE_URL = 'https://script.google.com/macros/s/AKfycbwVppC_8eNNZZc-ScnxntfFzNd0mvcjyCqs6qfUkmZwdXKnw9ubjgS6CACQRvZPFPg5Kw/exec';
 // Google OAuth client ID (Google Identity Services)
 const GOOGLE_CLIENT_ID = '166398935590-f12a2rje617t169oj3tih09peto3vqmv.apps.googleusercontent.com';
 
@@ -362,9 +361,15 @@ function _showAuthStatus(provider, contact) {
 }
 
 async function _sendBrochureCapture(data) {
-    // Capture disabled due to CORS restrictions on Google Apps Script
-    // Uncomment and configure when backend is available
-    return;
+    if (!BROCHURE_CAPTURE_URL) return;
+    try {
+        fetch(BROCHURE_CAPTURE_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+    } catch (_) {}
 }
 
 // ── Booking form capture to Sheet ───────────────────────────────────────────
@@ -373,41 +378,44 @@ function _initBookingFormCapture() {
     forms.forEach((form) => {
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            const pl = {
-                type: 'meet_request',
-                firstName: '',
-                lastName: '',
-                email: '',
-                phone: '',
-                company: '',
-                service: '',
-                brief: '',
-                timestamp: new Date().toISOString(),
-                path: window.location.pathname
+
+            const inputs    = form.querySelectorAll('input');
+            const selects   = form.querySelectorAll('select');
+            const textareas = form.querySelectorAll('textarea');
+
+            // Read by input type and position (matches contact.html field order)
+            const getText  = (idx) => (inputs[idx] && inputs[idx].value.trim()) || '';
+            const getEmail = () => { for (const i of inputs) if (i.type === 'email') return i.value.trim(); return ''; };
+            const getTel   = () => { for (const i of inputs) if (i.type === 'tel')   return i.value.trim(); return ''; };
+            const getCompany = () => {
+                for (const i of inputs) {
+                    const p = (i.placeholder || '').toLowerCase();
+                    if (p.includes('company') || p.includes('organization')) return i.value.trim();
+                }
+                return '';
             };
 
-            const fields = form.querySelectorAll('input, textarea, select');
-            fields.forEach((field) => {
-                const label = (field.placeholder || field.name || '').toLowerCase();
-                const val = field.value || '';
-                if (label.includes('first')) pl.firstName = val;
-                else if (label.includes('last')) pl.lastName = val;
-                else if (label.includes('email')) pl.email = val;
-                else if (label.includes('phone') || label.includes('mobile')) pl.phone = val;
-                else if (label.includes('company') || label.includes('organization')) pl.company = val;
-                else if (label.includes('service')) pl.service = val;
-                else if (field.tagName === 'TEXTAREA' || label.includes('brief') || label.includes('message')) pl.brief = val;
-            });
+            const pl = {
+                type:      'meet_request',
+                firstName: getText(0),
+                lastName:  getText(1),
+                email:     getEmail(),
+                phone:     getTel(),
+                company:   getCompany(),
+                service:   selects[0] ? selects[0].value : '',
+                brief:     textareas[0] ? textareas[0].value.trim() : '',
+                timestamp: new Date().toISOString(),
+                page:      window.location.pathname
+            };
 
-            await _sendBrochureCapture(pl);
+            _sendBrochureCapture(pl);
 
-            // Simple UX feedback
             const btn = form.querySelector('button[type="submit"], .submit-btn');
             if (btn) {
-                const prev = btn.textContent;
-                btn.textContent = 'Request Sent';
+                const prev = btn.innerHTML;
+                btn.innerHTML = 'Sent ✓';
                 btn.disabled = true;
-                setTimeout(() => { btn.textContent = prev; btn.disabled = false; }, 2600);
+                setTimeout(() => { btn.innerHTML = prev; btn.disabled = false; }, 3000);
             }
         });
     });
@@ -521,6 +529,15 @@ function authorizeAndDownload(provider, contact) {
 
     const backdrop = document.querySelector('.brochure-auth-backdrop');
     if (backdrop) backdrop.remove();
+
+    _sendBrochureCapture({
+        name:      contact.name  || contact.given_name || '',
+        email:     contact.email || '',
+        phone:     contact.phone || '',
+        provider:  provider,
+        timestamp: new Date().toISOString(),
+        page:      window.location.pathname
+    });
 
     _showAuthStatus(provider, contact);
 
