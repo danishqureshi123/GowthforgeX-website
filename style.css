@@ -1700,6 +1700,9 @@ spline-viewer::part(logo) {
         cursor: pointer;
         z-index: 1001;
         order: 2;
+        background: rgba(22, 22, 22, 0.95);
+        border: 1.5px solid rgba(255, 0, 0, 0.5);
+        border-radius: 10px;
     }
 
     .nav-toggle-label span {
@@ -1733,20 +1736,21 @@ spline-viewer::part(logo) {
 
     .nav-pill {
         display: none;
-        position: fixed;
+        position: fixed !important;
         top: 68px;
         left: 0;
         right: 0;
-        background: #161616;
-        backdrop-filter: none;
+        background: #0f0f0f !important;
+        border-radius: 0 0 18px 18px !important;
+        border: 1.5px solid rgba(255, 0, 0, 0.6) !important;
+        border-top: none !important;
+        backdrop-filter: none !important;
         flex-direction: column;
-        padding: 8px 26px 20px;
+        padding: 8px 26px 24px;
         gap: 0;
         z-index: 999999;
-        border-radius: 0 0 18px 18px;
-        border: 1.5px solid rgba(255, 0, 0, 0.45);
-        border-top: none;
-        box-shadow: 0 16px 60px rgba(0, 0, 0, 1), inset 0 1px 0 rgba(255, 0, 0, 0.15);
+        opacity: 1 !important;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.98), inset 0 1px 0 rgba(255, 0, 0, 0.2);
     }
 
     .nav-toggle:checked ~ .nav-pill { display: flex; }
@@ -1859,6 +1863,9 @@ spline-viewer::part(logo) {
         z-index: 1001;
         flex-shrink: 0;
         order: 2;
+        background: rgba(22, 22, 22, 0.95);
+        border: 1.5px solid rgba(255, 0, 0, 0.5);
+        border-radius: 10px;
     }
 
     /* Three-bar icon: single span + ::before + ::after */
@@ -1895,19 +1902,21 @@ spline-viewer::part(logo) {
     /* Nav pill â€” becomes a full-width dropdown */
     .nav-pill {
         display: none;
-        position: fixed;
+        position: fixed !important;
         top: 62px;
         left: 0;
         right: 0;
-        background: #161616;
+        background: #0f0f0f !important;
+        border-radius: 0 0 16px 16px !important;
+        border: 1.5px solid rgba(255, 0, 0, 0.6) !important;
+        border-top: none !important;
+        backdrop-filter: none !important;
         flex-direction: column;
-        padding: 6px 24px 18px;
+        padding: 6px 24px 22px;
         gap: 0;
         z-index: 999999;
-        border-radius: 0 0 16px 16px;
-        border: 1.5px solid rgba(255, 0, 0, 0.45);
-        border-top: none;
-        box-shadow: 0 16px 60px rgba(0, 0, 0, 1), inset 0 1px 0 rgba(255, 0, 0, 0.15);
+        opacity: 1 !important;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.98), inset 0 1px 0 rgba(255, 0, 0, 0.2);
     }
 
     .nav-toggle:checked ~ .nav-pill {

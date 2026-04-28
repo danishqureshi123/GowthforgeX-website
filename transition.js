@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     createGlitterCanvas();
     revealPageIn();
     hideSplineBadges();
+    setupMobileNav();
 });
 
 // ─── Hide "Built with Spline" badge — inject CSS into each shadow root ────────
@@ -597,3 +598,104 @@ function _showBrochureAuthModal() {
 
 // Initialize booking form capture on DOM ready
 document.addEventListener('DOMContentLoaded', _initBookingFormCapture);
+
+// ─── Mobile Nav Teleport Fix ──────────────────────────────────────────────────
+// position:fixed is broken when a parent has overflow:hidden (hero-container).
+// Solution: move .nav-pill to <body> on mobile so it fully escapes the context.
+function setupMobileNav() {
+    if (window.innerWidth > 1024) return; // desktop — no need
+
+    const toggle  = document.getElementById('nav-toggle');
+    const navPill = document.querySelector('.nav-pill');
+    if (!toggle || !navPill) return;
+
+    // Teleport nav to body
+    document.body.appendChild(navPill);
+
+    // Inject styles for the body-level nav
+    const style = document.createElement('style');
+    style.textContent = `
+        /* Body-level mobile nav — fully escapes overflow context */
+        body > .nav-pill {
+            display: none;
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            width: 100% !important;
+            padding: 80px 28px 28px !important;
+            background: #0d0d0d !important;
+            border: none !important;
+            border-bottom: 2px solid rgba(255, 0, 0, 0.5) !important;
+            border-radius: 0 0 20px 20px !important;
+            backdrop-filter: none !important;
+            flex-direction: column !important;
+            gap: 0 !important;
+            z-index: 9999999 !important;
+            opacity: 1 !important;
+            box-shadow: 0 24px 80px rgba(0, 0, 0, 1) !important;
+            transform: translateY(-100%);
+            transition: transform 0.32s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.25s ease;
+        }
+        body > .nav-pill.nav-open {
+            display: flex !important;
+            transform: translateY(0);
+        }
+        body > .nav-pill .nav-link {
+            padding: 16px 0;
+            font-size: 17px;
+            font-weight: 600;
+            display: block;
+            width: 100%;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            text-decoration: none;
+            letter-spacing: 0.02em;
+        }
+        body > .nav-pill .nav-link:last-child { border-bottom: none; }
+        body > .nav-pill .nav-link:hover { color: #FF4444; }
+
+        /* Dark overlay behind menu */
+        .nav-backdrop {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 9999998;
+        }
+        .nav-backdrop.nav-open { display: block; }
+    `;
+    document.head.appendChild(style);
+
+    // Create backdrop
+    const backdrop = document.createElement('div');
+    backdrop.className = 'nav-backdrop';
+    document.body.appendChild(backdrop);
+
+    // Toggle open/close
+    toggle.addEventListener('change', () => {
+        if (toggle.checked) {
+            navPill.classList.add('nav-open');
+            backdrop.classList.add('nav-open');
+        } else {
+            navPill.classList.remove('nav-open');
+            backdrop.classList.remove('nav-open');
+        }
+    });
+
+    // Close menu when backdrop is tapped
+    backdrop.addEventListener('click', () => {
+        toggle.checked = false;
+        navPill.classList.remove('nav-open');
+        backdrop.classList.remove('nav-open');
+    });
+
+    // Close menu when a nav link is clicked
+    navPill.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            toggle.checked = false;
+            navPill.classList.remove('nav-open');
+            backdrop.classList.remove('nav-open');
+        });
+    });
+}
